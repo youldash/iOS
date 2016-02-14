@@ -9,6 +9,7 @@ Brought to you by:
 Welcome to the CCIS iOS workshop repository!
 
 ## Sponsors
+
 This repository is sponsored in part by the [College of Computer and Information Systems](http://cis.uqu.edu.sa/) at Umm Al-Qura University, Mecca, Saudi Arabia.
 
 ## License
