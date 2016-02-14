@@ -10,7 +10,7 @@ Brought to you by:
 
 You have made it to the iOS developer essentials workshop repo! Congratulations :)
 
-> ***Update:*** This repo is under construction at the moment. For more updates please follow [@CS_UQU](https://twitter.com/CS_UQU) on Twitter.
+> ***Update:*** This repo is under construction at the moment. For more updates please follow [@UQU_CS](https://twitter.com/UQU_CS) on Twitter.
 
 ## Sponsors
 
