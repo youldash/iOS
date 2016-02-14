@@ -6,7 +6,9 @@ Brought to you by:
 [![Twitter Follow](https://img.shields.io/twitter/follow/youldash.svg?style=social?style=plastic)]()
 [![Github All Releases](https://img.shields.io/github/downloads/youldash/iOS/total.svg?style=plastic)]()
 
-Welcome to the CCIS iOS workshop repository!
+You have made it to the iOS developer essentials workshop repo! Congratulations :)
+
+> ***Update:*** This repo is under construction at the moment. For more updates please follow [@CS_UQU](https://twitter.com/CS_UQU) on Twitter.
 
 ## Sponsors
 
