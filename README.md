@@ -13,4 +13,4 @@ This repository is sponsored in part by the [College of Computer and Information
 
 ## License
 
-This Git repository is published under the MIT license. See [LICENSE](https://github.com/youldash/NCCC/blob/master/LICENSE.md) for details.
+This Git repository is published under the Creative Commons Attribution-NonCommercial 4.0 International License. See [LICENSE](https://github.com/youldash/NCCC/blob/master/LICENSE.md) for details.
