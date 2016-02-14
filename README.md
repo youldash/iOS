@@ -1,6 +1,6 @@
 # iOS Developer Essentials
 
-<img src="https://raw.github.com/youldash/iOS/master/Misc/CS%20B.png" width="100%" />
+<img src="https://raw.github.com/youldash/iOS/master/Misc/CS%20B.png" width="50%" />
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/youldash.svg?style=social?style=plastic)]()
 
