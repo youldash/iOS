@@ -3,8 +3,7 @@
 Brought to you by:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/CS%20B.png" width="50%" /></div>
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/youldash.svg?style=social?style=plastic)]()
-[![Github All Releases](https://img.shields.io/github/downloads/youldash/iOS/total.svg?style=plastic)]()
+[![Twitter Follow](https://img.shields.io/twitter/follow/youldash.svg?style=social?style=plastic)](https://twitter.com/youldash)
 
 ## About
 
