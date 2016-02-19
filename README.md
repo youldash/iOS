@@ -14,7 +14,7 @@ You have made it to the iOS developer essentials workshop repo! Congratulations 
 ## Sponsors
 
 <div align="center">
-	<table border="none">
+	<table border=0>
 		<tr>
 			<td align="right"><img src="https://raw.github.com/youldash/NCCC/master/misc/UQU-LOGO-1024x731.png" width="25%" /></td>
 			<td align="left"><img src="https://raw.github.com/youldash/iOS/master/Misc/TAM.png" width="100%" /></td>
