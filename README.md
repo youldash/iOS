@@ -22,8 +22,9 @@ You have made it to the iOS developer essentials workshop repo! Congratulations 
 	</table>
 </div>
 
-This repo is sponsored in part by the [College of Computer and Information Systems](http://cis.uqu.edu.sa/) at Umm Al-Qura University, Mecca, Saudi Arabia.
-
+This repo is sponsored in part by:
+- The [College of Computer and Information Systems](http://cis.uqu.edu.sa/) at Umm Al-Qura University, Mecca, Saudi Arabia.
+- [Tam Development, LLC](http://tam.sa/).
 ## License
 
 This Git repo is published under the Creative Commons Attribution-NonCommercial 4.0 International License. See [LICENSE](https://github.com/youldash/iOS/blob/master/LICENSE.md) for details.
