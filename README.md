@@ -17,13 +17,15 @@ You have made it to the iOS developer essentials workshop repo! Congratulations 
 	<table border="0">
 		<tr>
 			<td align="center"><img src="https://raw.github.com/youldash/NCCC/master/misc/UQU-LOGO-1024x731.png" width="50%" /></td>
+			<td align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/SWANID.png" width="50%" /></td>
 			<td align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/TAM.png" width="100%" /></td>
 		</tr>
 	</table>
 </div>
 
 This repo is sponsored in part by:
-- The [College of Computer and Information Systems](http://cis.uqu.edu.sa/) at Umm Al-Qura University, Mecca, Saudi Arabia.
+- [College of Computer and Information Systems](http://cis.uqu.edu.sa/) at Umm Al-Qura University, Mecca, Saudi Arabia.
+- [SwAniD Initiative](http://www.swanid.org/).
 - [Tam Development, LLC](http://tam.sa/).
 
 ## License
