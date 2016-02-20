@@ -4,6 +4,7 @@ Brought to you by:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/CS%20B.png" width="50%" /></div>
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/youldash.svg?style=social?style=plastic)](https://twitter.com/youldash)
+[![Twitter Follow](https://img.shields.io/twitter/follow/UQU_CS.svg?style=social?style=plastic)](https://twitter.com/UQU_CS)
 
 ## About
 
@@ -13,7 +14,7 @@ You have made it to the iOS developer essentials workshop repo! Congratulations 
 
 ## Outline
 
-- [Day 1 [Induction]](https://github.com/youldash/iOS/blob/master/Day 1/).
+- [Day 1 [Induction]](https://github.com/youldash/iOS/blob/master/Day%201/).
 - ...
 
 ## Sponsors
