@@ -11,6 +11,11 @@ You have made it to the iOS developer essentials workshop repo! Congratulations 
 
 > ***Update:*** This repo is under construction at the moment. For more updates please follow [@UQU_CS](https://twitter.com/UQU_CS) on Twitter.
 
+## Outline
+
+- [Day 1 [Induction]](https://github.com/youldash/iOS/blob/master/Day 1/).
+- ...
+
 ## Sponsors
 
 <div align="center">
