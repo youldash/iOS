@@ -18,6 +18,11 @@ You have made it to the iOS developer essentials workshop repo! Congratulations 
 - [Day 1 [Induction]](https://github.com/youldash/iOS/blob/master/Day%201/).
 - ...
 
+## Objectives
+
+At the end of the workshop, you will be able to develop an iOS app that will look like the following:
+![Screenshot](https://raw.github.com/youldash/iOS/master/Grapher/ScreenshotLandscape.png)
+
 ## Sponsors
 
 <div align="center">
