@@ -21,9 +21,9 @@ In this workshop, we present Apple's approach to building a [Scene Graph](https:
 
 ## Syllabus
 
-<ol>
+<ul>
 	<li>Bringing Ideas to Life.</li>
-</ol>
+</ul>
 
 ## Outline
 
