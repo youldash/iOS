@@ -1,4 +1,4 @@
-# Day 1 [Induction]
+# Day 1: Induction
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/youldash.svg?style=social?style=plastic)](https://twitter.com/youldash)
 [![Twitter Follow](https://img.shields.io/twitter/follow/UQU_CS.svg?style=social?style=plastic)](https://twitter.com/UQU_CS)
@@ -19,8 +19,6 @@ Umm Al-Qura University accepts no responsibility or liability for the content av
 ## Trademark
 
 , Mac, OS X, iOS, and Xcode, are trademarks of Apple, Inc.
-
-<hr>
 
 ## Outline
 
