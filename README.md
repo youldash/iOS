@@ -28,6 +28,8 @@ In this workshop, we present Apple's approach to building a [Scene Graph](https:
 At the end of the workshop, you will be able to develop an iOS app that will look like the following:
 ![Screenshot](https://raw.github.com/youldash/iOS/master/Grapher/ScreenshotLandscape.png)
 
+## Contents
+
 - [Day 1: Induction](https://github.com/youldash/iOS/blob/master/Day%201/).
 - [Day 2: Containers](https://github.com/youldash/iOS/blob/master/Day%202/).
 - [Day 3: Scene Graphs (Part I)](https://github.com/youldash/iOS/blob/master/Day%203/).
