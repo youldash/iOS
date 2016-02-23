@@ -32,7 +32,18 @@ The final product should look similarly to the following iPad mockup (or screens
 
 ### Course Syllabus
 
-<ul>
+* Bringing ideas to life.
+* Learn about the "3 Ts" of iOS app development.
+* Explore the iOS SDK (Software Development Kit).
+* How to leverage the Xcode IDE (Integrated Development Environment) to its full potential.
+* Leverage the power of collection classes such as `NSArray`, `NSSet`, `NSDictionary`, and other user-defined classes.
+* Understand the concepts of navigation using the `UINavigationController` class, and Segues.
+* Understand how to store, handle, and present Scene Graph information orderly using the `SpriteKit` API (Application Programming Interface).
+* Understand how to make your app more appealing using Audio (specifically with `AVFoundation`).
+* Perform various operation using both Main and Background threads of an app.
+* Start developing your iOS app with confidence.
+
+<!-- <ul>
 	<li>Bringing ideas to life.</li>
 	<li>Learn about the "3 Ts" of iOS app development.</li>
 	<li>Explore the iOS SDK (Software Development Kit).</li>
@@ -43,7 +54,7 @@ The final product should look similarly to the following iPad mockup (or screens
 	<li>Understand how to make your app more appealing using Audio (specifically with AVFoundation).</li>
 	<li>Perform various operation using both Main and Background threads of an app.</li>
 	<li>Start developing your iOS app with confidence.</li>
-</ul>
+</ul> -->
 
 ### Course Structure
 
