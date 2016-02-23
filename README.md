@@ -11,6 +11,12 @@ Brought to you by:
 
 You have made it to the iOS developer essentials workshop repo! Congratulations :)
 
+This workshop (or course if you will) is an intensive 5-day event, which is designed for UQU college students who are proficient with any modern, Object-Oriented language like Java and C++. Attendees must have a solid (or descent) understanding of Object-Oriented principles prior entry into the course.
+
+Attendees will receive 5-full days of training on campus (with sessions varying from 2- to 4-hours depending on the allocated schedule by the Computer Science department).
+
+Attendees are highly recommended to bring their own Apple laptops, running the [latest public release of the Xcode development software](https://itunes.apple.com/au/app/xcode/id497799835?mt=12).
+
 > ***Update:*** This repo is under construction at the moment. For more updates please follow [@UQU_CS](https://twitter.com/UQU_CS) and [@UQUCS_F](https://twitter.com/UQUCS_F) on Twitter.
 
 ## Preface
