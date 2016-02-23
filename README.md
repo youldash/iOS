@@ -11,7 +11,7 @@ Brought to you by:
 
 You have made it to the iOS developer essentials workshop repo! Congratulations :)
 
-> ***Update:*** This repo is under construction at the moment. For more updates please follow [@UQU_CS](https://twitter.com/UQU_CS) on Twitter.
+> ***Update:*** This repo is under construction at the moment. For more updates please follow [@UQU_CS](https://twitter.com/UQU_CS) and [@UQUCS_F](https://twitter.com/UQUCS_F) on Twitter.
 
 ## Outline
 
@@ -42,4 +42,4 @@ This repo is sponsored in part by:
 
 ## License
 
-This Git repo is published under the Creative Commons Attribution-NonCommercial 4.0 International License. See [LICENSE](https://github.com/youldash/iOS/blob/master/LICENSE.md) for details.
+This Git repo is published under the Creative Commons Attribution-NonCommercial 4.0 International License. By using this site, you agree to the **Terms of Use** that are defined in [LICENSE.md](https://github.com/youldash/iOS/blob/master/LICENSE.md).
