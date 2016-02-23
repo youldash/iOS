@@ -58,6 +58,34 @@ In this exercise, you will develop a Photography application as a Foundation too
 	<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/IDE.png" width="75%" /></div><br /><br />
 	<li />Try hiding both Utility and Debug areas, and only show both Editor and Navigation areas. This may help you focus on code you manage and keeps from getting distracted by other elements that might not be of relevance to the current project, like so (never mind the color scheme):<br /><br />
 	<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.5.png" width="100%" /></div><br /><br />
+	<li />Add a new class by highlighting on the "Photography" yellow (group) folder and selecting "New File" from the File menu.
+	<li />Under the "OS X" section, select "Source", and choose "Cocoa Class" as follows:<br /><br />
+	<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.6.png" width="100%" /></div><br /><br />
+	<li />When prompted for options, type "Photo" as the class name. Make sure "NSObject" is selected for subclassing from, like so:<br /><br />
+	<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.7.png" width="100%" /></div><br /><br />
+	<li />Confirm by clicking Next and make sure "Targets" is checked for the executable. This step will add both header file "Photo.h" and the implementation file "Photo.m" to your project.<br /><br />
+	<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.8.png" width="100%" /></div><br /><br />
+	<li />Type the code snippet listed below into Photo.h. This class represents the building block for creating address cards as part of an photo album, which will be created later as a separate class:<br /><br />
+	``` Objective-C
+	@import Foundation;
+
+	@interface Photo : NSObject
+
+	/**
+	 *  A caption.
+	 */
+	@property NSString *caption;
+
+	/**
+	 *  A photographer.
+	 */
+	@property NSString *photographer;
+
+	@end
+	```
+	<br /><br />
+	
+	
 </ol>
 
 ## Exercise 2: Photography 2.0
