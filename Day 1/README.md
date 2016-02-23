@@ -56,7 +56,7 @@ In this exercise, you will develop a Photography application as a Foundation too
 	<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.4.png" width="100%" /></div><br /><br />
 	To bring more insight into the Xcode IDE, a snapshot from Xcode's documentation files is borrowed for illustration:<br /><br />
 	<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/IDE.png" width="75%" /></div><br /><br />
-	<li />Try hiding both Utility and Debug areas, and only show both Editor and Navigation areas. This may help you focus on code you manage and keeps from getting distracted by other elements that might not be of relevance to the current project, like so:<br /><br />
+	<li />Try hiding both Utility and Debug areas, and only show both Editor and Navigation areas. This may help you focus on code you manage and keeps from getting distracted by other elements that might not be of relevance to the current project, like so (never mind the color scheme):<br /><br />
 	<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.5.png" width="100%" /></div><br /><br />
 </ol>
 
