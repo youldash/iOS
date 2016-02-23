@@ -38,7 +38,7 @@ As a final remark, try coming up with an idea that means something to you. Anyon
 
 ## Exercise 1: Photography 1.0
 
-In this exercise, you will develop a Photography application as a Foundation tool using Xcode. This example shows how to create a `Photo` class that forms the basis of a *`PhotoAlbum` class using containers.
+In this exercise, you will develop a Photography application as a Foundation tool using Xcode. This example shows how to create a `Photo` class that forms the basis of a `PhotoAlbum` class using containers.
 
 > **Pro Tip:** Working with command line projects often grants you experience in developing smaller packages and managing them with Xcode. Such packages can be reused later on in bigger, more complex projects or workspaces.
 
@@ -47,6 +47,9 @@ In this exercise, you will develop a Photography application as a Foundation too
 	<li />Under the Mac OS X section, select "Application", and choose “Command Line Tool”, then Next.<br /><br />
 	<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.1.png" width="100%" /></div><br /><br />
 	<li />When prompted for options, type "Photography" as the Product Name. You may consider leaving the Company Identifier field as is by default, or use a reverse DNS (Domain Name System). For instance, if you take a look at the Umm Al-Qura University domain name <a href="http://cis.uqu.edu.sa"><http://cis.uqu.edu.sa>, then its reverse DNS string should look like "sa.edu.uqu.cis". The Bundle Identifier will be set automatically, which is used for identifying your app in the App Store.
+	<li />Choose "Foundation" from the Type pop-up menu. By doing so, you allow your code to be linked to the Foundation Framework that holds all the necessary handlers for defining simple data types like NSObject and others.
+	<li />Leave the Use Automatic Reference Counting checkbox checked (as it exists in earlier releases of Xcode).<br /><br />
+	<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.2.png" width="100%" /></div><br /><br />
 </ol>
 
 ## Exercise 2: Photography 2.0
