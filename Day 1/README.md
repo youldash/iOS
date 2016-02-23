@@ -81,7 +81,13 @@ In this exercise, you will develop a Photography application as a Foundation too
 ``` Objective-C
 @import Foundation;
 
+/**
+ *  Base class from which all photos are derived.
+ */
 @interface Photo : NSObject
+
+#pragma mark -
+#pragma mark Accessing
 
 /**
  *  A caption.
@@ -92,6 +98,62 @@ In this exercise, you will develop a Photography application as a Foundation too
  *  A photographer.
  */
 @property NSString *photographer;
+
+@end
+```
+
+* Type the code snippet listed below into `Photo.m`:
+
+``` Objective-C
+#import "Photo.h"
+
+@implementation Photo
+
+#pragma mark -
+#pragma mark Initializing
+
+/**
+ *  Designated initializer.
+ *	Initializes a newly allocated photo.
+ *
+ *  @return The new photo.
+ */
+- (instancetype)init
+{
+	NSAssert([self isMemberOfClass:[Photo class]], @"Photo class not instantiated.");
+	
+	// Immutable photo, just return a new reference to itself (retained automatically by ARC).
+	self = [super init];
+	
+	if (self) {
+		
+		// Initialize the two properties with some dummy values.
+		self.caption = @"Photo of a celebrity";
+		self.photographer = @"Paparazzi";
+	}
+	
+	// Return this photo.
+	return self;
+}
+
+
+#pragma mark -
+#pragma mark Querying
+
+/**
+ *	Returns a string that describes this photo.
+ *
+ *	@return	The string.
+ */
+- (NSString *)description
+{
+	NSString *string = [NSString stringWithFormat:@"%@, brought to you by %@",
+						self.caption,
+						self.photographer];
+	
+	// Return it.
+	return string;
+}
 
 @end
 ```
