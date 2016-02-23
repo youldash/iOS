@@ -37,7 +37,7 @@ The final product should look similarly to the following iPad mockup (or screens
 	<li>Learn about the "3 Ts" of iOS app development.</li>
 	<li>Explore the iOS SDK (Software Development Kit).</li>
 	<li>How to leverage the Xcode IDE (Integrated Development Environment) to its full potential.</li>
-	<li>Leverage the power of collection classes such as NSArray, NSSet, NSDictionary, and other custom classes.</li>
+	<li>Leverage the power of collection classes such as NSArray, NSSet, NSDictionary, and other user-defined classes.</li>
 	<li>Understand the concepts of navigation using the UINavigationController class, and Segues.</li>
 	<li>Understand how to store, handle, and present Scene Graph information orderly using the SpriteKit API (Application Programming Interface).</li>
 	<li>Understand how to make your app more appealing using Audio (specifically with AVFoundation).</li>
