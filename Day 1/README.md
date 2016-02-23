@@ -34,4 +34,22 @@ On this note, you need to remember that an app, or "solution", needs to be speci
 * **Storytelling** -- "Cataloging the story of an inspiring person and sharing it with others."
 * **Marketing** -- "Signing up with a company with millions of fans like Facebook, Instagram, Twitter, Pinterest, Snapchat, and others."
 
-As a final remark, try coming up with an idea that means something to you. Anyone today can think of good ideas, and only a handful present great ideas to the world. So, try thinking of something that is truly "awesome" in a sense
+As a final remark, try coming up with an idea that means something to you. Anyone today can think of good ideas, and only a handful present great ideas to the world. So, try thinking of something that is truly "awesome" in a sense.
+
+## Exercise 1: Photography 1.0
+
+In this exercise, you will develop a Photography application as a Foundation tool using Xcode. This example shows how to create a `Photo` class that forms the basis of a *`PhotoAlbum` class using containers.
+
+> **Pro Tip:** Working with command line projects often grants you experience in developing smaller packages and managing them with Xcode. Such packages can be reused later on in bigger, more complex projects or workspaces.
+
+<ol>
+	<li />Create a new project by launching Xcode (under the /Applications folder if you installed Xcode by downloading it directly from the App Store), and selecting "New Project" from the File menu.
+</ol>
+
+## Exercise 2: Photography 2.0
+
+Work in progress...
+
+## Exercise 3: Photography 3.0
+
+Work in progress...
