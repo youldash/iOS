@@ -54,6 +54,8 @@ In this exercise, you will develop a Photography application as a Foundation too
 	<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.3.png" width="100%" /></div><br /><br />
 	Xcode then creates your project. It should look something like this:<br /><br />
 	<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.4.png" width="100%" /></div><br /><br />
+	To bring more insight into the Xcode IDE, a snapshot from Xcode's documentation files is borrowed for illustration:<br /><br />
+	<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/IDE.png" width="100%" /></div><br /><br />
 </ol>
 
 ## Exercise 2: Photography 2.0
