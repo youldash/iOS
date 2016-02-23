@@ -45,10 +45,14 @@ In this exercise, you will develop a Photography application as a Foundation too
 * Create a new project by launching Xcode (under the "/Applications" folder if you installed Xcode by downloading it directly from the App Store), and selecting "New Project" from the File menu.
 * Under the Mac OS X section, select "Application", and choose “Command Line Tool”, then Next.
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.1.png" width="100%" /></div>
+
 * When prompted for options, type "Photography" as the Product Name. You may consider leaving the Company Identifier field as is by default, or use a reverse DNS (Domain Name System). For instance, if you take a look at the College of Computer and Information Systems' domain name "http://cis.uqu.edu.sa", then its reverse DNS string should look like "sa.edu.uqu.cis". The Bundle Identifier will be set automatically, which is used for identifying your app in the App Store.
+
 * Choose "Foundation" from the Type pop-up menu. By doing so, you allow your code to be linked to the Foundation Framework that holds all the necessary handlers for defining simple data types like NSObject and others.
+
 * Leave the Use Automatic Reference Counting checkbox checked (as it exists in earlier releases of Xcode).
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.2.png" width="100%" /></div>
+
 * Confirm the final steps by clicking Next, then creating and saving the project to disk. You may wish to leave "Create Git repository on" checked and "My Mac" selected. This feature allows you to create and manage different versions of your project using a bundled Git repository, as follows:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.3.png" width="100%" /></div>
 
@@ -60,13 +64,18 @@ To bring more insight into the Xcode IDE, a snapshot from Xcode's documentation 
 
 * Try hiding both Utility and Debug areas, and only show both Editor and Navigation areas. This may help you focus on code you manage and keeps from getting distracted by other elements that might not be of relevance to the current project, like so (never mind the color scheme):
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.5.png" width="100%" /></div>
+
 * Add a new class by highlighting on the "Photography" yellow (group) folder and selecting "New File" from the File menu.
+
 * Under the "OS X" section, select "Source", and choose "Cocoa Class" as follows:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.6.png" width="100%" /></div>
+
 * When prompted for options, type "Photo" as the class name. Make sure "NSObject" is selected for subclassing from, like so:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.7.png" width="100%" /></div>
+
 * Confirm by clicking Next and make sure "Targets" is checked for the executable. This step will add both header file "Photo.h" and the implementation file "Photo.m" to your project.
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.8.png" width="100%" /></div>
+
 * Type the code snippet listed below into Photo.h. This class represents the building block for creating address cards as part of an photo album, which will be created later as a separate class:
 
 ``` Objective-C
