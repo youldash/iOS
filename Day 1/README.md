@@ -50,6 +50,8 @@ In this exercise, you will develop a Photography application as a Foundation too
 	<li />Choose "Foundation" from the Type pop-up menu. By doing so, you allow your code to be linked to the Foundation Framework that holds all the necessary handlers for defining simple data types like NSObject and others.
 	<li />Leave the Use Automatic Reference Counting checkbox checked (as it exists in earlier releases of Xcode).<br /><br />
 	<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.2.png" width="100%" /></div><br /><br />
+	<li />Confirm the final steps by clicking Next, then creating and saving the project to disk. You may wish to leave "Create local git repository for this project" checked. This feature allows you to create and manage different versions of your project using a bundled Git repository, as follows:<br /><br />
+	<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.3.png" width="100%" /></div><br /><br />
 </ol>
 
 ## Exercise 2: Photography 2.0
