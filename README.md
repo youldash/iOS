@@ -13,6 +13,18 @@ You have made it to the iOS developer essentials workshop repo! Congratulations 
 
 > ***Update:*** This repo is under construction at the moment. For more updates please follow [@UQU_CS](https://twitter.com/UQU_CS) and [@UQUCS_F](https://twitter.com/UQUCS_F) on Twitter.
 
+## Preface
+
+The app-making process for iOS devices (iPod Touch, iPhone, and iPad) relies on a special, yet easy to learn paradigm for creating mobile apps. Developers are challenged to provide their users with fun, joyful, and memorable experiences.
+
+In this workshop, we present Apple's approach to building a [Scene Graph](https://en.wikipedia.org/wiki/Scene_graph) app. 
+
+## Syllabus
+
+<ol>
+	<li>Bringing Ideas to Life.</li>
+</ol>
+
 ## Outline
 
 At the end of the workshop, you will be able to develop an iOS app that will look like the following:
