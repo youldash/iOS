@@ -44,8 +44,9 @@ In this exercise, you will develop a Photography application as a Foundation too
 
 <ol>
 	<li />Create a new project by launching Xcode (under the "/Applications" folder if you installed Xcode by downloading it directly from the App Store), and selecting "New Project" from the File menu.
-	<li />Under the Mac OS X section, select "Application", and choose “Command Line Tool”, then Next.<br />
+	<li />Under the Mac OS X section, select "Application", and choose “Command Line Tool”, then Next.<br /><br />
 	<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.1.png" width="100%" /></div>
+	<li />When prompted for options, type "Photography" as the Product Name. You may consider leaving the Company Identifier field as is by default, or use a reverse DNS (Domain Name System). For instance, if you take a look at the Umm Al-Qura University domain name <a href="http://cis.uqu.edu.sa"><http://cis.uqu.edu.sa>, then its reverse DNS string should look like "sa.edu.uqu.cis". The Bundle Identifier will be set automatically, which is used for identifying your app in the App Store.
 </ol>
 
 ## Exercise 2: Photography 2.0
