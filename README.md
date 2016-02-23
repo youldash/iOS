@@ -15,13 +15,23 @@ You have made it to the iOS developer essentials workshop repo! Congratulations 
 
 ## Outline
 
+At the end of the workshop, you will be able to develop an iOS app that will look like the following:
+![Screenshot](https://raw.github.com/youldash/iOS/master/Grapher/ScreenshotLandscape.png)
+
 - [Day 1 [Induction]](https://github.com/youldash/iOS/blob/master/Day%201/).
 - ...
 
-## Objectives
+## Disclaimer
 
-At the end of the workshop, you will be able to develop an iOS app that will look like the following:
-![Screenshot](https://raw.github.com/youldash/iOS/master/Grapher/ScreenshotLandscape.png)
+While every effort has been made by Umm Al-Qura University to ensure that the information in this publication is up to date and accurate, Umm Al-Qura University does not give any guarantees, undertakings or warranties in relation to the accuracy, completeness and up to date status of the above information.
+
+Umm Al-Qura University will not be liable for any loss or damage suffered by any person arising out of the reliance of any information in this publication.
+
+Umm Al-Qura University accepts no responsibility or liability for the content available at any of the web sites referred to in this publication.
+
+## Trademark
+
+, Mac, OS X, iOS, and Xcode, are trademarks of Apple, Inc.
 
 ## Sponsors
 
