@@ -17,18 +17,27 @@ You have made it to the iOS developer essentials workshop repo! Congratulations 
 
 The app-making process for iOS devices (iPod Touch, iPhone, and iPad) relies on a special, yet easy to learn paradigm for creating mobile apps. Developers are challenged to provide their users with fun, joyful, and memorable experiences.
 
-In this workshop, we present Apple's approach to building a [Scene Graph](https://en.wikipedia.org/wiki/Scene_graph) app. 
+In this workshop, we present Apple's approach to building a [Scene Graph](https://en.wikipedia.org/wiki/Scene_graph) iOS app. A **Scene Graph** is a general [Data Structure](https://en.wikipedia.org/wiki/Data_structure) that is commonly used by vector-based graphics editing apps like [Adobe Illustrator](http://www.adobe.com/products/illustrator.html) and  [AutoCAD](http://www.autodesk.com/products/autocad/overview), and modern computer games. These apps often arrange both logical and spatial representations of a graphical scene using specific **Graph** structure elements: **Nodes** and **Edges**.
 
-## Syllabus
-
-<ul>
-	<li>Bringing Ideas to Life.</li>
-</ul>
-
-At the end of the workshop, you will be able to develop an iOS app that will look like the following:
+At the end of the workshop, you will be able to develop a fully-fledged Scene Graph iOS app that will produce the following output (or screenshot):
 ![Screenshot](https://raw.github.com/youldash/iOS/master/Grapher/ScreenshotLandscape.png)
 
-## Contents
+### Course Syllabus
+
+<ul>
+	<li>Bringing ideas to life.</li>
+	<li>Learn about the "3 Ts" of iOS app development.</li>
+	<li>Explore the iOS SDK (Software Development Kit).</li>
+	<li>How to leverage the Xcode IDE (Integrated Development Environment) to its full potential.</li>
+	<li>Leverage the power of collection classes such as NSArray, NSSet, NSDictionary, and other custom classes.</li>
+	<li>Understand the concepts of navigation using the UINavigationController class, and Segues.</li>
+	<li>Understand how to store, handle, and present information orderly using Scene Graphs.</li>
+	<li>Understand how to make your app more appealing using Audio.</li>
+	<li>Perform various operation using both Main and Background threads of an application.</li>
+	<li>Start developing your iOS app with confidence.</li>
+</ul>
+
+### Course Structure
 
 - [Day 1: Induction](https://github.com/youldash/iOS/blob/master/Day%201/).
 - [Day 2: Containers](https://github.com/youldash/iOS/blob/master/Day%202/).
