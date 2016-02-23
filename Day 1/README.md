@@ -45,7 +45,7 @@ In this exercise, you will develop a Photography application as a Foundation too
 <ol>
 	<li />Create a new project by launching Xcode (under the "/Applications" folder if you installed Xcode by downloading it directly from the App Store), and selecting "New Project" from the File menu.
 	<li />Under the Mac OS X section, select "Application", and choose “Command Line Tool”, then Next.<br />
-	<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.1.png" width="50%" /></div>
+	<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.1.png" width="100%" /></div>
 </ol>
 
 ## Exercise 2: Photography 2.0
