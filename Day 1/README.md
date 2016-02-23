@@ -27,4 +27,11 @@ As you become very passionate about your idea, and discuss it with others, it is
 
 > **What makes your idea special?**
 
+On this note, you need to remember that an app, or "solution", needs to be special in some way. This can be achieved through the following:
 
+* **Featuring** -- "Navigating though screens using swipe gestures instead of tapping."
+* **Designing** -- "Making a weather app with animated backgrounds."
+* **Storytelling** -- "Cataloging the story of an inspiring person and sharing it with others."
+* **Marketing** -- "Signing up with a company with millions of fans like Facebook, Instagram, Twitter, Pinterest, Snapchat, and others."
+
+As a final remark, try coming up with an idea that means something to you. Anyone today can think of good ideas, and only a handful present great ideas to the world. So, try thinking of something that is truly "awesome" in a sense
