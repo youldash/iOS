@@ -43,26 +43,13 @@ The final product should look similarly to the following iPad mockup (or screens
 * Perform various operation using both Main and Background threads of an app.
 * Start developing your iOS app with confidence.
 
-<!-- <ul>
-	<li>Bringing ideas to life.</li>
-	<li>Learn about the "3 Ts" of iOS app development.</li>
-	<li>Explore the iOS SDK (Software Development Kit).</li>
-	<li>How to leverage the Xcode IDE (Integrated Development Environment) to its full potential.</li>
-	<li>Leverage the power of collection classes such as NSArray, NSSet, NSDictionary, and other user-defined classes.</li>
-	<li>Understand the concepts of navigation using the UINavigationController class, and Segues.</li>
-	<li>Understand how to store, handle, and present Scene Graph information orderly using the SpriteKit API (Application Programming Interface).</li>
-	<li>Understand how to make your app more appealing using Audio (specifically with AVFoundation).</li>
-	<li>Perform various operation using both Main and Background threads of an app.</li>
-	<li>Start developing your iOS app with confidence.</li>
-</ul> -->
-
 ### Course Structure
 
-- [Day 1: Induction](https://github.com/youldash/iOS/blob/master/Day%201/).
-- [Day 2: Containers](https://github.com/youldash/iOS/blob/master/Day%202/).
-- [Day 3: Scene Graphs (Part I)](https://github.com/youldash/iOS/blob/master/Day%203/).
-- [Day 4: Scene Graphs (Part II)](https://github.com/youldash/iOS/blob/master/Day%204/).
-- [Day 5: Advanced Topics](https://github.com/youldash/iOS/blob/master/Day%205/).
+* [Day 1: Induction](https://github.com/youldash/iOS/blob/master/Day%201/).
+* [Day 2: Containers](https://github.com/youldash/iOS/blob/master/Day%202/).
+* [Day 3: Scene Graphs (Part I)](https://github.com/youldash/iOS/blob/master/Day%203/).
+* [Day 4: Scene Graphs (Part II)](https://github.com/youldash/iOS/blob/master/Day%204/).
+* [Day 5: Advanced Topics](https://github.com/youldash/iOS/blob/master/Day%205/).
 
 ## Disclaimer
 
