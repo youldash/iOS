@@ -482,9 +482,9 @@ Program ended with exit code: 0
 
 Here, you will develop your very first iOS app that reuses code form the previous exercise to create and display PhotoAlbum information on an alert view. This exercise confirms to the Three Ts of iOS app development:
 
-* **Tools** → Utilize Xcode to create and manage your project(s).
-* **Technologies** → Create apps that responds to user input.
-* **Techniques** → Take advantage of the fundamental design patterns that iOS underlies.
+**Tools** → Utilize Xcode to create and manage your project(s).
+**Technologies** → Create apps that responds to user input.
+**Techniques** → Take advantage of the fundamental design patterns that iOS underlies.
 
 * Create a new project by launching Xcode, and selecting "New Project" from the File menu.
 
