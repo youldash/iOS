@@ -43,6 +43,7 @@ In this exercise, you will develop a Photography application as a Foundation too
 > **Pro Tip:** Working with command line projects often grants you experience in developing smaller packages and managing them with Xcode. Such packages can be reused later on in bigger, more complex projects or workspaces.
 
 * Create a new project by launching Xcode (under the "/Applications" folder if you installed Xcode by downloading it directly from the App Store), and selecting "New Project" from the File menu.
+
 * Under the "OS X" section, select "Application", and choose “Command Line Tool”, then Next.
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.1.png" width="100%" /></div>
 
@@ -451,7 +452,7 @@ int main(int argc, const char * argv[]) {
 }
 ```
 
-* Compile and run the program by clicking on the Run button (located on the top-left corner of Xcode), or by pressing (⌘ + R). You should see an output similar to the following output:
+* Compile and run the program by clicking on the Run button (located on the top-left corner of Xcode), or by pressing (⌘ + R). You should see an outcome similar to the following Debugger output:
 
 ```
 2016-02-24 19:04:03.625 Photography[2543:56278] PhotoAlbum unit test program.
@@ -471,10 +472,19 @@ int main(int argc, const char * argv[]) {
 Program ended with exit code: 0
 ```
 
+> **Note:** Xcode project files for this exercise will be pushed to this repo, later.
+
 ## Exercise 2: Photography 2.0
 
-Work in progress...
+Here, you will develop your very first iOS app that reuses code form the previous exercise to create and display PhotoAlbum information on an alert view. This exercise confirms to the Three Ts of iOS app development:
 
-## Exercise 3: Photography 3.0
+* **Tools** → Utilize Xcode to create and manage your project(s).
+* **Technologies** → Create apps that responds to user input.
+* **Storytelling** → Take advantage of the fundamental design patterns that iOS underlies.
 
-Work in progress...
+* Create a new project by launching Xcode, and selecting "New Project" from the File menu.
+
+* Under the "iOS" section, select "Application", and choose “Single View Application”, then Next.
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography2.0.1.png" width="100%" /></div>
+
+
