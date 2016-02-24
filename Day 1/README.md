@@ -90,6 +90,11 @@ In this exercise, you will develop a Photography application as a Foundation too
 #pragma mark Accessing
 
 /**
+ *  A number.
+ */
+@property int number;
+
+/**
  *  A caption.
  */
 @property NSString *caption;
@@ -136,7 +141,6 @@ In this exercise, you will develop a Photography application as a Foundation too
 	return self;
 }
 
-
 #pragma mark -
 #pragma mark Querying
 
@@ -147,7 +151,8 @@ In this exercise, you will develop a Photography application as a Foundation too
  */
 - (NSString *)description
 {
-	NSString *string = [NSString stringWithFormat:@"%@, brought to you by %@",
+	NSString *string = [NSString stringWithFormat:@"%i) %@, brought to you by %@",
+						self.number,
 						self.caption,
 						self.photographer];
 	
