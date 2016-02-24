@@ -76,7 +76,7 @@ In this exercise, you will develop a Photography application as a Foundation too
 * Confirm by clicking Next and make sure "Targets" is checked for the executable. This step will add both header file `Photo.h` and the implementation file `Photo.m` to your project.
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.8.png" width="100%" /></div>
 
-* Type the code snippet listed below into `Photo.h`. This class represents the building block for creating address cards as part of an photo album, which will be created later as a separate class:
+* Type the code snippet listed below into `Photo.h`. This class represents the building block for creating new photo instances as part of an photo album, which will be created later as a separate class:
 
 ``` Objective-C
 @import Foundation;
@@ -112,6 +112,11 @@ In this exercise, you will develop a Photography application as a Foundation too
 ``` Objective-C
 #import "Photo.h"
 
+/**
+ *	Static constant.
+ */
+static const int kNumberDefault = 0;
+
 @implementation Photo
 
 #pragma mark -
@@ -125,21 +130,23 @@ In this exercise, you will develop a Photography application as a Foundation too
  */
 - (instancetype)init
 {
-	NSAssert([self isMemberOfClass:[Photo class]], @"Photo class not instantiated.");
-	
-	// Immutable photo, just return a new reference to itself (retained automatically by ARC).
-	self = [super init];
-	
-	if (self) {
-		
-		// Initialize the two properties with some dummy values.
-		self.caption = @"Photo of a celebrity";
-		self.photographer = @"Paparazzi";
-	}
-	
-	// Return this photo.
-	return self;
+    NSAssert([self isMemberOfClass:[Photo class]], @"Photo class not instantiated.");
+    
+    // Immutable photo, just return a new reference to itself (retained automatically by ARC).
+    self = [super init];
+    
+    if (self) {
+        
+        // Initialize the two properties with some dummy values.
+        self.number = kNumberDefault;
+        self.caption = @"Photo of a celebrity";
+        self.photographer = @"Paparazzi";
+    }
+    
+    // Return this photo.
+    return self;
 }
+
 
 #pragma mark -
 #pragma mark Querying
@@ -151,13 +158,18 @@ In this exercise, you will develop a Photography application as a Foundation too
  */
 - (NSString *)description
 {
-	NSString *string = [NSString stringWithFormat:@"%i) %@, brought to you by %@",
-						self.number,
-						self.caption,
-						self.photographer];
-	
-	// Return it.
-	return string;
+    // Establish the description string.
+    NSMutableString *string = [NSMutableString stringWithString:@"<Photo: data=["];
+    
+    [string appendFormat:@"#%i: %@, brought to you by %@",
+     self.number,
+     self.caption,
+     self.photographer];
+    
+    [string appendFormat:@"]>"];
+    
+    // Return it.
+    return string;
 }
 
 @end
@@ -171,7 +183,67 @@ In this exercise, you will develop a Photography application as a Foundation too
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.9.png" width="100%" /></div>
 
 * Confirm by clicking Next and save the new class.
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.10.png" width="100%" /></div>
 
+* Type the code snippet listed below into `PhotoAlbum.h`. This class represents the building block for creating photo albums:
+
+``` Objective-C
+@import Foundation;
+
+@class Photo;
+
+/**
+ *  Base class from which all photo albums are derived.
+ */
+@interface PhotoAlbum : NSObject
+
+#pragma mark -
+#pragma mark Accessing
+
+/**
+ *  A photos array (mutble).
+ */
+@property NSMutableArray *photos;
+
+#pragma mark -
+#pragma mark Modifying
+
+/**
+ *  Inserts a photo to the local photos array.
+ *
+ *  @param photo A photo to add.
+ */
+- (void)insertsPhoto:(Photo *)photo;
+
+/**
+ *  Removes a photo to the local photos array.
+ *
+ *  @param photo A photo to remove.
+ *
+ *  @return A boolean value that indicates whether this operation was successful.
+ */
+- (BOOL)removePhoto:(Photo *)photo;
+
+#pragma mark -
+#pragma mark Modifying
+
+/**
+ *	Removes all the objects from the photos array.
+ */
+- (void)purge;
+
+#pragma mark -
+#pragma mark Testing
+
+/**
+ *	PhotoAlbum unit test program.
+ *
+ *	@return	A boolean value that indicates whether all the tests were successful.
+ */
++ (BOOL)unitTest;
+
+@end
+```
 
 ## Exercise 2: Photography 2.0
 
