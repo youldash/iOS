@@ -451,7 +451,25 @@ int main(int argc, const char * argv[]) {
 }
 ```
 
+* Compile and run the program by clicking on the Run button (located on the top-left corner of Xcode), or by pressing (⌘ + R). You should see an output similar to the following output:
 
+```
+2016-02-24 19:04:03.625 Photography[2543:56278] PhotoAlbum unit test program.
+          --------------------------------------------
+2016-02-24 19:04:03.627 Photography[2543:56278] album1 = <PhotoAlbum: length=0, data=[]>
+2016-02-24 19:04:03.627 Photography[2543:56278] Adding photos to album1...
+2016-02-24 19:04:03.628 Photography[2543:56278] Enumerating album1...
+2016-02-24 19:04:03.628 Photography[2543:56278] album1[0] = <Photo: data=[#0: Photo of a celebrity, brought to you by Paparazzi]>
+2016-02-24 19:04:03.628 Photography[2543:56278] album1[1] = <Photo: data=[#1: Side photo of our College, brought to you by Manal]>
+2016-02-24 19:04:03.628 Photography[2543:56278] album1[2] = <Photo: data=[#2: Photo of a celebrity, brought to you by Paparazzi]>
+2016-02-24 19:04:03.629 Photography[2543:56278] Removing photos from album1...
+2016-02-24 19:04:03.629 Photography[2543:56278] removed album1.photos[0] = YES
+2016-02-24 19:04:03.629 Photography[2543:56278] removed album1.photos[1] = YES
+2016-02-24 19:04:03.629 Photography[2543:56278] album1 = <PhotoAlbum: length=1, data=[<Photo: data=[#1: Side photo of our College, brought to you by Manal]>]>
+2016-02-24 19:04:03.630 Photography[2543:56278] Purging album1...
+2016-02-24 19:04:03.630 Photography[2543:56278] album1 = <PhotoAlbum: length=0, data=[]>
+Program ended with exit code: 0
+```
 
 ## Exercise 2: Photography 2.0
 
