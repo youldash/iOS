@@ -505,3 +505,10 @@ Here, you will develop your very first iOS app that reuses code form the previou
 
 > **Note:** Since the exercises will be deployed on an iPad that will be brought during the course of the workshop, we will assume you have already chosen "iPad" form the Devices pop-up menu. Selecting which device to target and working on the design aspects of your project will be entirely up to you.
 
+* Confirm the final steps by clicking Next, then creating and saving the project to disk. You may wish to leave "Create Git repository on" checked and "My Mac" selected:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography2.0.2.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography2.0.3.png" width="100%" /></div>
+
+* Xcode then creates your project. It should look something like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography2.0.4.png" width="100%" /></div>
+
