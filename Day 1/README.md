@@ -163,6 +163,16 @@ In this exercise, you will develop a Photography application as a Foundation too
 @end
 ```
 
+* Now that the `Photo` class ready, add a new `PhotoAlbum` class for managing Photo instances. The following steps are exactly the same as the previous steps for creating the `Photo` class. Go ahead and add a new class by selecting "New File" from the File menu.
+
+* Under the "OS X" section, select "Source", and choose "Cocoa Class".
+
+* When prompted for options, type `PhotoAlbum` as the class name. Make it a subclass of `NSObject`. Also make sure "Targets" is checked for the exculpable:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.9.png" width="100%" /></div>
+
+* Confirm by clicking Next and save the new class.
+
+
 ## Exercise 2: Photography 2.0
 
 Work in progress...
