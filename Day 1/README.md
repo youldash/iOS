@@ -32,7 +32,7 @@ On this note, you need to remember that an app, or "solution", needs to be speci
 * **Featuring** → Navigating though different screens using swipe gestures instead of tapping.
 * **Designing** → Making an app with animated backgrounds (makes your app more alive).
 * **Storytelling** → Cataloging the story of an inspiring person/significant moment and sharing it with others.
-* **Marketing** → Signing up with a company with millions/billions of fans e.g. Facebook, Instagram, Twitter, Pinterest, Snapchat, and similar.
+* **Marketing** → Signing up with a Organization with millions/billions of fans e.g. Facebook, Instagram, Twitter, Pinterest, Snapchat, and similar.
 
 As a final remark, try coming up with an idea that means something to you. Anyone today can think of good ideas, and only a handful present great ideas to the world. So, try thinking of something that is truly "awesome" in a sense.
 
@@ -47,9 +47,13 @@ In this exercise, you will develop a Photography application as a Foundation too
 * Under the "OS X" section, select "Application", and choose “Command Line Tool”, then Next.
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.1.png" width="100%" /></div>
 
-* When prompted for options, type "Photography" as the Product Name. You may consider leaving the Company Identifier field as is by default, or use a reverse DNS (Domain Name System). For instance, if you take a look at the College of Computer and Information Systems' domain name "http://cis.uqu.edu.sa", then its reverse DNS string should look like "sa.edu.uqu.cis". The Bundle Identifier will be set automatically, which is used for identifying your app in the App Store.
+* When prompted for options, type "Photography" as the Product Name.
 
-* Choose "Foundation" from the Type pop-up menu. By doing so, you allow your code to be linked to the Foundation Framework that holds all the necessary handlers for defining simple data types like `NSObject` and others.
+* You may consider leaving the Organization Identifier field as is by default (which is allowed in previous major releases of Xcode), or use a reverse DNS (Domain Name System). For instance, if you take a look at the College of Computer and Information Systems' domain name "http://cis.uqu.edu.sa", then its reverse DNS string should look like `sa.edu.uqu.cis`. The Bundle Identifier will be set automatically, which is used for identifying your app in the App Store. Your Bundle Identifier should look like `sa.edu.uqu.cis.Photography`.
+
+* Choose "Objective-C" from the Language pop-up menu. By doing so, you allow your code to be linked to the Foundation Framework that holds all the necessary handlers for defining simple data types like `NSObject` and others, using this language.
+
+> **Note:** Choosing "Swift" will be entirely up to you, as this workshop is specifically aimed at teaching Objective-C as grounds for developing the final product in **[Day 5](https://github.com/youldash/iOS/blob/master/Day%205/)**. Objective-C has a lot to offer, and the differences between it and Swift will be briefly elaborated in **[Day 5](https://github.com/youldash/iOS/blob/master/Day%205/)**.
 
 * Leave the Use Automatic Reference Counting checkbox checked (as it exists in earlier releases of Xcode).
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.2.png" width="100%" /></div>
@@ -480,11 +484,22 @@ Here, you will develop your very first iOS app that reuses code form the previou
 
 * **Tools** → Utilize Xcode to create and manage your project(s).
 * **Technologies** → Create apps that responds to user input.
-* **Techniques** → Take advantage of the fundamental design patterns that iOS underlies.
+* Techniques → Take advantage of the fundamental design patterns that iOS underlies.
 
 * Create a new project by launching Xcode, and selecting "New Project" from the File menu.
 
 * Under the "iOS" section, select "Application", and choose “Single View Application”, then Next.
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography2.0.1.png" width="100%" /></div>
 
+* When prompted for options, type "iPhotography" as the Product Name.
+
+* You may consider leaving the Organization Identifier field as is by default (which is allowed in previous major releases of Xcode), or use a reverse DNS (Domain Name System). Here, the chosen reverse DNS string for Umm Al-Qura's College URL looks like `sa.edu.uqu.cis`. By doing so, you should confirm the Bundle Identifier to look like `sa.edu.uqu.cis.iPhotography`.
+
+* Choose "Objective-C" from the Language pop-up menu.
+
+* Leave the Use Core Data, Include Unit Tests, and Include UI Tests checkboxes unchecked (as they are not necessary for this part of the exercises).
+
+* Depending on which Apple platform your is targeting, you should carefully consider either "iPhone", "iPad", or "Universal" from the Devices pop-up menu. By selecting "Universal" you allow your app to run on all iOS devices whilst making sure that the look and feel of your app is dynamically adjusted to the chosen platform.
+
+> **Note:** Since the exercises will be deployed on an iPad that will be brought during the course of the workshop, we will assume you have already chosen "iPad" form the Devices pop-up menu. Selecting which device to target and working on the design aspects of your project will be entirely up to you.
 
