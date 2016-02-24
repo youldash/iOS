@@ -480,7 +480,7 @@ Here, you will develop your very first iOS app that reuses code form the previou
 
 * **Tools** → Utilize Xcode to create and manage your project(s).
 * **Technologies** → Create apps that responds to user input.
-* **Storytelling** → Take advantage of the fundamental design patterns that iOS underlies.
+* **Techniques** → Take advantage of the fundamental design patterns that iOS underlies.
 
 * Create a new project by launching Xcode, and selecting "New Project" from the File menu.
 
