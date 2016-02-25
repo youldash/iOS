@@ -538,7 +538,7 @@ Here, you will develop your very first iOS app that reuses code form the previou
 
 * In the Connection pop-up menu, choose Action.
 
-*  the Name field, enter `showPhotoAlbumInfo:` **and please do not forget to include the colon at the end!**
+*  the Name field, enter `-showPhotoAlbumInfo:` **and please do not forget to include the colon at the end!**
 
 * Make sure the Type field contains `id`.
 
@@ -566,4 +566,60 @@ Here, you will develop your very first iOS app that reuses code form the previou
 
 > You're making progress! Yet, there's still no way to show relevant data, even if you press on the button. To do that, you have to import files from the Photography exercise.
 
+*  If you have completed the Photography project, add (by copying) the the following files into your current project: `Photo.[h,m]` and `PhotoAlbum.[h,m]`. Right-click on yellow project folder from the Navigation area and choose "Add Files to iPhotography"...
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.13.png" width="100%" /></div>
 
+* Navigate to where you saved the four files and import them.
+
+* Enable "Copy items if needed". Also make sure "Add to targets" is checked for the iPhotography app bundle, like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.14.png" width="100%" /></div>
+
+* You're almost done! Now go back and edit `ViewController.m` and import both `Photo.h` and `PhotoAlbum.h` headers.
+
+* Confirm the following stub implementation is asserted into the `-showPhotoAlbumInfo:` method you created earlier:
+
+``` Objective-C
+/**
+ *  Reveals PhotoAlbum info within a window (popup).
+ *
+ *  @param sender A sender.
+ */
+- (IBAction)showPhotoAlbumInfo:(id)sender
+{
+    // Establish a new PhotoAlbum object.
+    PhotoAlbum *album = [[PhotoAlbum alloc] init];
+
+    // Establish a new Photo object.
+    Photo *photo = [Photo new];
+    photo.caption = @"A snapshot of foo";
+    photo.photographer = @"Ahmed";
+ 
+    // Inserts the photo into the PhotoAlbum's lcaol array.
+    [album insertsPhoto:photo];
+    
+    // Establish an AlertController message string.
+    NSMutableString *message = [NSMutableString stringWithFormat:@"%@, brought to you by %@",
+     photo.caption,
+     photo.photographer];
+
+    // Log the currently saved PhotoAlbum data (for debugging purposes).
+    NSLog(@"%@", album.description);
+    
+    // Present the PhotoAlbum info in an AlertController instance.
+    UIAlertController *alertController =
+    [UIAlertController alertControllerWithTitle:@"Alert!"
+                                        message:message
+                                 preferredStyle:UIAlertControllerStyleAlert];
+    
+    // Establish a "Dismiss" AlertAction object.
+    UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"Dismiss"
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:NULL];
+    
+    // Add the AlertAction object to the AlertController object.
+    [alertController addAction:dismissAction];
+    
+    // Present it.
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+```
