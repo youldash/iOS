@@ -517,4 +517,12 @@ Here, you will develop your very first iOS app that reuses code form the previou
 * Now, make sure you can see both Navigator and Utility areas. You are now ready to add a button for displaying `PhotoAlbum` data. Edit the `Main.storyboard` file in your project navigator to display the scene on the canvas, like so:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography2.0.6.png" width="100%" /></div>
 
+* Open the Object library (appears at the bottom of the Utilities area), and choose Controls from the Objects pop-up menu.
 
+* Drag a Round Rect Button from the list to the view. Lay out your UI element appropriately to be centered on screen. Double-click on the Button and type the text "Show PhotoAlbum Info". Your view should confirm to the following screenshot:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography2.0.7.png" width="100%" /></div>
+
+* Select your button again and hit (⌘ + =). This will allow the button to resize and fit based on the text width that you've entered. Your view should confirm to the following screenshot:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography2.0.8.png" width="100%" /></div>
+
+* Run your app again. At this current stage, the button doesn’t do much. To add the required logic, you need to make the appropriate connections between the UI element and the view controller. This connection is described next.
