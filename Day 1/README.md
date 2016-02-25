@@ -631,3 +631,7 @@ Here, you will develop your very first iOS app that reuses code form the previou
 
 * Run and test the final version of the app on your iOS device (or Simulator), and confirm that an alert popup is prompted after clicking on the button, revealing data generated from the `PhotoAlbum` object.
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.15.png" width="100%" /></div>
+
+## What's Next?
+
+**Congratulations!** You are now ready to tackle the challenges introduced in [Day 2](https://github.com/youldash/iOS/blob/master/Day%202/).
