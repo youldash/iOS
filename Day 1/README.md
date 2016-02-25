@@ -514,3 +514,7 @@ Here, you will develop your very first iOS app that reuses code form the previou
 * Try running the app on your iOS device (or Simulator if you don't have access to a physical device that has been enrolled in your iOS Developer Profile) by making sure that the Scheme pop-up menu in the Xcode toolbar (top-left corner of Xcode) has iPhotography > "YOUR DEVICE NAME" chosen. Then, press (⌘ + R). You should see the device/simulator running with a blank (white) screen like so:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography2.0.5.png" width="50%" /></div>
 
+* Now, make sure you can see both Navigator and Utility areas. You are now ready to add a button for displaying `PhotoAlbum` data. Edit the `Main.storyboard` file in your project navigator to display the scene on the canvas, like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography2.0.6.png" width="50%" /></div>
+
+
