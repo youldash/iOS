@@ -5,19 +5,22 @@ Brought to you by:
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/youldash.svg?style=social?style=plastic)](https://twitter.com/youldash)
 [![Twitter Follow](https://img.shields.io/twitter/follow/UQU_CS.svg?style=social?style=plastic)](https://twitter.com/UQU_CS)
-[![Twitter Follow](https://img.shields.io/twitter/follow/UQUCS_F.svg?style=social?style=plastic)](https://twitter.com/UQUCS_F)
 
 ## About
 
 You have made it to the iOS developer essentials workshop repo! Congratulations :)
 
-This workshop (or course if you will) is an intensive 5-day event, which is designed for UQU college students who are proficient with any modern, Object-Oriented language like Java and C++. Attendees must have a solid (or descent) understanding of Object-Oriented principles prior entry into the course.
+> ***Update:*** This repo is under construction at the moment. For more updates please follow [@UQU_CS](https://twitter.com/UQU_CS) on Twitter.
 
-Attendees will receive 5-full days of training on campus (with sessions varying from 2- to 4-hours depending on the allocated schedule, set by the Computer Science department).
+This workshop (or course if you will) is an intensive 5-day event, which is designed for UQU college students whom are proficient with any modern, Object-Oriented language like Java and C++. **Attendees must have a solid (sound) understanding of Object-Oriented principles prior entry into the course.**
 
-Attendees are highly recommended to bring their own Apple laptops, running the [latest public release of the Xcode development software](https://itunes.apple.com/au/app/xcode/id497799835?mt=12).
+Attendees will receive 5-full days of training on campus (with sessions varying from 3- to 4-hours depending on the allocated schedule, which will be allocated by the Department).
 
-> ***Update:*** This repo is under construction at the moment. For more updates please follow [@UQU_CS](https://twitter.com/UQU_CS) and [@UQUCS_F](https://twitter.com/UQUCS_F) on Twitter.
+Attendees are **highly recommended** to bring their own Apple laptops, running the [latest public release of the Xcode development software](https://itunes.apple.com/au/app/xcode/id497799835?mt=12). As this course is specifically designed to cover many topics in a (rather) short period, we recommended that every participant should gain access to (at least) a private Mac computer at their own pace, and gain practical expertise by learning additional topics not covered during the course.
+
+Over the course of training, participants will be asked to signup (using this site) and create new (free) accounts that could be used for collaboration, and mainly, for submitting assignment work to the instructor (for further assessment). This process is the only accepted method for completing each announced task/assignment.
+
+> **Important:** **Certificates of Completion** will be granted to attendees, upon the successful completion of tasks that will be announced during the event. **Certificates for Attendance** on the other hand, will not be issued, to guarantee the full benefit of training, participation, and collaboration during the course of the workshop.
 
 ## Preface
 
@@ -69,15 +72,15 @@ Umm Al-Qura University accepts no responsibility or liability for the content av
 	<table border="0">
 		<tr>
 			<td align="center"><img src="https://raw.github.com/youldash/NCCC/master/misc/UQU-LOGO-1024x731.png" width="50%" /></td>
-			<td align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/SWANID.png" width="50%" /></td>
+			<!-- <td align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/SWANID.png" width="50%" /></td> -->
 			<td align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/TAM.png" width="100%" /></td>
 		</tr>
 	</table>
 </div>
 
 This repo is sponsored in part by:
-- [College of Computer and Information Systems](http://cis.uqu.edu.sa/) at Umm Al-Qura University, Mecca, Saudi Arabia.
-- [SwAniD Initiative](http://www.swanid.org/).
+- [Department of Computer Science](http://cis.uqu.edu.sa/) of Umm Al-Qura University, Mecca, Saudi Arabia.
+<!-- - [SwAniD Initiative](http://www.swanid.org/). -->
 - [Tam Development, LLC](http://tam.sa/).
 
 ## License
