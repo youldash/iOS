@@ -244,6 +244,7 @@ In this exercise, you will develop a Foundation tool using Xcode. This example s
  */
 - (id)copyWithZone:(NSZone *)zone
 {
+	// Establish a new array copy.
 	GRArray *copy = [[GRArray allocWithZone:zone] initWithLength:self.length baseIndex:self.baseIndex];
 	
 	if (copy) {
@@ -259,5 +260,41 @@ In this exercise, you will develop a Foundation tool using Xcode. This example s
 	
 	// Return a copy of this array.
 	return copy;
+}
+```
+
+* Next, ype the following stub implementation for `-countByEnumeratingWithState:objects:count:` method, which implements (and confirms to) a procedure (defined by `NSFastEnumeration`) for returning (by reference) C arrays of objects over which the sender should iterate:
+
+``` Objective-C
+#pragma mark -
+#pragma mark NSFastEnumeration
+
+/**
+ *	Returns by reference a C array of objects over which the sender should iterate,
+ *	and as the return value the number of objects in the array.
+ *
+ *	@param	state	Context information that is used in the enumeration to, in addition to other possibilities, ensure that the collection has not been mutated.
+ *	@param	buffer	A C array of objects over which the sender is to iterate.
+ *	@param	len		The maximum number of objects to return in buffer.
+ *
+ *	@return	The number of objects returned in stackbuf. Returns 0 when the iteration is finished.
+ */
+- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state
+								  objects:(id __unsafe_unretained [])buffer
+									count:(NSUInteger)len
+{
+	NSUInteger result = 0;
+	BOOL done = (BOOL)state->state;
+	
+	if (!done) {
+		
+		done = YES;
+		state->itemsPtr = _data;
+		state->state = (unsigned long)done;
+		state->mutationsPtr = (unsigned long *)self;
+		result = _length;
+	}
+	
+	return result;
 }
 ```
