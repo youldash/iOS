@@ -9,7 +9,9 @@ By using this site, you agree to the **Terms of Use** that are defined in [LICEN
 
 ## Outline
 
-> ***Update:*** This repo is under construction at the moment. For more updates please follow [@UQU_CS](https://twitter.com/UQU_CS) on Twitter.
+In this part of the course, you will be introduced to a few remarks about creating apps from ideas, and what everyone should consider before starting work on the app projects. This is then immediately followed by two practicals/exercises.
+
+The exercises are expected to be addressed in an orderly fashion. Having said that, you will not be able to finish the second exercise unless you finish the first one.
 
 ## A "Little Thing" About Passion
 
@@ -17,8 +19,9 @@ Have you ever thought of an idea that is going to be the "Next Big Thing", but y
 
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Lamp.png" width="25%" /></div>
 
-Being passionate about your idea is going to carry you through the process. If you're not passionate, you're going to burn out. 
-From a business perspective,  you view at all ideas in the app world through the lens of earning money. There are very few people out there that want to spend a lot of their own cash on something that's just cool, and this isn't for them. This is about making sure your idea is not only good, but will win, and last long in the app market.
+Being passionate about your idea is going to carry you through the process. If you're not passionate, you're going to burn out.
+
+From a business perspective, you view at all ideas in the app world through the lens of earning money. There are very few people out there that want to spend a lot of their own cash on something that's just cool, and this isn't for them. This is about making sure your idea is not only good, but will win, and last long in the app market.
 
 In traditional business models, there are two general areas of success. Either you innovate something that no one else did, or you simply beat the competition by becoming better.
 
@@ -389,7 +392,7 @@ static const int kNumberDefault = 0;
     PhotoAlbum *album1 = [[PhotoAlbum alloc] init];
     NSLog(@"album1 = %@", [album1 description]);
     
-    NSLog(@"Adding photos to album1...");
+    NSLog(@"Adding photos to album1…");
     Photo *photo1 = [[Photo alloc] init];
     
     Photo *photo2 = [[Photo alloc] init];
@@ -406,7 +409,7 @@ static const int kNumberDefault = 0;
     
     NSUInteger idx = 0;
     
-    NSLog(@"Enumerating album1...");
+    NSLog(@"Enumerating album1…");
     for (Photo *photo in album1.photos) {
         
         NSLog(@"album1[%lu] = %@", idx, photo.description);
@@ -414,12 +417,12 @@ static const int kNumberDefault = 0;
         idx++;
     }
     
-    NSLog(@"Removing photos from album1...");
+    NSLog(@"Removing photos from album1…");
     NSLog(@"removed album1.photos[%d] = %@", photo1.number, [album1 removePhoto:photo1] ? @"YES" : @"NO");
     NSLog(@"removed album1.photos[%d] = %@", photo2.number, [album1 removePhoto:photo2] ? @"YES" : @"NO");
     NSLog(@"album1 = %@", [album1 description]);
     
-    NSLog(@"Purging album1...");
+    NSLog(@"Purging album1…");
     [album1 purge];
     NSLog(@"album1 = %@", [album1 description]);
     
@@ -461,16 +464,16 @@ int main(int argc, const char * argv[]) {
 2016-02-24 19:04:03.625 Photography[2543:56278] PhotoAlbum unit test program.
           --------------------------------------------
 2016-02-24 19:04:03.627 Photography[2543:56278] album1 = <PhotoAlbum: length=0, data=[]>
-2016-02-24 19:04:03.627 Photography[2543:56278] Adding photos to album1...
-2016-02-24 19:04:03.628 Photography[2543:56278] Enumerating album1...
+2016-02-24 19:04:03.627 Photography[2543:56278] Adding photos to album1…
+2016-02-24 19:04:03.628 Photography[2543:56278] Enumerating album1…
 2016-02-24 19:04:03.628 Photography[2543:56278] album1[0] = <Photo: data=[#0: Photo of a celebrity, brought to you by Paparazzi]>
 2016-02-24 19:04:03.628 Photography[2543:56278] album1[1] = <Photo: data=[#1: Side photo of our College, brought to you by Manal]>
 2016-02-24 19:04:03.628 Photography[2543:56278] album1[2] = <Photo: data=[#2: Photo of a celebrity, brought to you by Paparazzi]>
-2016-02-24 19:04:03.629 Photography[2543:56278] Removing photos from album1...
+2016-02-24 19:04:03.629 Photography[2543:56278] Removing photos from album1…
 2016-02-24 19:04:03.629 Photography[2543:56278] removed album1.photos[0] = YES
 2016-02-24 19:04:03.629 Photography[2543:56278] removed album1.photos[1] = YES
 2016-02-24 19:04:03.629 Photography[2543:56278] album1 = <PhotoAlbum: length=1, data=[<Photo: data=[#1: Side photo of our College, brought to you by Manal]>]>
-2016-02-24 19:04:03.630 Photography[2543:56278] Purging album1...
+2016-02-24 19:04:03.630 Photography[2543:56278] Purging album1…
 2016-02-24 19:04:03.630 Photography[2543:56278] album1 = <PhotoAlbum: length=0, data=[]>
 Program ended with exit code: 0
 ```
@@ -559,14 +562,14 @@ Here, you will develop your very first iOS app that reuses code form the previou
 - (IBAction)showPhotoAlbumInfo:(id)sender {
 }
 ```
-> A connection between the Round Rect Button and the `ViewController` class is now established and ready for use, but not yet...
+> A connection between the Round Rect Button and the `ViewController` class is now established and ready for use, but not yet…
 
 * Verify that the connection has been established by clicking the Standard editor button to switch to the Standard editor view (to the left of the Assistant editor button). Select `View Controller` in the outline view, then view the Connections inspector in the Utilities area.
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.12.png" width="100%" /></div>
 
 > You're making progress! Yet, there's still no way to show relevant data, even if you press on the button. To do that, you have to import files from the Photography exercise.
 
-*  If you have completed the Photography project, add (by copying) the the following files into your current project: `Photo.[h,m]` and `PhotoAlbum.[h,m]`. Right-click on yellow project folder from the Navigation area and choose "Add Files to iPhotography"...
+*  If you have completed the Photography project, add (by copying) the the following files into your current project: `Photo.[h,m]` and `PhotoAlbum.[h,m]`. Right-click on yellow project folder from the Navigation area and choose "Add Files to iPhotography"…
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.13.png" width="100%" /></div>
 
 * Navigate to where you saved the four files and import them.
