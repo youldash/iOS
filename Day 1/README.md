@@ -626,5 +626,5 @@ Here, you will develop your very first iOS app that reuses code form the previou
 
 > Your button is now ready for use! What you have done is simply declared an `PhotoAlbum` object and passed it a new `Photo` object. For the `PhotoAlbum` data to be prompted, a special `UIAlertController` object is allocated and then is passed a new `UIAlertAction` instance (which adds a button in the alert controller and effectively handles its interaction). The final stage involved invoking `UIViewController`'s `-presentViewController:animated:completion:` method, which was used to reveal the alert popup.
 
-* Run and test the final version of the app on your iOS device (or Simulator), and confirm that an alert popup is prompted after clicking on the button, revealing data generated from the PhotoAlbum object.
+* Run and test the final version of the app on your iOS device (or Simulator), and confirm that an alert popup is prompted after clicking on the button, revealing data generated from the `PhotoAlbum` object.
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.15.png" width="100%" /></div>
