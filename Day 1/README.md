@@ -44,7 +44,7 @@ In this exercise, you will develop a Photography application as a Foundation too
 * Create a new project by launching Xcode (under the "/Applications" folder if you installed Xcode by downloading it directly from the App Store), and selecting "New Project" from the File menu.
 
 * Under the "OS X" section, select "Application", and choose “Command Line Tool”, then Next.
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.1.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise1.0.1.png" width="100%" /></div>
 
 * When prompted for options, type "Photography" as the Product Name.
 
@@ -55,30 +55,30 @@ In this exercise, you will develop a Photography application as a Foundation too
 > **Note:** Choosing "Swift" will be entirely up to you, as this workshop is specifically aimed at teaching Objective-C as grounds for developing the final product in **[Day 5](https://github.com/youldash/iOS/blob/master/Day%205/)**. Objective-C has a lot to offer, and the differences between it and Swift will be briefly elaborated in **[Day 5](https://github.com/youldash/iOS/blob/master/Day%205/)**.
 
 * Leave the Use Automatic Reference Counting checkbox checked (as it exists in earlier releases of Xcode).
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.2.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise1.0.2.png" width="100%" /></div>
 
 * Confirm the final steps by clicking Next, then creating and saving the project to disk. You may wish to leave "Create Git repository on" checked and "My Mac" selected. This feature allows you to create and manage different versions of your project using a bundled Git repository, as follows:
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.3.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise1.0.3.png" width="100%" /></div>
 
 * Xcode then creates your project. It should look something like this:
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.4.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise1.0.4.png" width="100%" /></div>
 
 * To bring more insight into the Xcode IDE, a snapshot from Xcode's documentation files is borrowed for illustration:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/IDE.png" width="75%" /></div>
 
 * Try hiding both Utility and Debug areas, and only show both Editor and Navigation areas. This may help you focus on code you manage and keeps from getting distracted by other elements that might not be of relevance to the current project, like so (never mind the color scheme):
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.5.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise1.0.5.png" width="100%" /></div>
 
 * Add a new class by highlighting on the "Photography" yellow (group) folder and selecting "New File" from the File menu.
 
 * Under the "OS X" section, select "Source", and choose "Cocoa Class" as follows:
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.6.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise1.0.6.png" width="100%" /></div>
 
 * When prompted for options, type `Photo` as the class name. Make sure `NSObject` is selected for subclassing from, like so:
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.7.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise1.0.7.png" width="100%" /></div>
 
 * Confirm by clicking Next and make sure "Targets" is checked for the executable. This step will add both header file `Photo.h` and the implementation file `Photo.m` to your project.
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.8.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise1.0.8.png" width="100%" /></div>
 
 * Type the code snippet listed below into `Photo.h`. This class represents the building block for creating new photo instances as part of an photo album, which will be created later as a separate class:
 
@@ -183,10 +183,10 @@ static const int kNumberDefault = 0;
 * Under the "OS X" section, select "Source", and choose "Cocoa Class".
 
 * When prompted for options, type `PhotoAlbum` as the class name. Make it a subclass of `NSObject`. Also make sure "Targets" is checked for the exculpable:
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.9.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise1.0.9.png" width="100%" /></div>
 
 * Confirm by clicking Next and save the new class.
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography1.0.10.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise1.0.10.png" width="100%" /></div>
 
 * Type the code snippet listed below into `PhotoAlbum.h`. This class represents the building block for creating photo albums:
 
@@ -490,7 +490,7 @@ Here, you will develop your very first iOS app that reuses code form the previou
 * Create a new project by launching Xcode, and selecting "New Project" from the File menu.
 
 * Under the "iOS" section, select "Application", and choose “Single View Application”, then Next.
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography2.0.1.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.1.png" width="100%" /></div>
 
 * When prompted for options, type "iPhotography" as the Product Name.
 
@@ -505,24 +505,34 @@ Here, you will develop your very first iOS app that reuses code form the previou
 > **Note:** Since the exercises will be deployed on an iPad that will be brought during the course of the workshop, we will assume you have already chosen "iPad" form the Devices pop-up menu. Selecting which device to target and working on the design aspects of your project will be entirely up to you.
 
 * Confirm the final steps by clicking Next, then creating and saving the project to disk. You may wish to leave "Create Git repository on" checked and "My Mac" selected:
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography2.0.2.png" width="100%" /></div>
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography2.0.3.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.2.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.3.png" width="100%" /></div>
 
 * Xcode then creates your project. It should look something like so:
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography2.0.4.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.4.png" width="100%" /></div>
 
 * Try running the app on your iOS device (or Simulator if you don't have access to a physical device that has been enrolled in your iOS Developer Profile) by making sure that the Scheme pop-up menu in the Xcode toolbar (top-left corner of Xcode) has iPhotography > "YOUR DEVICE NAME" chosen. Then, press (⌘ + R). You should see the device/simulator running with a blank (white) screen like so:
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography2.0.5.png" width="50%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.5.png" width="50%" /></div>
 
 * Now, make sure you can see both Navigator and Utility areas. You are now ready to add a button for displaying `PhotoAlbum` data. Edit the `Main.storyboard` file in your project navigator to display the scene on the canvas, like so:
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography2.0.6.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.6.png" width="100%" /></div>
 
 * Open the Object library (appears at the bottom of the Utilities area), and choose Controls from the Objects pop-up menu.
 
 * Drag a Round Rect Button from the list to the view. Lay out your UI element appropriately to be centered on screen. Double-click on the Button and type the text "Show PhotoAlbum Info". Your view should confirm to the following screenshot:
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography2.0.7.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.7.png" width="100%" /></div>
 
 * Select your button again and hit (⌘ + =). This will allow the button to resize and fit based on the text width that you've entered. Your view should confirm to the following screenshot:
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography2.0.8.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.8.png" width="100%" /></div>
 
-* Run your app again. At this current stage, the button doesn’t do much. To add the required logic, you need to make the appropriate connections between the UI element and the view controller. This connection is described next.
+* Run your app again. At this current stage, the button doesn't do much. To add the required logic, you need to make the appropriate connections between the UI element and the view controller. This connection is described next.
+
+* In the toolbar, click the Utilities button to hide the Utilities area and click the Assistant editor button to display the Assistant editor pane.
+
+* Make the Assistant displays the view controller's header `ViewController.h`.
+
+* Control-drag from the Round Rect Button to the method declaration area in the header. When released, Xcode displays a popover for configuring the action connection you just made, like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.9.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.10.png" width="100%" /></div>
+
+
