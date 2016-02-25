@@ -79,7 +79,6 @@ Umm Al-Qura University accepts no responsibility or liability for the content av
 
 This repo is sponsored in part by:
 - [Department of Computer Science](http://cis.uqu.edu.sa/) of Umm Al-Qura University, Mecca, Saudi Arabia.
-<!-- - [SwAniD Initiative](http://www.swanid.org/). -->
 - [Tam Development, LLC](http://tam.sa/).
 
 ## License
