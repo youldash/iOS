@@ -70,11 +70,6 @@ In this exercise, you will develop a Foundation tool using Xcode. This example s
 	 *	The base index of this array.
 	 */
 	NSUInteger _baseIndex;
-	
-	/**
-	 *  Keeps track of the number of multiplications performed.
-	 */
-	NSUInteger _numberOfMultiplications;
 }
 
 #pragma mark -
