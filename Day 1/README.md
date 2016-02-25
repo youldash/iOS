@@ -40,7 +40,7 @@ As a final remark, try coming up with an idea that means something to you. Anyon
 
 ## Exercise 1: Photography 1.0
 
-In this exercise, you will develop a Photography application as a Foundation tool using Xcode. This example shows how to create a `Photo` class that forms the basis of a `PhotoAlbum` class using containers.
+In this exercise, you will develop a Photography app as a Foundation tool using Xcode. This example shows how to create a `Photo` class that forms the basis of a `PhotoAlbum` class using containers.
 
 > **Pro Tip:** Working with command line projects often grants you experience in developing smaller packages and managing them with Xcode. Such packages can be reused later on in bigger, more complex projects or workspaces.
 
@@ -509,6 +509,7 @@ Here, you will develop your very first iOS app that reuses code form the previou
 
 * Confirm the final steps by clicking Next, then creating and saving the project to disk. You may wish to leave "Create Git repository on" checked and "My Mac" selected:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.2.png" width="100%" /></div>
+
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.3.png" width="100%" /></div>
 
 * Xcode then creates your project. It should look something like so:
