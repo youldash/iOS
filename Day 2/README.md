@@ -258,7 +258,7 @@ In this exercise, you will develop a Foundation tool using Xcode. This example s
 }
 ```
 
-* Next, ype the following stub implementation for `-countByEnumeratingWithState:objects:count:` method, which implements (and confirms to) a procedure (defined by `NSFastEnumeration`) for returning (by reference) C arrays of objects over which the sender should iterate:
+* Next, type the following stub implementation for `-countByEnumeratingWithState:objects:count:` method, which implements (and confirms to) a procedure (defined by `NSFastEnumeration`) for returning (by reference) C arrays of objects over which the sender should iterate:
 
 ``` Objective-C
 #pragma mark -
