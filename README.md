@@ -28,7 +28,7 @@ The app-making process for iOS devices (iPod Touch, iPhone, and iPad) relies on 
 
 In this workshop, we present Apple's approach to building a a fully-fledged [Scene Graph](https://en.wikipedia.org/wiki/Scene_graph) iOS app. A **Scene Graph** is a general [Data Structure](https://en.wikipedia.org/wiki/Data_structure) that is commonly used by vector-based graphics editing apps like [Adobe Illustrator](http://www.adobe.com/products/illustrator.html) and  [AutoCAD](http://www.autodesk.com/products/autocad/overview), and modern computer games. These apps often arrange both logical and spatial representations of a graphical scene using specific **Graph** structure elements: **Nodes** and **Edges**.
 
-Your app will be capable of of establishing two-dimensional Graph instances in a dynamic fashion. In other words, your app will be able to interactively construct the Node and Edge elements of a typical Scene Graph, while arranging their spacial positions using "touch" as the primary method of input.
+Your app will be capable of establishing two-dimensional Graph instances in a dynamic fashion. In other words, your app will be able to interactively construct the Node and Edge elements of a typical Scene Graph, while arranging their spacial positions using "touch" as the primary method of input.
 
 The final product should look similarly to the following iPad mockup (or screenshot):
 ![Screenshot](https://raw.github.com/youldash/iOS/master/Grapher/ScreenshotLandscape.png)
