@@ -547,4 +547,15 @@ Here, you will develop your very first iOS app that reuses code form the previou
 * Make sure that the Arguments pop-up menu contains Sender.
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.11.png" width="100%" /></div>
 
+* Finally in the popover, click Connect. Xcode adds a stub implementation of the new `showAddressBook:` method and indicates a connection has been made by showing a filled-in circle to the left of the method. Confirm your header includes this action method declaration:
 
+``` Objective-C
+- (IBAction)showPhotoAlbumInfo:(id)sender;
+```
+
+* Also, confirm the following stub implementation is included in `ViewController.m`:
+
+``` Objective-C
+- (IBAction)showPhotoAlbumInfo:(id)sender {
+}
+```
