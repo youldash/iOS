@@ -229,3 +229,35 @@ In this exercise, you will develop a Foundation tool using Xcode. This example s
 @end
 ```
 
+* Your class interface is now ready for a proper implementation! Edit "GRArray.m" and type the following stub implementation for `-copyWithZone:` method, which implements (and confirms to) a procedure (defined by `NSCopying`) for returning "deep copies" of existing `GRArray` instances:
+
+``` Objective-C
+#pragma mark -
+#pragma mark NSCopying
+
+/**
+ *  Returns a new array that is a deep copy of this array.
+ *
+ *  @param zone The zone in which to allocate the new array.
+ *
+ *  @return The new array.
+ */
+- (id)copyWithZone:(NSZone *)zone
+{
+	GRArray *copy = [[GRArray allocWithZone:zone] initWithLength:self.length baseIndex:self.baseIndex];
+	
+	if (copy) {
+		
+		// Copy all array properties.
+		for (NSUInteger idx = 0;
+			 idx < self.length;
+			 ++idx) {
+			
+			copy->_data[idx] = [_data[idx] copyWithZone:zone];
+		}
+	}
+	
+	// Return a copy of this array.
+	return copy;
+}
+```
