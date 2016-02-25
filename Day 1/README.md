@@ -515,6 +515,6 @@ Here, you will develop your very first iOS app that reuses code form the previou
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography2.0.5.png" width="50%" /></div>
 
 * Now, make sure you can see both Navigator and Utility areas. You are now ready to add a button for displaying `PhotoAlbum` data. Edit the `Main.storyboard` file in your project navigator to display the scene on the canvas, like so:
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography2.0.6.png" width="50%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography2.0.6.png" width="100%" /></div>
 
 
