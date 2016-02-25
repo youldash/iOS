@@ -559,3 +559,10 @@ Here, you will develop your very first iOS app that reuses code form the previou
 - (IBAction)showPhotoAlbumInfo:(id)sender {
 }
 ```
+> A connection between the Round Rect Button and the `ViewController` class is now established and ready for use, but not yet...
+
+* Verify that the connection has been established by clicking the Standard editor button to switch to the Standard editor view (to the left of the Assistant editor button). Select `View Controller` in the outline view, then view the Connections inspector in the Utilities area.
+
+> You're making progress! Yet, there's still no way to show relevant data, even if you press on the button. To do that, you have to import files from the Photography exercise.
+
+
