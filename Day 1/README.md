@@ -511,3 +511,6 @@ Here, you will develop your very first iOS app that reuses code form the previou
 * Xcode then creates your project. It should look something like so:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography2.0.4.png" width="100%" /></div>
 
+* Try running the app on your iOS device (or Simulator if you don't have access to a physical device that has been enrolled in your iOS Developer Profile) by making sure that the Scheme pop-up menu in the Xcode toolbar (top-left corner of Xcode) has iPhotography > "YOUR DEVICE NAME" chosen. Then, press (⌘ + R). You should see the device/simulator running with a blank (white) screen like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Photography2.0.5.png" width="100%" /></div>
+
