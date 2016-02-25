@@ -533,6 +533,18 @@ Here, you will develop your very first iOS app that reuses code form the previou
 
 * Control-drag from the Round Rect Button to the method declaration area in the header. When released, Xcode displays a popover for configuring the action connection you just made, like so:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.9.png" width="100%" /></div>
+
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.10.png" width="100%" /></div>
+
+* In the Connection pop-up menu, choose Action.
+
+*  the Name field, enter `showPhotoAlbumInfo:` **and please do not forget to include the colon at the end!**
+
+* Make sure the Type field contains `id`.
+
+* Make sure that the Event pop-up menu contains "Touch Up Inside" (because you want the message to be sent when the user lifts the finger from inside the button).
+
+* Make sure that the Arguments pop-up menu contains Sender.
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.11.png" width="100%" /></div>
 
 
