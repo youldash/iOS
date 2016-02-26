@@ -55,21 +55,26 @@ In this exercise, you will develop a Foundation tool using Xcode. This example s
  *	Represents an array of objects.
  */
 @interface GRArray : NSObject <GRArrayDelegate, NSCopying, NSFastEnumeration> {
-	
-	/**
-	 *  A C array of objects.
-	 */
-	id __autoreleasing *_data;
-	
-	/**
-	 *	The length of this array.
-	 */
-	NSUInteger _length;
-	
-	/**
-	 *	The base index of this array.
-	 */
-	NSUInteger _baseIndex;
+    
+    /**
+     *  A C array of objects.
+     */
+    id __autoreleasing *_data;
+    
+    /**
+     *	The length of this array.
+     */
+    NSUInteger _length;
+    
+    /**
+     *	The base index of this array.
+     */
+    NSUInteger _baseIndex;
+    
+    /**
+     *  Keeps track of the number of multiplications performed.
+     */
+    NSUInteger _numberOfMultiplications;
 }
 
 #pragma mark -
@@ -88,7 +93,7 @@ In this exercise, you will develop a Foundation tool using Xcode. This example s
 > **Note:** As you finish declaring your `GRArray` class interface, you will be immediately prompted by Xcode telling you that `GRArray` is expected to confirm to some **protocol** named `GRArrayDelegate` (which isn't defined yet). The following steps will define `GRArrayDelegate`.
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.6.png" width="100%" /></div>
 
-* To establish `GRArray` as a class that confirms to `GRArrayDelegate`, go right ahead and jump to the top of the `GRArray.h` header (above the interface declaration) and define the properties and methods of the protocol, like so:
+* To establish `GRArray` as a class that confirms to `GRArrayDelegate`, go right ahead and jump to the top of the `GRArray.h` header (above the interface declaration) and define the properties and methods (both required and optional ones) of the protocol, like so:
 
 ``` Objective-C
 /**
@@ -138,16 +143,6 @@ In this exercise, you will develop a Foundation tool using Xcode. This example s
  *	@return	The new array.
  */
 + (instancetype)arrayWithLength:(NSUInteger)length baseIndex:(NSUInteger)baseIndex;
-
-/**
- *  Returns an array that contains the given objects.
- *
- *  @param	firstObject	The first object.
- *	@pragma	...			The rest of the objects.
- *
- *  @return The new array.
- */
-+ (instancetype)arrayWithObjects:(id)firstObject, ...;
 
 #pragma mark -
 #pragma mark Initializing
@@ -214,6 +209,11 @@ In this exercise, you will develop a Foundation tool using Xcode. This example s
 #pragma mark Operating
 
 /**
+ *  Mark the following protocol method as optional using the @optional directive.
+ */
+@optional
+
+/**
  *  Executes the Fisher Yates shuffling algorithm.
  *  Shuffles the contents of this array for random pick of the points.
  *
@@ -224,7 +224,175 @@ In this exercise, you will develop a Foundation tool using Xcode. This example s
 @end
 ```
 
-* Your class interface is now ready for a proper implementation! Edit "GRArray.m" and type the following stub implementation for `-copyWithZone:` method, which implements (and confirms to) a procedure (defined by `NSCopying`) for returning "deep copies" of existing `GRArray` instances:
+* Your class interface is now ready for a proper implementation! Edit "GRArray.m" and type the following code snippet for declaring global variables used throughout the scope of your implementation (preferably under the import declaration):
+
+``` Objective-C
+#import "GRArray.h"
+
+/**
+ *	Static constants.
+ */
+static const NSUInteger kGRLengthDefault = 0;
+static const NSUInteger kGRBaseDefault = 0;
+```
+
+* For `GRArray` to confirm to the `GRArrayDelegate` protocol, we need to properly implement its declared methods and to synthesize its properties. Add the following stub implementation that defines the scope and behavior of the accessible properties:
+
+``` Objective`-C
+#pragma mark -
+#pragma mark Accessing
+
+/**
+ *	The length of this array.
+ */
+@synthesize length = _length;
+
+/**
+ *	Sets the length of this array to the given value.
+ *
+ *	@param	length	The length.
+ */
+- (void)setLength:(NSUInteger)length
+{
+	if (_length != length) {
+		
+        // Establish the min length.
+        NSUInteger min = _length < length ? _length : length;
+        
+        // Establish the data source confined by the length.
+        id *data = NSZoneMalloc(NSZoneFromPointer(self), length * sizeof(id));
+        
+        // Copy the old data.
+        for (NSUInteger idx = 0; idx < min; ++idx) {
+            
+            data[idx] = _data[idx];
+        }
+        
+        // Release the old data.
+        for (NSUInteger idx = min; idx < _length; ++idx) {
+            
+            [_data[idx] release];
+        }
+        
+        // Nullify each data item.
+        for (NSUInteger idx = min; idx < length; ++idx) {
+            
+            data[idx] = nil;
+        }
+        
+        // Free the memory allocated for the old data container.
+        NSZoneFree(NSZoneFromPointer(self), _data);
+        
+        // Assign the new values.
+        _data = data;
+        _length = length;
+	}
+}
+
+/**
+ *	The base index of this array.
+ */
+@synthesize baseIndex = _baseIndex;
+```
+
+* Your class properties are now defined. Add the following class initializer stubs:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Initializing
+
+/**
+ *	Designated constructor.
+ *	Initializes a newly allocated array with the given length.
+ *
+ *	@param	length	The length of the array.
+ *
+ *	@return	The new array.
+ */
+- (instancetype)initWithLength:(NSUInteger)length
+{
+    return [self initWithLength:length baseIndex:kGRBaseDefault];
+}
+
+/**
+ *	Initializes a newly allocated array with the given length and base index..
+ *
+ *	@param	length		The length of the array.
+ *	@param	baseIndex	The base index of the array.
+ *
+ *	@return	The new array.
+ */
+- (instancetype)initWithLength:(NSUInteger)length baseIndex:(NSUInteger)baseIndex
+{
+    self = [super init];
+    
+    if (self) {
+        
+        _length = length;
+        
+        _data = NSZoneMalloc(NSZoneFromPointer(self), _length * sizeof(id));
+        
+        for (NSUInteger idx = 0;
+             idx < _length;
+             ++idx) {
+            
+            _data[idx] = nil;
+        }
+        
+        _baseIndex = baseIndex;
+    }
+    
+    return self;
+}
+```
+
+* Add the following creator stubs to your class. These of which can be used to instantiate class objects using proper class methods (that typically start with the `+` sign):
+
+``` Objective-C
+#pragma mark -
+#pragma mark Creating
+
+/**
+ *	Designated constructor.
+ *	Returns a new array with the default length and base index.
+ *
+ *	@return	The new array.
+ */
++ (instancetype)array
+{
+    return [[[[self class] alloc] initWithLength:kGRLengthDefault baseIndex:kGRBaseDefault] autorelease];
+}
+
+/**
+ *	Returns a new array with the given length.
+ *
+ *	@param	length	The length of the array.
+ *
+ *	@return	The new array.
+ */
++ (instancetype)arrayWithLength:(NSUInteger)length
+{
+    return [[[[self class] alloc] initWithLength:length] autorelease];
+}
+
+/**
+ *	Returns a new array with the given length and base index.
+ *
+ *	@param	length		The length of the array.
+ *	@param	baseIndex	The base index of the array.
+ *
+ *	@return	The new array.
+ */
++ (instancetype)arrayWithLength:(NSUInteger)length baseIndex:(NSUInteger)baseIndex
+{
+    return [[[[self class] alloc] initWithLength:length baseIndex:baseIndex] autorelease];
+}
+```
+
+
+
+
+* Add the following stub implementation for `-copyWithZone:` method, which implements (and confirms to) a procedure (defined by `NSCopying`) for returning "deep copies" of existing `GRArray` instances:
 
 ``` Objective-C
 #pragma mark -
@@ -239,22 +407,22 @@ In this exercise, you will develop a Foundation tool using Xcode. This example s
  */
 - (id)copyWithZone:(NSZone *)zone
 {
-	// Establish a new array copy.
-	GRArray *copy = [[GRArray allocWithZone:zone] initWithLength:self.length baseIndex:self.baseIndex];
-	
-	if (copy) {
-		
-		// Copy all array properties.
-		for (NSUInteger idx = 0;
-			 idx < self.length;
-			 ++idx) {
-			
-			copy->_data[idx] = [_data[idx] copyWithZone:zone];
-		}
-	}
-	
-	// Return a copy of this array.
-	return copy;
+    // Establish a new array copy.
+    GRArray *copy = [[GRArray allocWithZone:zone] initWithLength:self.length baseIndex:self.baseIndex];
+    
+    if (copy) {
+        
+        // Copy all array properties.
+        for (NSUInteger idx = 0;
+             idx < self.length;
+             ++idx) {
+            
+            copy->_data[idx] = [_data[idx] copyWithZone:zone];
+        }
+    }
+    
+    // Return a copy of this array.
+    return copy;
 }
 ```
 
@@ -265,31 +433,31 @@ In this exercise, you will develop a Foundation tool using Xcode. This example s
 #pragma mark NSFastEnumeration
 
 /**
- *	Returns by reference a C array of objects over which the sender should iterate,
- *	and as the return value the number of objects in the array.
+ *    Returns by reference a C array of objects over which the sender should iterate,
+ *    and as the return value the number of objects in the array.
  *
- *	@param	state	Context information that is used in the enumeration to, in addition to other possibilities, ensure that the collection has not been mutated.
- *	@param	buffer	A C array of objects over which the sender is to iterate.
- *	@param	len		The maximum number of objects to return in buffer.
+ *    @param    state    Context information that is used in the enumeration to, in addition to other possibilities, ensure that the collection has not been mutated.
+ *    @param    buffer    A C array of objects over which the sender is to iterate.
+ *    @param    len        The maximum number of objects to return in buffer.
  *
- *	@return	The number of objects returned in stackbuf. Returns 0 when the iteration is finished.
+ *    @return    The number of objects returned in stackbuf. Returns 0 when the iteration is finished.
  */
 - (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state
-								  objects:(id __unsafe_unretained [])buffer
-									count:(NSUInteger)len
+                                  objects:(id __unsafe_unretained [])buffer
+                                    count:(NSUInteger)len
 {
-	NSUInteger result = 0;
-	BOOL done = (BOOL)state->state;
-	
-	if (!done) {
-		
-		done = YES;
-		state->itemsPtr = _data;
-		state->state = (unsigned long)done;
-		state->mutationsPtr = (unsigned long *)self;
-		result = _length;
-	}
-	
-	return result;
+    NSUInteger result = 0;
+    BOOL done = (BOOL)state->state;
+    
+    if (!done) {
+        
+        done = YES;
+        state->itemsPtr = _data;
+        state->state = (unsigned long)done;
+        state->mutationsPtr = (unsigned long *)self;
+        result = _length;
+    }
+    
+    return result;
 }
 ```
