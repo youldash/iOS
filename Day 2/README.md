@@ -709,7 +709,14 @@ static const NSUInteger kGRBaseDefault = 0;
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.8.png" width="100%" /></div>
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.9.png" width="100%" /></div>
 
-* To disable ARC for this class (and not for the entire project), ...
+* To disable ARC for this class only (and not for the entire project), Hide both Utility and Debug areas and only show both Editor and Navigation areas. This view configuration grants you more space to work on and keeps you from getting distracted by other elements that might not be of relevance to tis current task
+
+* Click on the "Arrays" project file (blue icon) and confirm that you have a similar view like this one:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.10.png" width="100%" /></div>
+
+
+
+
 
 * Everything is ready now for use. Edit `main.m` (your project’s main implementation file) and make sure it confirms to the following snippet:
 
