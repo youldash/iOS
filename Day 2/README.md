@@ -391,7 +391,7 @@ static const NSUInteger kGRBaseDefault = 0;
 
 > **Beerus:** *"It might be best to renew the whole planet at once. Before Creation cometh Destruction."*
 
-* Add the following stub implementation for `-dealloc` method, which implements the procedure that deallocates `GRArray` instances from memory:
+* Add the following stub implementation for `-dealloc` method, which implements the procedure that frees `GRArray` instances from memory:
 
 ``` Objective-C
 /**
@@ -404,6 +404,41 @@ static const NSUInteger kGRBaseDefault = 0;
     NSZoneFree(NSZoneFromPointer(self), _data);
     
     [super dealloc];
+}
+```
+
+* Add the following stub implementation for overriding the behavior of the `-description` method, to query a proper string description of any `GRArray` object:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Querying
+
+/**
+ *	Returns a string that describes this array.
+ *
+ *	@return	The string.
+ */
+- (NSString *)description
+{
+    NSMutableString *string =
+    [NSMutableString stringWithFormat:@"<GRArray: length=%lu, base=%lu, data=[",
+     (unsigned long)_length,
+     (unsigned long)_baseIndex];
+    
+    for (NSUInteger idx = 0;
+         idx < _length;
+         ++idx) {
+        
+        if (idx > 0)
+            [string appendString:@", "];
+        
+        [string appendFormat:@"%@", _data[idx]];
+    }
+    
+    [string appendFormat:@"]>"];
+    
+    // Return it.
+    return string;
 }
 ```
 
