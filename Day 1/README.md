@@ -500,7 +500,7 @@ Here, you will develop your very first iOS app that reuses code form the previou
 
 * Create a new project by launching Xcode, and selecting "New Project" from the File menu.
 
-* Under the "iOS" section, select "Application", and choose “Single View Application”, then Next.
+* Under the "iOS" section, select "Application", and choose "Single View Application", then Next.
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.1.png" width="100%" /></div>
 
 * When prompted for options, type "iPhotography" as the Product Name.

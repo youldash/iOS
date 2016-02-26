@@ -9,7 +9,7 @@ By using this site, you agree to the **Terms of Use** that are defined in [LICEN
 
 ## Outline
 
-In this part of the course, you will be introduced to Collection generics (i.e. Arrays, Sets, Dictionaries, etc.). Once you've fully grasped the idea of instantiating factory Collection factory classes (e.g. `NSArray`, `NSMutableArray`) in your projects, you will be instructed to implement a number of exercises related to creating custom Collection classes. These of which are necessary for establishing the building blocks for the final Scene Graph product.
+In this part of the course, you will be introduced to Collection generics (i.e. Arrays, Sets, Dictionaries, etc.). Once you've fully grasped the idea of instantiating Collection (factory) classes like `NSArray`, `NSMutableArray` in your projects, you will be instructed to implement a number of exercises related to creating custom Collection classes. These of which are necessary for establishing the building blocks for the final Scene Graph product.
 
 ## Exercise 3: Arrays
 
