@@ -418,9 +418,7 @@ static const NSUInteger kGRBaseDefault = 0;
 - (NSString *)description
 {
     NSMutableString *string =
-    [NSMutableString stringWithFormat:@"<GRArray: length=%lu, base=%lu, data=[",
-     (unsigned long)_length,
-     (unsigned long)_baseIndex];
+    [NSMutableString stringWithFormat:@"<GRArray: length=%lu, base=%lu, data=[", _length, _baseIndex];
     
     for (NSUInteger idx = 0;
          idx < _length;
@@ -717,7 +715,7 @@ static const NSUInteger kGRBaseDefault = 0;
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.8.png" width="100%" /></div>
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.9.png" width="100%" /></div>
 
-* To disable ARC for this class only (and not for the entire project), Hide both Utility and Debug areas and only show both Editor and Navigator areas. This view configuration grants you more space to work on and keeps you from getting distracted by other elements that might not be of relevance to tis current task
+* To disable ARC for this class only (and not for the entire project), Hide both Utility and Debug areas and only show both Editor and Navigator areas. This view configuration grants you more space to work on and keeps you from getting distracted by other elements that might not be of relevance to tis current task.
 
 * Click on the "Arrays" project file (blue icon in the Navigator area) and confirm that you have a similar view like this one:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.10.png" width="100%" /></div>
@@ -808,6 +806,18 @@ The behavior of this class is expected to be quite similar to the `GRArray` clas
 * Confirm by clicking Next and make sure "Targets" is checked for the executable. This step will add both header file `GRIntegerArray.h` and the implementation file `GRIntegerArray.m` to your project.
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.16.png" width="100%" /></div>
 
+> **Important:** Similar to `GRArray`, you need to disable ARC prior completing the following tasks.
+
+* Hide both Utility and Debug areas and only show both Editor and Navigator areas, and click on the "Arrays" project file (blue icon in the Navigator area).
+
+* Configure your view according to the following sequence of actions: Highlight the "Arrays" executable (under "TARGETS") → Click on "Build Phases" to expand its options → Unfold "Compile Sources" to view three implementation sources (both `main.m`, `GRArray.m` and `GRIntegerArray.m`).
+
+* Double-click on `GRIntegerArray.m` and (like what you've done for `GRArray.m` in the previous exercise) set the compiler flag to `-fno-objc-arc` so that you disables ARC for this source whenever you build or rebuild your project.
+
+* Confirm that you have a view similar to this one:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.17.png" width="100%" /></div>
+
+> All compiler warnings should disappear by now!
 
 
 
