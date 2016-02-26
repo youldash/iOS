@@ -205,9 +205,6 @@ In this exercise, you will develop a Foundation tool using Xcode. This example s
  */
 - (void)purge;
 
-#pragma mark -
-#pragma mark Operating
-
 /**
  *  Mark the following protocol method as optional using the @optional directive.
  */
@@ -536,9 +533,6 @@ static const NSUInteger kGRBaseDefault = 0;
 * As you may recall in `GRArrayDelegate` the method `-shuffle` is declared `@optional`. As such, you may wish to include the following stub implementation for `-shuffle` and you may also wish to ignore it. Note that you are not obligated to fully implement this method, for as long as you do not wish to incorporate its functionality into your class.
 
 ``` Objective-C
-#pragma mark -
-#pragma mark Operating
-
 /**
  *  Executes the Fisher Yates shuffling algorithm.
  *  Shuffles the contents of this array for random pick of the points.
@@ -796,6 +790,25 @@ Program ended with exit code: 0
 ```
 
 > **Note:** Xcode project files for this exercise will be pushed to this repo, later.
+
+## Exercise 4: Integer Arrays
+
+In this exercise, you will expand your previous Foundation tool to include additional functionality for dealing with integers-based data streams. More importantly, this example shows how to create a special `GRIntegerArray` class, suitable for dealing with integer values (only).
+
+The behavior of this class is expected to be quite similar to the `GRArray` class you've implemented previously.
+
+* Add a new class by highlighting on the "Arrays" yellow (group) folder and selecting "New File" from the File menu.
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.14.png" width="100%" /></div>
+
+* Under the "OS X" section, select "Source", and choose "Cocoa Class" as follows:
+
+* When prompted for options, type `GRIntegerArray` as the class name. Make sure `GRArray` is selected for subclassing (a.k.a. inheriting) from, like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.15.png" width="100%" /></div>
+
+* Confirm by clicking Next and make sure "Targets" is checked for the executable. This step will add both header file `GRIntegerArray.h` and the implementation file `GRIntegerArray.m` to your project.
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.16.png" width="100%" /></div>
+
+
 
 
 
