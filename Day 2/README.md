@@ -238,7 +238,7 @@ static const NSUInteger kGRBaseDefault = 0;
 
 * For `GRArray` to confirm to the `GRArrayDelegate` protocol, we need to properly implement its declared methods and to synthesize its properties. Add the following stub implementation that defines the scope and behavior of the accessible properties:
 
-``` Objective`-C
+``` Objective-C
 #pragma mark -
 #pragma mark Accessing
 
