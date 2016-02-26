@@ -1,4 +1,4 @@
-# Day 2: Collections and Enumerations
+# Day 2: Uni- and Multi-dimensional Arrays
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/youldash.svg?style=social?style=plastic)](https://twitter.com/youldash)
 [![Twitter Follow](https://img.shields.io/twitter/follow/UQU_CS.svg?style=social?style=plastic)](https://twitter.com/UQU_CS)

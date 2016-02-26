@@ -642,4 +642,4 @@ Here, you will develop your very first iOS app that reuses code form the previou
 
 ## What's Next?
 
-**Congratulations!** You are now ready to tackle the challenges introduced in [Day 2: Collections and Enumerations](https://github.com/youldash/iOS/blob/master/Day%202/).
+**Congratulations!** You are now ready to tackle the challenges introduced in [Day 2: Uni- and Multi-dimensional Arrays](https://github.com/youldash/iOS/blob/master/Day%202/).

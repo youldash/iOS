@@ -49,10 +49,10 @@ The final product should look similarly to the following iPad mockup (or screens
 ### Course Structure
 
 * [Day 1: Induction](https://github.com/youldash/iOS/blob/master/Day%201/).
-* [Day 2: Collections and Enumerations](https://github.com/youldash/iOS/blob/master/Day%202/).
+* [Day 2: Uni- and Multi-dimensional Arrays](https://github.com/youldash/iOS/blob/master/Day%202/).
 * [Day 3: Scene Graphs (Part I)](https://github.com/youldash/iOS/blob/master/Day%203/).
 * [Day 4: Scene Graphs (Part II)](https://github.com/youldash/iOS/blob/master/Day%204/).
-* [Day 5: Advanced Topics](https://github.com/youldash/iOS/blob/master/Day%205/).
+* [Day 5: Scene Graphs (Part III)](https://github.com/youldash/iOS/blob/master/Day%205/).
 
 ## Disclaimer
 
