@@ -796,15 +796,15 @@ In this exercise, you will expand your previous Foundation tool to include addit
 The behavior of this class is expected to be quite similar to the `GRArray` class you've implemented previously.
 
 * Add a new class by highlighting on the "Arrays" yellow (group) folder and selecting "New File" from the File menu.
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.14.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise4.0.1.png" width="100%" /></div>
 
 * Under the "OS X" section, select "Source", and choose "Cocoa Class" as follows:
 
 * When prompted for options, type `GRIntegerArray` as the class name. Make sure `GRArray` is selected for subclassing (a.k.a. inheriting) from, like so:
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.15.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise4.0.2.png" width="100%" /></div>
 
 * Confirm by clicking Next and make sure "Targets" is checked for the executable. This step will add both header file `GRIntegerArray.h` and the implementation file `GRIntegerArray.m` to your project.
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.16.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise4.0.3.png" width="100%" /></div>
 
 > **Important:** ARC needs to be disabled for this file too, prior completing the following tasks.
 
@@ -815,7 +815,7 @@ The behavior of this class is expected to be quite similar to the `GRArray` clas
 * Double-click on `GRIntegerArray.m` and (like what you've done for `GRArray.m` in the previous exercise) set the compiler flag to `-fno-objc-arc` so that you disables ARC for this source whenever you build or rebuild your project.
 
 * Confirm that you have a similar view to what follows:
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.17.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise4.0.4.png" width="100%" /></div>
 
 > All ARC warnings and errors should disappear when you manually allocate and deallocate memory for this class!
 
@@ -1490,7 +1490,32 @@ Program ended with exit code: 0
 
 ## Exercise 5: Multidimensional Arrays
 
-...
+Earlier in this course, we have described arrays that form singular (unidimensional) lists of key/value pairs (of both generic and numeric object representations). In our future Scene Graph iOS app however, the plan is to have the ability to store values with more than one key.
+
+Therefore in this exercise, you will expand your previous Foundation tool to include additional functionality for dealing with multidimensional arrays (i.e. arrays containing one or more arrays, which are confined by the number of dimensions).
+
+As an illustration:
+
+* 2-dimensional arrays require *2* indices to select an element from that array.
+* 3-dimensional arrays require *3* indices to select an element from that array.
+* N-dimensional arrays require *N* indices to select an element from that array.
+
+For this, you will need to create a special `GRMultidimensionalArray` class, suitable for dealing with arrays that are bound by the number of dimensions.
+
+* Add a new class by highlighting on the "Arrays" yellow (group) folder and selecting "New File" from the File menu.
+
+* Under the "OS X" section, select "Source", and choose "Cocoa Class" as follows:
+
+* When prompted for options, type `GRMultidimensionalArray` as the class name. Make sure `NSObject` is selected for subclassing (a.k.a. inheriting) from, like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise5.0.1.png" width="100%" /></div>
+
+* Confirm by clicking Next and make sure "Targets" is checked for the executable. This step will add both header file `GRMultidimensionalArray.h` and the implementation file `GRMultidimensionalArray.m` to your project.
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise5.0.2.png" width="100%" /></div>
+
+> **Important:** ARC needs to be kept enabled for this class, in spite of what you have done in the previous two exercises.
+
+
+
 
 ## What's Next?
 
