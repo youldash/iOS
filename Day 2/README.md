@@ -389,7 +389,7 @@ static const NSUInteger kGRBaseDefault = 0;
 }
 ```
 
-> **Beerus:** *"It might be best to renew the whole planet at once. Before Creation cometh Destruction."*
+> **Beerus:** *"It might be best to renew the whole planet at once. Of course before any Creation must come Destruction."*
 
 * Add the following stub implementation for `-dealloc` method, which implements the procedure that frees `GRArray` instances from memory:
 
@@ -673,7 +673,7 @@ static const NSUInteger kGRBaseDefault = 0;
     NSLog(@"Enumerating a1...");
     for (NSNumber *number in a1) {
         
-        NSLog(@"a1[%lu] = %@", (unsigned long)idx, number);
+        NSLog(@"a1[%lu] = %@", idx, number);
         
         idx++;
     }
@@ -693,11 +693,25 @@ static const NSUInteger kGRBaseDefault = 0;
     [b1 purge];
     NSLog(@"b1 = %@", b1);
     
-    GRArray *a2 = [GRArray arrayWithLength:5];
+    GRArray *a2 = [GRArray arrayWithLength:5 baseIndex:0];
+    
+    [a2 replaceObjectAtIndex:0 withObject:@(arc4random_uniform(200))];
+    [a2 replaceObjectAtIndex:1 withObject:@(arc4random_uniform(200))];
+    [a2 replaceObjectAtIndex:2 withObject:@(arc4random_uniform(200))];
+    [a2 replaceObjectAtIndex:3 withObject:@(arc4random_uniform(200))];
+    [a2 replaceObjectAtIndex:4 withObject:@(arc4random_uniform(200))];
     NSLog(@"a2 = %@", a2);
     
-    GRArray *a3 = [GRArray arrayWithLength:5 baseIndex:1];
-    NSLog(@"a3 = %@", a3);
+    NSLog(@"Shuffling a2...");
+    [a2 shuffle];
+    NSLog(@"a2 = %@", a2);
+
+    NSLog(@"Purging a2...");
+    [a2 purge];
+    NSLog(@"a2 = %@", a2);
+
+    a2.length = 0;
+    NSLog(@"a2 = %@", a2);
 
     // Successful.
     return YES;
@@ -714,7 +728,7 @@ static const NSUInteger kGRBaseDefault = 0;
 * Click on the "Arrays" project file (blue icon in the Navigator area) and confirm that you have a similar view like this one:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.10.png" width="100%" /></div>
 
-* Configure your view according to the following sequence of actions: Highlight the "Arrays" executable (under "TARGETS") → Click on "Build Phases" to epand its options → Unfold "Compiler Sources" to view two implementation sources (both `main.m` and `GRArray.m`), like so:
+* Configure your view according to the following sequence of actions: Highlight the "Arrays" executable (under "TARGETS") → Click on "Build Phases" to expand its options → Unfold "Compile Sources" to view two implementation sources (both `main.m` and `GRArray.m`), like so:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.11.png" width="100%" /></div>
 
 * Double-click on `GRArray.m` and set a special compiler flag to `-fno-objc-arc` so that you disables ARC (i.e. Automatic Reference Counting if you forgot what it stands for) for this source whenever you build or rebuild your project, like so:
@@ -723,13 +737,14 @@ static const NSUInteger kGRBaseDefault = 0;
 * Confirm that you have a view similar to this one:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.13.png" width="100%" /></div>
 
+> All compiler warnings should disappear by now!
 
-* Everything is ready now for use. Edit `main.m` (your project’s main implementation file) and make sure it confirms to the following snippet:
+* Everything is ready now for us to use this new class. Edit `main.m` (your project’s main implementation file) and make sure it confirms to the following code snippet:
 
 ``` Objective-C
 @import Foundation;
 
-#import "PhotoAlbum.h"
+#import "GRArray.h"
 
 /**
  *  Main Photography tester program.
@@ -743,8 +758,8 @@ int main(int argc, const char * argv[]) {
     
     @autoreleasepool {
         
-        // Run the PhotoAlbum unit test program.
-        [PhotoAlbum unitTest];
+        // Run the GRArray unit test program.
+        [GRArray unitTest];
     }
     
     return 0;
@@ -754,20 +769,29 @@ int main(int argc, const char * argv[]) {
 * Compile and run the program by clicking on the Run button (located on the top-left corner of Xcode), or by pressing (⌘ + R). You should see an outcome similar to the following Debugger output:
 
 ```
-2016-02-24 19:04:03.625 Photography[2543:56278] PhotoAlbum unit test program.
+2016-02-26 20:14:11.706 Arrays[8403:1372962] GRArray unit test program.
           --------------------------------------------
-2016-02-24 19:04:03.627 Photography[2543:56278] album1 = <PhotoAlbum: length=0, data=[]>
-2016-02-24 19:04:03.627 Photography[2543:56278] Adding photos to album1…
-2016-02-24 19:04:03.628 Photography[2543:56278] Enumerating album1…
-2016-02-24 19:04:03.628 Photography[2543:56278] album1[0] = <Photo: data=[#0: Photo of a celebrity, brought to you by Paparazzi]>
-2016-02-24 19:04:03.628 Photography[2543:56278] album1[1] = <Photo: data=[#1: Side photo of our College, brought to you by Manal]>
-2016-02-24 19:04:03.628 Photography[2543:56278] album1[2] = <Photo: data=[#2: Photo of a celebrity, brought to you by Paparazzi]>
-2016-02-24 19:04:03.629 Photography[2543:56278] Removing photos from album1…
-2016-02-24 19:04:03.629 Photography[2543:56278] removed album1.photos[0] = YES
-2016-02-24 19:04:03.629 Photography[2543:56278] removed album1.photos[1] = YES
-2016-02-24 19:04:03.629 Photography[2543:56278] album1 = <PhotoAlbum: length=1, data=[<Photo: data=[#1: Side photo of our College, brought to you by Manal]>]>
-2016-02-24 19:04:03.630 Photography[2543:56278] Purging album1…
-2016-02-24 19:04:03.630 Photography[2543:56278] album1 = <PhotoAlbum: length=0, data=[]>
+2016-02-26 20:14:11.708 Arrays[8403:1372962] a1 = <GRArray: length=5, base=0, data=[(null), (null), (null), (null), (null)]>
+2016-02-26 20:14:11.709 Arrays[8403:1372962] a1[0] = 97
+2016-02-26 20:14:11.709 Arrays[8403:1372962] a1[1] = 58
+2016-02-26 20:14:11.709 Arrays[8403:1372962] a1 = <GRArray: length=5, base=0, data=[58, 97, 89, 23, 36]>
+2016-02-26 20:14:11.709 Arrays[8403:1372962] Enumerating a1...
+2016-02-26 20:14:11.710 Arrays[8403:1372962] a1[0] = 58
+2016-02-26 20:14:11.710 Arrays[8403:1372962] a1[1] = 97
+2016-02-26 20:14:11.710 Arrays[8403:1372962] a1[2] = 89
+2016-02-26 20:14:11.710 Arrays[8403:1372962] a1[3] = 23
+2016-02-26 20:14:11.711 Arrays[8403:1372962] a1[4] = 36
+2016-02-26 20:14:11.711 Arrays[8403:1372962] a1 = <GRArray: length=3, base=1, data=[58, 97, 89]>
+2016-02-26 20:14:11.711 Arrays[8403:1372962] b1 = <GRArray: length=3, base=1, data=[58, 97, 89]>
+2016-02-26 20:14:11.712 Arrays[8403:1372962] b1 = <GRArray: length=3, base=0, data=[58, 97, 89]>
+2016-02-26 20:14:11.712 Arrays[8403:1372962] Purging b1...
+2016-02-26 20:14:11.712 Arrays[8403:1372962] b1 = <GRArray: length=3, base=0, data=[(null), (null), (null)]>
+2016-02-26 20:14:11.712 Arrays[8403:1372962] a2 = <GRArray: length=5, base=0, data=[105, 9, 85, 96, 84]>
+2016-02-26 20:14:11.779 Arrays[8403:1372962] Shuffling a2...
+2016-02-26 20:14:11.780 Arrays[8403:1372962] a2 = <GRArray: length=5, base=0, data=[85, 96, 84, 9, 105]>
+2016-02-26 20:14:11.780 Arrays[8403:1372962] Purging a2...
+2016-02-26 20:14:11.780 Arrays[8403:1372962] a2 = <GRArray: length=5, base=0, data=[(null), (null), (null), (null), (null)]>
+2016-02-26 20:14:11.781 Arrays[8403:1372962] a2 = <GRArray: length=0, base=0, data=[]>
 Program ended with exit code: 0
 ```
 
