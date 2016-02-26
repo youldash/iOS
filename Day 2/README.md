@@ -46,7 +46,7 @@ In this exercise, you will develop a Foundation tool using Xcode. This example s
 * Confirm by clicking Next and make sure "Targets" is checked for the executable. This step will add both header file `GRArray.h` and the implementation file `GRArray.m` to your project.
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.5.png" width="100%" /></div>
 
-* Type the code snippet listed below into `GRArray.h`. This class represents the building block for iOS creating custom array containers as part of a "future" Scene Graph iOS project:
+* Type the code snippet listed below into `GRArray.h`. This class represents the building block for creating custom array containers as part of a "future" Scene Graph iOS project:
 
 ``` Objective-C
 @import Foundation;
@@ -806,19 +806,121 @@ The behavior of this class is expected to be quite similar to the `GRArray` clas
 * Confirm by clicking Next and make sure "Targets" is checked for the executable. This step will add both header file `GRIntegerArray.h` and the implementation file `GRIntegerArray.m` to your project.
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.16.png" width="100%" /></div>
 
-> **Important:** Similar to `GRArray`, you need to disable ARC prior completing the following tasks.
+> **Important:** ARC needs to be disabled for this file too, prior completing the following tasks.
 
 * Hide both Utility and Debug areas and only show both Editor and Navigator areas, and click on the "Arrays" project file (blue icon in the Navigator area).
 
-* Configure your view according to the following sequence of actions: Highlight the "Arrays" executable (under "TARGETS") → Click on "Build Phases" to expand its options → Unfold "Compile Sources" to view three implementation sources (both `main.m`, `GRArray.m` and `GRIntegerArray.m`).
+* Configure your view according to the following sequence of actions: Highlight the "Arrays" executable (under "TARGETS") → Click on "Build Phases" to expand its options → Unfold "Compile Sources" to view three implementation sources (`main.m`, `GRArray.m` and `GRIntegerArray.m`).
 
 * Double-click on `GRIntegerArray.m` and (like what you've done for `GRArray.m` in the previous exercise) set the compiler flag to `-fno-objc-arc` so that you disables ARC for this source whenever you build or rebuild your project.
 
-* Confirm that you have a view similar to this one:
+* Confirm that you have a similar view to what follows:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.17.png" width="100%" /></div>
 
-> All compiler warnings should disappear by now!
+> All ARC warnings and errors should disappear when you manually allocate and deallocate memory for this class!
 
+* Replace what currently exists in `GRIntegerArray.h` with the following snippet:
+
+``` Objective-C
+#import "GRArray.h"
+
+/**
+ *  A tuple.
+ *	Tuples are a grouping of multiple values into a single type.
+ *
+ *  @param i The first integer.
+ *  @param j The second integer.
+ *
+ *  @return The new integer array.
+ */
+#define GRTuple(i, j) [GRIntegerArray arrayWithIntegers:i :j]
+
+/**
+ *  Represents an array of integers.
+ */
+@interface GRIntegerArray : GRArray
+
+#pragma mark -
+#pragma mark Accessing
+
+/**
+ *  A C array of integers.
+ */
+@property (assign, nonatomic) NSInteger *data;
+
+#pragma mark -
+#pragma mark Creating
+
+/**
+ *	Returns a new array with the given length, base index, and initial value.
+ *
+ *	@param	length		The length of the array.
+ *	@param	baseIndex	The base index of the array.
+ *	@param	value		The initial value.
+ *
+ *	@return	The new array.
+ */
++ (instancetype)arrayWithLength:(NSUInteger)length baseIndex:(NSUInteger)baseIndex initialValue:(NSInteger)value;
+
+/**
+ *  Returns an array of length 2 that contains the given integers.
+ *
+ *	@param	firstInteger	The first integer.
+ *	@param	secondInteger	The second integer.
+ *
+ *  @return The new array.
+ */
++ (instancetype)arrayWithIntegers:(NSUInteger)firstInteger :(NSInteger)secondInteger;
+
+#pragma mark -
+#pragma mark Initializing
+
+/**
+ *	Initializes a newly allocated array with the given length, base index and initial value.
+ *
+ *	@param	length		The length of the array.
+ *	@param	baseIndex	The base index of the array.
+ *	@param	value		The initial value.
+ *
+ *	@return	The new array.
+ */
+- (instancetype)initWithLength:(NSUInteger)length baseIndex:(NSUInteger)baseIndex initialValue:(NSInteger)value;
+
+#pragma mark -
+#pragma mark Querying
+
+/**
+ *	Returns the int value at the given index in this array.
+ *
+ *	@param	index	An array index.
+ *
+ *	@return	The integer value.
+ */
+- (NSInteger)integerAtIndex:(NSUInteger)index;
+
+#pragma mark -
+#pragma mark Modifying
+
+/**
+ *	Replaces the integer at the given index in this array with the given integer.
+ *
+ *	@param	index	An array index.
+ *	@param	integer	An integer.
+ *
+ *	@return	The object originally at the given index in this array.
+ */
+- (NSInteger)replaceIntegerAtIndex:(NSUInteger)index withInteger:(NSInteger)integer;
+
+/**
+ *	Exchanges the integers at the given indices in this array.
+ *
+ *	@param	index1	An array index.
+ *	@param	index2	An array index.
+ */
+- (void)exchangeIntegerAtIndex:(NSUInteger)index1 withIntegerAtIndex:(NSUInteger)index2;
+
+@end
+```
 
 
 
