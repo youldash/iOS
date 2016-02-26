@@ -389,6 +389,24 @@ static const NSUInteger kGRBaseDefault = 0;
 }
 ```
 
+> **Beerus:** "It might be best to renew the whole planet at once. Before Creation cometh Destruction."
+
+* Add the following stub implementation for `-dealloc` method, which implements the procedure that deallocates `GRArray` instances from memory:
+
+``` Objective-C
+/**
+ *  Deallocates the memory occupied by this array.
+ */
+- (void)dealloc
+{
+    [self purge];
+    
+    NSZoneFree(NSZoneFromPointer(self), _data);
+    
+    [super dealloc];
+}
+```
+
 
 
 
