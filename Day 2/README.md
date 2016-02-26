@@ -1305,7 +1305,7 @@ static const NSUInteger kGRValueDefault = 0;
 }
 ```
 
-* Outstanding! Now add the following stub implementation for `-copyWithZone:` method, which implements (and confirms to) a procedure (defined by `NSCopying`) for returning "deep copies" of existing `GRIntegerArray` instances:
+* Outstanding! Now add the following stub implementation for the `-copyWithZone:` method, which implements (and confirms to) a procedure (defined by `NSCopying`) for returning "deep copies" of existing `GRIntegerArray` instances:
 
 ``` Objective-C
 #pragma mark -
@@ -1452,7 +1452,7 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         
         // Run the GRArray unit test program.
-		// [GRArray unitTest];
+        // [GRArray unitTest];
         
         // Run the GRIntegerArray unit test program.
         [GRIntegerArray unitTest];
@@ -1640,9 +1640,309 @@ For this, you will need to create a special `GRMultidimensionalArray` class, sui
 @end
 ```
 
+* Your class interface is now ready for a proper implementation! Add the following stub implementation that defines the scope and behavior of the accessible properties for the `GRMultidimensionalArray` class:
 
+``` Objective-C
+#pragma mark -
+#pragma mark Accessing
+
+/**
+ *  The dimensions of the array.
+ */
+@synthesize dimensions = _dimensions;
+```
+
+* Your class properties are now defined. Add the following class initializer stub:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Initializing
+
+/**
+ *  Designated initializer.
+ *  Initializes a new multidimensional array with the given dimensions.
+ *
+ *  @param  dimensions  An array of dimensions.
+ *
+ *  @return  The new multidimensional array.
+ */
+- (instancetype)initWithDimensions:(GRIntegerArray *)dimensions
+{
+    // Immutable multidimensional array, just return a new reference to itself (retained automatically by ARC).
+    self = [super init];
+    
+    if (self) {
+        
+        // Initialize all parameters.
+        NSUInteger length = dimensions.length;
+        _dimensions = [GRIntegerArray arrayWithLength:length];
+        _factors = [GRIntegerArray arrayWithLength:length];
+        
+        NSInteger product = 1;
+        
+        for (NSInteger idx = (NSInteger)length - 1;
+             idx >= 0;
+             --idx) {
+            
+            [_dimensions replaceIntegerAtIndex:idx
+                                   withInteger:[dimensions integerAtIndex:idx]];
+            
+            [_factors replaceIntegerAtIndex:idx
+                                withInteger:product];
+            
+            product *= [_dimensions integerAtIndex:idx];
+        }
+        
+        _data = [GRArray arrayWithLength:product];
+        
+        _numberOfMultiplications = 0;
+    }
+    
+    // Return this multidimensional array and its children.
+    return self;
+}
+```
+
+* Add the following stub implementation to overriding the default behavior of the `-description` method:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Querying
+
+/**
+ *  Returns a string that describes this multidimensional array.
+ *
+ *  @return  The string.
+ */
+- (NSString *)description
+{
+    NSMutableString *string = [NSMutableString stringWithString:@"<GRMultidimensionalArray: \n"];
+    [string appendFormat:@"\tdimensions = %@, \n", _dimensions];
+    [string appendFormat:@"\tfactors = %@, \n", _factors];
+    [string appendFormat:@"\tdata = %@>", _data];
+    
+    return string;
+}
+```
+
+* After you implement `-description` you may wish to implement other remaining protocol methods (namely the `-objectAtIndices:` method), in addition to a local `-offsetForIndices:` method that returns an offset in an array:
+
+``` Objective-C
+/**
+ *  Returns the object in this multidimensional array at the given indices.
+ *
+ *  @param  indices  An array of indices.
+ *
+ *  @return  An object.
+ */
+- (id)objectAtIndices:(GRIntegerArray *)indices
+{
+    return [_data objectAtIndex:[self offsetForIndices:indices]];
+}
+```
+
+``` Objective-C
+/**
+ *  Returns the offset in the one-dimensional array that corresponds to the given indices.
+ *
+ *  @param indices An array of indices.
+ *
+ *  @return The offset.
+ */
+- (NSUInteger)offsetForIndices:(GRIntegerArray *)indices
+{
+    NSAssert(indices.length == _dimensions.length, @"Illegal argument.");
+    
+    NSUInteger offset = 0;
+    
+    for (NSUInteger idx = 0;
+         idx < _dimensions.length;
+         ++idx) {
+        
+        NSUInteger index = [indices integerAtIndex:idx];
+        
+        NSAssert(index >= 0 && index < [_dimensions integerAtIndex:idx], @"Index out of bounds.");
+        offset += index * [_factors integerAtIndex:idx];
+    }
+    
+    return offset;
+}
+```
+
+* Implement the modifier methods `-replaceObjectAtIndices:withObject:`, `-exchangeObjectAtIndices:withObjectAtIndices:` and `-purge` in respective order, like so:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Modifying
+
+/**
+ *  Replaces the object at the given index in this array with the given object.
+ *
+ *  @param  index  An array index.
+ *  @param  object  An object.
+ *
+ *  @return  The object originally at the given index in this array.
+ */
+- (id)replaceObjectAtIndices:(GRIntegerArray *)indices withObject:(id)object
+{
+    return [_data replaceObjectAtIndex:[self offsetForIndices:indices]
+                            withObject:object];
+}
+```
+
+``` Objective-C
+/**
+ *  Exchanges the objects at the given indices in this array.
+ *
+ *  @param  index1  An array index.
+ *  @param  index2  An array index.
+ */
+- (void)exchangeObjectAtIndices:(GRIntegerArray *)indices1 withObjectAtIndices:(GRIntegerArray *)indices2
+{
+    [_data exchangeObjectAtIndex:[self offsetForIndices:indices1]
+               withObjectAtIndex:[self offsetForIndices:indices2]];
+}
+```
+
+``` Objective-C
+/**
+ *  Removes the objects in this multidimensional array.
+ */
+- (void)purge
+{
+    [_data purge];
+}
+```
+
+* Great! Now add the following stub implementation for the `-clone` method, which returns a clone (or deep copy) to the sender's multidimensional array reference:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Copying
+
+/**
+ *  Returns a clone (deep copy) of the multidimensional array containing a geometry that concatenates all the geometries contained in the multidimensional array hierarchy.
+ *
+ *  @return The cloned array.
+ */
+- (id)clone
+{
+    // Immutable multidimensional array, just return a new reference to itself (retained automatically by ARC).
+    GRMultidimensionalArray *clone = [[[self class] alloc] initWithDimensions:_dimensions];
+    
+    if (clone) {
+        
+        // Copy all multidimensional array properties.
+        for (NSUInteger idx = 0;
+             idx < _data.length;
+             ++idx) {
+            
+            id object = [[_data objectAtIndex:idx] copy];
+            
+            [clone->_data replaceObjectAtIndex:idx withObject:object];
+        }
+    }
+    
+    // Return a copy of this multidimensional array and its children.
+    return clone;
+}
+```
+
+* One more method remains. Implement the class method `+unitTest` like so:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Testing
+
+/**
+ *  GRMultidimensionalArray unit test program.
+ *
+ *  @return  A boolean value that indicates whether all the tests were successful.
+ */
++ (BOOL)unitTest
+{
+    NSLog(@"GRMultidimensionalArray unit test program.\n\
+          --------------------------------------------");
+    
+    NSUInteger rows = 2;
+    NSUInteger columns = 3;
+    
+    GRIntegerArray *dimensions = GRTuple(rows, columns);
+    id<GRMultidimensionalArrayDelegate> mat1 = [[[GRMultidimensionalArray class] alloc] initWithDimensions:dimensions];
+    
+    float k = 0.0f;
+    
+    for (NSUInteger i = 0; i < rows; ++i) {
+        
+        for (NSUInteger j = 0; j < columns; ++j) {
+            
+            [mat1 replaceObjectAtIndices:GRTuple(i, j)
+                              withObject:@(k++)];
+        }
+    }
+    
+    printf("mat1 = %s\n", [[mat1 description] UTF8String]);
+    
+    id<GRMultidimensionalArrayDelegate> mat2 = mat1.clone;
+    printf("mat2 = %s\n", [[mat2 description] UTF8String]);
+    
+    return YES;
+}
+```
+
+* Everything is ready now for us to use this new class. Modify `main.m` by commenting out the previous unit testing program for `GRIntegerArray` and add a new unit testing program for `GRMultidimensionalArray` like so:
+
+``` Objective-C
+@import Foundation;
+
+#import "GRArray.h"
+#import "GRIntegerArray.h"
+#import "GRMultidimensionalArray.h"
+
+/**
+ *  Main tester program.
+ *
+ *  @param argc The argc.
+ *  @param argv The argv.
+ *
+ *  @return The execution return code.
+ */
+int main(int argc, const char * argv[]) {
+    
+    @autoreleasepool {
+        
+        // Run the GRArray unit test program.
+        // [GRArray unitTest];
+        
+        // Run the GRIntegerArray unit test program.
+        // [GRIntegerArray unitTest];
+        
+        // Run the GRMultidimensionalArray unit test program.
+        [GRMultidimensionalArray unitTest];
+    }
+    
+    return 0;
+}
+```
+
+* Compile and run the program by clicking on the Run button (located on the top-left corner of Xcode), or by pressing (⌘ + R). You should see an outcome similar to the following Debugger output:
+
+```
+2016-02-27 01:12:57.912 Arrays[14760:2500323] GRMultidimensionalArray unit test program.
+          --------------------------------------------
+mat1 = <GRMultidimensionalArray: 
+	dimensions = <GRIntegerArray: length=2, base=0, data=[2, 3]>, 
+	factors = <GRIntegerArray: length=2, base=0, data=[3, 1]>, 
+	data = <GRArray: length=6, base=0, data=[0, 1, 2, 3, 4, 5]>>
+mat2 = <GRMultidimensionalArray: 
+	dimensions = <GRIntegerArray: length=2, base=0, data=[2, 3]>, 
+	factors = <GRIntegerArray: length=2, base=0, data=[3, 1]>, 
+	data = <GRArray: length=6, base=0, data=[0, 1, 2, 3, 4, 5]>>
+Program ended with exit code: 0
+```
+
+> **Note:** Xcode project files for this exercise will be pushed to this repo, later.
 
 ## What's Next?
 
 **Congratulations!** You are now ready to tackle the challenges introduced in [Day 3: Scene Graphs (Part I)](https://github.com/youldash/iOS/blob/master/Day%203/).
-
