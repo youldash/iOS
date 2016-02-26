@@ -709,13 +709,19 @@ static const NSUInteger kGRBaseDefault = 0;
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.8.png" width="100%" /></div>
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.9.png" width="100%" /></div>
 
-* To disable ARC for this class only (and not for the entire project), Hide both Utility and Debug areas and only show both Editor and Navigation areas. This view configuration grants you more space to work on and keeps you from getting distracted by other elements that might not be of relevance to tis current task
+* To disable ARC for this class only (and not for the entire project), Hide both Utility and Debug areas and only show both Editor and Navigator areas. This view configuration grants you more space to work on and keeps you from getting distracted by other elements that might not be of relevance to tis current task
 
-* Click on the "Arrays" project file (blue icon) and confirm that you have a similar view like this one:
+* Click on the "Arrays" project file (blue icon in the Navigator area) and confirm that you have a similar view like this one:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.10.png" width="100%" /></div>
 
+* Configure your view according to the following sequence of actions: Highlight the "Arrays" executable (under "TARGETS") → Click on "Build Phases" to epand its options → Unfold "Compiler Sources" to view two implementation sources (both `main.m` and `GRArray.m`), like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.11.png" width="100%" /></div>
 
+* Double-click on `GRArray.m` and set a special compiler flag to `-fno-objc-arc` so that you disables ARC (i.e. Automatic Reference Counting if you forgot what it stands for) for this source whenever you build or rebuild your project, like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.12.png" width="100%" /></div>
 
+* Confirm that you have a view similar to this one:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.13.png" width="100%" /></div>
 
 
 * Everything is ready now for use. Edit `main.m` (your project’s main implementation file) and make sure it confirms to the following snippet:
