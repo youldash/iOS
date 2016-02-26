@@ -442,6 +442,97 @@ static const NSUInteger kGRBaseDefault = 0;
 }
 ```
 
+* After you implement `-description` you may wish to implement the other protocol methods (namely the `-objectAtIndex:` method), in addition to a local `-boundsCheck:` method for confirming whether `GRArray` objects could still host additional data entries or not:
+
+``` Objective-C
+/**
+ *	Returns the object at the given index in this array.
+ *
+ *	@param	index	An array index.
+ *
+ *	@return	An object.
+ */
+- (id)objectAtIndex:(NSUInteger)index
+{
+    [self boundsCheck:index];
+    
+    return [[_data[index - _baseIndex] retain] autorelease];
+}
+```
+
+``` Objective-C
+/**
+ *	Generates an assertion if the given index is out of bounds.
+ *
+ *	@param	index	An array index.
+ */
+- (void)boundsCheck:(NSUInteger)index
+{
+    NSAssert(index >= _baseIndex && index < _baseIndex + _length, @"Index out of bounds.");
+}
+```
+
+* Protocol `GRArrayDelegate` declares a few modifier methods (namely: `-replaceObjectAtIndex:withObject:`, `-exchangeObjectAtIndex:withObjectAtIndex:` and `-purge`). Hence, the following stub implementations define each protocol declaration, respectively:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Modifying
+
+/**
+ *	Replaces the object at the given index in this array with the given object.
+ *
+ *	@param	index	An array index.
+ *	@param	object	An object.
+ *
+ *	@return	The object originally at the given index in this array.
+ */
+- (id)replaceObjectAtIndex:(NSUInteger)index withObject:(id)object
+{
+    [self boundsCheck:index];
+    
+    id data = _data[index - _baseIndex];
+    
+    _data[index - _baseIndex] = [object retain];
+    
+    return [data autorelease];
+}
+```
+
+``` Objective-C
+/**
+ *	Exchanges the objects at the given indices in this array.
+ *
+ *	@param	index1	An array index.
+ *	@param	index2	An array index.
+ */
+- (void)exchangeObjectAtIndex:(NSUInteger)index1 withObjectAtIndex:(NSUInteger)index2
+{
+    [self boundsCheck:index1];
+    [self boundsCheck:index2];
+    
+    id tmp = _data[index1 - _baseIndex];
+    
+    _data[index1 - _baseIndex] = _data[index2 - _baseIndex];
+    _data[index2 - _baseIndex] = tmp;
+}
+```
+
+``` Objective-C
+/**
+ *	Removes all the objects from this array.
+ */
+- (void)purge
+{
+    for (NSUInteger idx = 0;
+         idx < _length;
+         ++idx) {
+        
+        [_data[idx] release];
+        _data[idx] = nil;
+    }
+}
+```
+
 
 
 
