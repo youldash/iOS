@@ -93,7 +93,7 @@ In this exercise, you will develop a Foundation tool using Xcode. This example s
 > **Note:** As you finish declaring your `GRArray` class interface, you will be immediately prompted by Xcode telling you that `GRArray` is expected to confirm to some **protocol** named `GRArrayDelegate` (which isn't defined yet). The following steps will define `GRArrayDelegate`.
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.6.png" width="100%" /></div>
 
-* To establish `GRArray` as a class that confirms to `GRArrayDelegate`, go right ahead and jump to the top of the `GRArray.h` header (above the interface declaration) and define the properties and methods (both required and optional ones) of the protocol, like so:
+* To establish `GRArray` as a class that confirms to `GRArrayDelegate`, go right ahead and jump to the top of the `GRArray.h` header (above the interface declaration) and define the properties and methods (both "required" and "optional" ones) of the protocol, like so:
 
 ``` Objective-C
 /**
@@ -533,10 +533,38 @@ static const NSUInteger kGRBaseDefault = 0;
 }
 ```
 
+* As you may recall in `GRArrayDelegate` the method `-shuffle` is declared `@optional`. As such, you may wish to include the following stub implementation for `-shuffle` and you may also wish to ignore it. Note that you are not obligated to fully implement this method, for as long as you do not wish to incorporate its functionality into your class.
 
+``` Objective-C
+#pragma mark -
+#pragma mark Operating
 
+/**
+ *  Executes the Fisher Yates shuffling algorithm.
+ *  Shuffles the contents of this array for random pick of the points.
+ *
+ *  @discussion This method enhances the GRArray class by providing methods to randomly shuffle the elements.
+ */
+- (void)shuffle
+{
+    NSUInteger count = _length;
+    
+    for (NSUInteger idx = 0;
+         idx < count;
+         ++idx) {
+        
+        // Select a random element between (idx) and end of array to swap with.
+        NSInteger numberOfElements = count - idx;
+        NSInteger number = (arc4random() % numberOfElements) + idx;
+        
+        // Swap.
+        [self exchangeObjectAtIndex:idx
+                  withObjectAtIndex:number];
+    }
+}
+```
 
-* Add the following stub implementation for `-copyWithZone:` method, which implements (and confirms to) a procedure (defined by `NSCopying`) for returning "deep copies" of existing `GRArray` instances:
+* Splendid! You are almost done! Add the following stub implementation for `-copyWithZone:` method, which implements (and confirms to) a procedure (defined by `NSCopying`) for returning "deep copies" of existing `GRArray` instances:
 
 ``` Objective-C
 #pragma mark -
