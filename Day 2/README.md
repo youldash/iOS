@@ -1496,9 +1496,9 @@ Therefore in this exercise, you will expand your previous Foundation tool to inc
 
 As an illustration:
 
-* 2-dimensional arrays require *2* indices to select an element from that array.
-* 3-dimensional arrays require *3* indices to select an element from that array.
-* N-dimensional arrays require *N* indices to select an element from that array.
+* **2**-dimensional arrays require **2** indices to select an element from that array.
+* **3**-dimensional arrays require **3** indices to select an element from that array.
+* **N**-dimensional arrays require **N** indices to select an element from that array.
 
 For this, you will need to create a special `GRMultidimensionalArray` class, suitable for dealing with arrays that are bound by the number of dimensions.
 
@@ -1506,7 +1506,7 @@ For this, you will need to create a special `GRMultidimensionalArray` class, sui
 
 * Under the "OS X" section, select "Source", and choose "Cocoa Class" as follows:
 
-* When prompted for options, type `GRMultidimensionalArray` as the class name. Make sure `NSObject` is selected for subclassing (a.k.a. inheriting) from, like so:
+* When prompted for options, type `GRMultidimensionalArray` as the class name. Make sure you subclass `NSObject`, like so:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise5.0.1.png" width="100%" /></div>
 
 * Confirm by clicking Next and make sure "Targets" is checked for the executable. This step will add both header file `GRMultidimensionalArray.h` and the implementation file `GRMultidimensionalArray.m` to your project.
@@ -1514,6 +1514,131 @@ For this, you will need to create a special `GRMultidimensionalArray` class, sui
 
 > **Important:** ARC needs to be kept enabled for this class, in spite of what you have done in the previous two exercises.
 
+* Replace what currently exists in the header file with the following two code snippets into `GRMultidimensionalArray.h`. They contain both protocol and class declarations for the `GRMultidimensionalArray` class, respectively:
+
+``` Objective-C
+@import Foundation;
+
+@class GRArray;
+@class GRIntegerArray;
+
+/**
+ *  Protocol implemented by multidimensional arrays.
+ */
+@protocol GRMultidimensionalArrayDelegate <NSObject>
+
+#pragma mark -
+#pragma mark Copying
+
+/**
+ *  Returns a clone (deep copy) of the multidimensional array
+ *  containing a geometry that concatenates all the geometries contained in the multidimensional array hierarchy.
+ *
+ *  @return The cloned multidimensional array.
+ */
+- (id)clone;
+
+#pragma mark -
+#pragma mark Accessing
+
+/**
+ *  The dimensions of the array.
+ */
+@property (readonly, nonatomic) GRIntegerArray *dimensions;
+
+#pragma mark -
+#pragma mark Querying
+
+/**
+ *  Returns the object in this multidimensional array at the given indices.
+ *
+ *  @param  indices  An array of indices.
+ *
+ *  @return  An object.
+ */
+- (id)objectAtIndices:(GRIntegerArray *)indices;
+
+#pragma mark -
+#pragma mark Modifying
+
+/**
+ *  Replaces the object at the given index in this array with the given object.
+ *
+ *  @param  index  An array index.
+ *  @param  object  An object.
+ *
+ *  @return  The object originally at the given index in this array.
+ */
+- (id)replaceObjectAtIndices:(GRIntegerArray *)indices withObject:(id)object;
+
+/**
+ *  Exchanges the objects at the given indices in this array.
+ *
+ *  @param  index1  An array index.
+ *  @param  index2  An array index.
+ */
+- (void)exchangeObjectAtIndices:(GRIntegerArray *)indices1 withObjectAtIndices:(GRIntegerArray *)indices2;
+
+/**
+ *  Removes all the objects from this array.
+ */
+- (void)purge;
+
+@end
+```
+
+``` Objective-C
+/**
+ *  Represents a multidimensional array of comparable components.
+ */
+@interface GRMultidimensionalArray : NSObject <GRMultidimensionalArrayDelegate> {
+    
+    /**
+     *  The dimensions of the array.
+     */
+    GRIntegerArray *_dimensions;
+    
+    /**
+     *  Used in the calculation that maps a set indices into an offset into a unidimensional array.
+     */
+    GRIntegerArray *_factors;
+    
+    /**
+     *  A one-dimensional array that holds the elements of the multidimensional array.
+     */
+    GRArray *_data;
+    
+    /**
+     *  Keeps track of the number of multiplications performed.
+     */
+    NSUInteger _numberOfMultiplications;
+}
+
+#pragma mark -
+#pragma mark Initializing
+
+/**
+ *  Designated initializer.
+ *  Initializes a new multidimensional array with the given dimensions.
+ *
+ *  @param  dimensions  An array of dimensions.
+ *
+ *  @return  The new multidimensional array.
+ */
+- (instancetype)initWithDimensions:(GRIntegerArray *)dimensions;
+
+#pragma mark -
+#pragma mark Testing
+
+/**
+ *  OCMultidimensionalArray unit test program.
+ *
+ *  @return  A boolean value that indicates whether all the tests were successful.
+ */
++ (BOOL)unitTest;
+
+@end
+```
 
 
 
