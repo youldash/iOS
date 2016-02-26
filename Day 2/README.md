@@ -739,7 +739,7 @@ static const NSUInteger kGRBaseDefault = 0;
 #import "GRArray.h"
 
 /**
- *  Main Photography tester program.
+ *  Main tester program.
  *
  *  @param argc The argc.
  *  @param argv The argv.
@@ -922,7 +922,575 @@ The behavior of this class is expected to be quite similar to the `GRArray` clas
 @end
 ```
 
+* Your class interface is now ready for a proper implementation! Edit "GRIntegerArray.m" and type the following code snippet for declaring global variables used throughout the scope of your implementation (preferably under the import declaration):
 
+``` Objective-C
+#import "GRIntegerArray.h"
+
+/**
+ *	Static constants.
+ */
+static const NSUInteger kGRLengthDefault = 0;
+static const NSUInteger kGRBaseDefault = 0;
+static const NSUInteger kGRValueDefault = 0;
+```
+
+* Add the following class category right above `@implementation` (which is used to redefine the `data` property as a C array of integers instead of the old "inherited" generic objects array, which is originally declared in the superclass `GRArray`):
+
+``` Objective-C
+/**
+ *  A GRIntegerArray class category.
+ */
+@interface GRIntegerArray () {
+    
+    /**
+     *  A C array of integers.
+     */
+    NSInteger *_data;
+}
+
+@end
+```
+
+* Add the following stub implementation that defines the scope and behavior of the accessible properties for the `GRIntegerArray` class:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Accessing
+
+/**
+ *  A C array of integers.
+ */
+@synthesize data = _data;
+
+/**
+ *	Sets the length of this array to the given value.
+ *
+ *	@param	length	The length.
+ */
+- (void)setLength:(NSUInteger)length
+{
+    if (_length != length) {
+        
+        NSInteger min = _length < length ? _length : length;
+        NSInteger *integerData = NSZoneMalloc(NSZoneFromPointer(self), length * sizeof(NSInteger));
+        NSUInteger idx;
+        
+        for (idx = 0; idx < min; ++idx) {
+            
+            integerData[idx] = _data[idx];
+        }
+        
+        for (idx = min; idx < length; ++idx) {
+            
+            integerData[idx] = 0;
+        }
+        
+        NSZoneFree(NSZoneFromPointer(self), _data);
+        
+        _data = integerData;
+        _length = length;
+    }
+}
+```
+
+* Your class properties are now defined. Add the following class initializer stubs:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Initializing
+
+/**
+ *	Designated constructor.
+ *	Initializes a newly allocated array with the default length and base index.
+ *
+ *	@return	The new array.
+ */
+- (instancetype)init
+{
+    return [self initWithLength:kGRLengthDefault baseIndex:kGRBaseDefault initialValue:kGRValueDefault];
+}
+
+/**
+ *	Initializes a newly allocated array with the given length.
+ *
+ *	@param	length	The length of the array.
+ *
+ *	@return	The new array.
+ */
+- (instancetype)initWithLength:(NSUInteger)length
+{
+    return [self initWithLength:length baseIndex:kGRBaseDefault initialValue:kGRValueDefault];
+}
+
+/**
+ *	Initializes a newly allocated array with the given length and base index..
+ *
+ *	@param	length		The length of the array.
+ *	@param	baseIndex	The base index of the array.
+ *
+ *	@return	The new array.
+ */
+- (instancetype)initWithLength:(NSUInteger)length baseIndex:(NSUInteger)baseIndex
+{
+    return [self initWithLength:length baseIndex:baseIndex initialValue:kGRValueDefault];
+}
+
+/**
+ *	Initializes a newly allocated array with the given length, base index and initial value.
+ *
+ *	@param	length		The length of the array.
+ *	@param	baseIndex	The base index of the array.
+ *	@param	value		The initial value.
+ *
+ *	@return	The new array.
+ */
+- (instancetype)initWithLength:(NSUInteger)length baseIndex:(NSUInteger)baseIndex initialValue:(NSInteger)value
+{
+    self = [super initWithLength:length baseIndex:baseIndex];
+    
+    if (self) {
+        
+        _data = NSZoneMalloc(NSZoneFromPointer(self), length * sizeof(NSInteger));
+        
+        for (NSUInteger idx = 0;
+             idx < _length;
+             ++idx) {
+            
+            _data[idx] = value;
+        }
+    }
+    
+    return self;
+}
+```
+
+* Add the following creator stubs to your class:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Creating
+
+/**
+ *	Returns a new array with the default length and base index.
+ *
+ *	@return	The new array.
+ */
++ (instancetype)array
+{
+    return [[[[self class] alloc] init] autorelease];
+}
+
+/**
+ *	Returns a new array with the given length.
+ *
+ *	@param	length	The length of the array.
+ *
+ *	@return	The new array.
+ */
++ (instancetype)arrayWithLength:(NSUInteger)length
+{
+    return [[[[self class] alloc] initWithLength:length] autorelease];
+}
+
+/**
+ *	Returns a new array with the given length and base index.
+ *
+ *	@param	length		The length of the array.
+ *	@param	baseIndex	The base index of the array.
+ *
+ *	@return	The new array.
+ */
++ (instancetype)arrayWithLength:(NSUInteger)length baseIndex:(NSUInteger)baseIndex
+{
+    return [[[[self class] alloc] initWithLength:length baseIndex:baseIndex] autorelease];
+}
+
+/**
+ *	Returns a new array with the given length, base index, and initial value.
+ *
+ *	@param	length		The length of the array.
+ *	@param	baseIndex	The base index of the array.
+ *	@param	value		The initial value.
+ *
+ *	@return	The new array.
+ */
++ (instancetype)arrayWithLength:(NSUInteger)length baseIndex:(NSUInteger)baseIndex initialValue:(NSInteger)value
+{
+    return [[[[self class] alloc] initWithLength:length baseIndex:baseIndex initialValue:value] autorelease];
+}
+
+/**
+ *  Returns an array of length 2 that contains the given integers.
+ *
+ *	@param	firstInteger	The first integer.
+ *	@param	secondInteger	The second integer.
+ *
+ *  @return The new array.
+ */
++ (instancetype)arrayWithIntegers:(NSUInteger)firstInteger :(NSInteger)secondInteger
+{
+    GRIntegerArray *array = [[[[self class] alloc] initWithLength:2] autorelease];
+    
+    [array replaceIntegerAtIndex:0 withInteger:firstInteger];
+    [array replaceIntegerAtIndex:1 withInteger:secondInteger];
+    
+    return array;
+}
+```
+
+* Add the following stub implementation for `-dealloc` method, which implements the procedure that frees `GRIntegerArray` objects from memory:
+
+``` Objective-C
+/**
+ *  Deallocates the memory occupied by this array.
+ */
+- (void)dealloc
+{
+    [self purge];
+    
+    NSZoneFree(NSZoneFromPointer(self), _data);
+    
+    [super dealloc];
+}
+```
+
+* Add the following stub implementation to overriding the default behavior of the `-description` method:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Querying
+
+/**
+ *	Returns a string that describes this array.
+ *
+ *	@return	The string.
+ */
+- (NSString *)description
+{
+    NSMutableString *string =
+    [NSMutableString stringWithFormat:@"<GRIntegerArray: length=%lu, base=%lu, data=[", _length, _baseIndex];
+    
+    for (NSUInteger idx = 0;
+         idx < _length;
+         ++idx) {
+        
+        if (idx > 0)
+            [string appendString:@", "];
+        
+        [string appendFormat:@"%ld", _data[idx]];
+    }
+    
+    [string appendFormat:@"]>"];
+    
+    return string;
+}
+```
+
+* After you implement `-description` you may wish to implement other remaining methods (namely the `-integerAtIndex:` method), in addition to a local `-boundsCheck:` method for confirming whether `GRIntegerArray` objects could still host additional integer entries or not:
+
+``` Objective-C
+/**
+ *	Returns the int value at the given index in this array.
+ *
+ *	@param	index	An array index.
+ *
+ *	@return	The integer value.
+ */
+- (NSInteger)integerAtIndex:(NSUInteger)index
+{
+    [self boundsCheck:index];
+    
+    return _data[index - _baseIndex];
+}
+```
+
+``` Objective-C
+/**
+ *	Generates an assertion if the given index is out of bounds.
+ *
+ *	@param	index	An array index.
+ */
+- (void)boundsCheck:(NSUInteger)index
+{
+    NSAssert(index >= _baseIndex && index < _baseIndex + _length, @"Index out of bounds.");
+}
+```
+
+* Implement the modifier methods `-replaceIntegerAtIndex:withInteger:`, `-exchangeIntegerAtIndex:withIntegerAtIndex:` and `-purge` in respective order, like so:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Modifying
+
+/**
+ *	Replaces the integer at the given index in this array with the given integer.
+ *
+ *	@param	index	An array index.
+ *	@param	integer	An integer.
+ *
+ *	@return	The object originally at the given index in this array.
+ */
+- (NSInteger)replaceIntegerAtIndex:(NSUInteger)index withInteger:(NSInteger)integer
+{
+    [self boundsCheck:index];
+    
+    NSInteger result = _data[index - _baseIndex];
+	
+    _data[index - _baseIndex] = integer;
+    
+    return result;
+}
+```
+
+``` Objective-C
+/**
+ *	Exchanges the integers at the given indices in this array.
+ *
+ *	@param	index1	An array index.
+ *	@param	index2	An array index.
+ */
+- (void)exchangeIntegerAtIndex:(NSUInteger)index1 withIntegerAtIndex:(NSUInteger)index2
+{
+    [self boundsCheck:index1];
+    [self boundsCheck:index2];
+    
+    NSInteger tmp = _data[index1 - _baseIndex];
+	
+    _data[index1 - _baseIndex] = _data[index2 - _baseIndex];
+    _data[index2 - _baseIndex] = tmp;
+}
+```
+
+``` Objective-C
+/**
+ *	Removes all the objects from this array.
+ */
+- (void)purge
+{
+    for (NSUInteger idx = 0;
+         idx < _length;
+         ++idx) {
+        
+        _data[idx] = 0;
+    }
+}
+```
+
+* Implement the "optional" `-shuffle` method like so:
+
+``` Objective-C
+/**
+ *  Executes the Fisher Yates shuffling algorithm.
+ *  Shuffles the contents of this array for random pick of the points.
+ *
+ *  @discussion This method enhances the OCArray class by providing methods to randomly shuffle the elements.
+ */
+- (void)shuffle
+{
+    NSUInteger count = _length;
+    
+    for (NSUInteger idx = 0;
+         idx < count;
+         ++idx) {
+        
+        // Select a random element between (idx) and end of array to swap with.
+        NSInteger numberOfElements = count - idx;
+        NSInteger number = (arc4random() % numberOfElements) + idx;
+        
+        // Swap.
+        [self exchangeIntegerAtIndex:idx
+                  withIntegerAtIndex:number];
+    }
+}
+```
+
+* Outstanding! Now add the following stub implementation for `-copyWithZone:` method, which implements (and confirms to) a procedure (defined by `NSCopying`) for returning "deep copies" of existing `GRIntegerArray` instances:
+
+``` Objective-C
+#pragma mark -
+#pragma mark NSCopying
+
+/**
+ *  Returns a new array that is a deep copy of this array.
+ *
+ *  @param zone The zone in which to allocate the new array.
+ *
+ *  @return The new array.
+ */
+- (id)copyWithZone:(NSZone *)zone
+{
+    GRIntegerArray *copy = [[GRIntegerArray allocWithZone:zone] initWithLength:self.length];
+    
+    if (copy) {
+        
+        for (NSUInteger idx = 0;
+             idx < self.length;
+             ++idx) {
+            
+            copy->_data[idx] = _data[idx];
+        }
+    }
+    
+    return copy;
+}
+```
+
+* Next, type the following stub implementation for `-countByEnumeratingWithState:objects:count:` method, which confirms to `NSFastEnumeration` for returning (by reference) C arrays of objects over which the sender should iterate:
+
+``` Objective-C
+#pragma mark -
+#pragma mark NSFastEnumeration
+
+/**
+ *	Returns by reference a C array of objects over which the sender should iterate,
+ *	and as the return value the number of objects in the array.
+ *
+ *	@param	state	Context information that is used in the enumeration to, in addition to other possibilities, ensure that the collection has not been mutated.
+ *	@param	buffer	A C array of objects over which the sender is to iterate.
+ *	@param	len		The maximum number of objects to return in buffer.
+ *
+ *	@return	The number of objects returned in stackbuf. Returns 0 when the iteration is finished.
+ */
+- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state
+                                  objects:(id __unsafe_unretained [])buffer
+                                    count:(NSUInteger)len
+{
+    int result = 0;
+    int index = (int)state->state;
+    
+    if (index < _length && len > 0) {
+        
+        buffer[0] = @(_data[index++]);
+        state->itemsPtr = buffer;
+        state->state = (unsigned long)index;
+        state->mutationsPtr = (unsigned long *)self;
+        result = 1;
+    }
+    
+    return result;
+}
+```
+
+* One more method remains. Implement the class method `+unitTest` like so:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Testing
+
+/**
+ *	GRIntegerArray unit test program.
+ *
+ *	@return	A boolean value that indicates whether all the tests were successful.
+ */
++ (BOOL)unitTest
+{
+    NSLog(@"GRIntegerArray unit test program.\n\
+          --------------------------------------------");
+    
+    GRIntegerArray *a1 = [GRIntegerArray arrayWithLength:3];
+    NSLog(@"a1 = %@", a1);
+    
+    [a1 replaceIntegerAtIndex:0 withInteger:57];
+    [a1 replaceIntegerAtIndex:1 withInteger:2011];
+    NSLog(@"a1[0] = %li", [a1 integerAtIndex:0]);
+    NSLog(@"a1[1] = %li", [a1 integerAtIndex:1]);
+    
+    [a1 exchangeIntegerAtIndex:0 withIntegerAtIndex:1];
+    NSLog(@"a1 = %@", a1);
+    
+    NSLog(@"Enumerating a1...");
+    for(NSNumber *element in a1) {
+        
+        NSLog(@"element = %@", element);
+    }
+    
+    [a1 setLength:4];
+    [a1 setBaseIndex:1];
+    NSLog(@"a1 = %@", a1);
+    
+    GRIntegerArray *b1 = [[a1 copy] autorelease];
+    NSLog(@"b1 = %@", b1);
+    
+    GRIntegerArray *a2 = GRTuple(57, 2011);
+    NSLog(@"a2 = %@", a2);
+    
+    NSLog(@"Shuffling a2...");
+    [a2 shuffle];
+    NSLog(@"a2 = %@", a2);
+    
+    NSLog(@"Purging a2...");
+    [a2 purge];
+    NSLog(@"a2 = %@", a2);
+    
+    a2.length = 0;
+    NSLog(@"a2 = %@", a2);
+    
+    // Successful.
+    return YES;
+}
+```
+
+* Everything is ready now for us to use this new class. Modify `main.m` by commenting out the previous unit testing program for `GRArray` and add a new unit testing program for `GRIntegerArray` like so:
+
+``` Objective-C
+@import Foundation;
+
+#import "GRArray.h"
+#import "GRIntegerArray.h"
+
+/**
+ *  Main tester program.
+ *
+ *  @param argc The argc.
+ *  @param argv The argv.
+ *
+ *  @return The execution return code.
+ */
+int main(int argc, const char * argv[]) {
+    
+    @autoreleasepool {
+        
+        // Run the GRArray unit test program.
+		// [GRArray unitTest];
+        
+        // Run the GRIntegerArray unit test program.
+        [GRIntegerArray unitTest];
+    }
+    
+    return 0;
+}
+```
+
+* Compile and run the program by clicking on the Run button (located on the top-left corner of Xcode), or by pressing (⌘ + R). You should see an outcome similar to the following Debugger output:
+
+```
+2016-02-26 23:24:44.791 Arrays[12312:2122964] GRIntegerArray unit test program.
+          --------------------------------------------
+2016-02-26 23:24:44.792 Arrays[12312:2122964] a1 = <GRIntegerArray: length=3, base=0, data=[0, 0, 0]>
+2016-02-26 23:24:44.793 Arrays[12312:2122964] a1[0] = 57
+2016-02-26 23:24:44.793 Arrays[12312:2122964] a1[1] = 2011
+2016-02-26 23:24:44.793 Arrays[12312:2122964] a1 = <GRIntegerArray: length=3, base=0, data=[2011, 57, 0]>
+2016-02-26 23:24:44.793 Arrays[12312:2122964] Enumerating a1...
+2016-02-26 23:24:44.793 Arrays[12312:2122964] element = 2011
+2016-02-26 23:24:44.794 Arrays[12312:2122964] element = 57
+2016-02-26 23:24:44.794 Arrays[12312:2122964] element = 0
+2016-02-26 23:24:44.794 Arrays[12312:2122964] a1 = <GRIntegerArray: length=4, base=1, data=[2011, 57, 0, 0]>
+2016-02-26 23:24:44.794 Arrays[12312:2122964] b1 = <GRIntegerArray: length=4, base=0, data=[2011, 57, 0, 0]>
+2016-02-26 23:24:44.794 Arrays[12312:2122964] a2 = <GRIntegerArray: length=2, base=0, data=[57, 2011]>
+2016-02-26 23:24:44.795 Arrays[12312:2122964] Shuffling a2...
+2016-02-26 23:24:44.795 Arrays[12312:2122964] a2 = <GRIntegerArray: length=2, base=0, data=[57, 2011]>
+2016-02-26 23:24:44.804 Arrays[12312:2122964] Purging a2...
+2016-02-26 23:24:44.804 Arrays[12312:2122964] a2 = <GRIntegerArray: length=2, base=0, data=[0, 0]>
+2016-02-26 23:24:44.805 Arrays[12312:2122964] a2 = <GRIntegerArray: length=0, base=0, data=[]>
+Program ended with exit code: 0
+```
+
+> **Note:** Xcode project files for this exercise will be pushed to this repo, later.
+
+## Exercise 5: Multidimensional Arrays
+
+...
 
 ## What's Next?
 
