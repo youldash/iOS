@@ -9,7 +9,7 @@ By using this site, you agree to the **Terms of Use** that are defined in [LICEN
 
 ## Outline
 
-In this part of the course, you will be introduced to other topics pertaining to the construction of Scene Graphs. In particular, we will explain how [the work in the previous three exercises ]((https://github.com/youldash/iOS/blob/master/Day%202/)) can be incorporated into a much bigger component. That is, forming the Nodes and Edges of a Graph, along with other vital components that allow such Graphs to be constructed, enumerated, and queried.
+Over the course of this day, you will be introduced to other topics pertaining to the construction of Scene Graphs. In particular, we will explain how [the work in the previous three exercises ]((https://github.com/youldash/iOS/blob/master/Day%202/)) can be incorporated into a much bigger component. That is, forming the Nodes and Edges of a Graph, along with other vital components that allow such Graphs to be constructed, enumerated, and queried.
 
 In practice, you will start building your final Scene Graph iOS app starting from **Exercise 6**. As you start, we will guide you through the necessary steps in configuring your app to gradually accept new components, test them out, and to move on to the final phases of the app development lifecycle.
 
