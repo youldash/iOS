@@ -633,3 +633,74 @@ static const NSUInteger kGRBaseDefault = 0;
     return result;
 }
 ```
+
+* One last non-protocol, class method remains: `+unitTest`. Add the following final stub implementation to `GRArray.m`:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Testing
+
+/**
+ *	GRArray unit test program.
+ *
+ *	@return	A boolean value that indicates whether all the tests were successful.
+ */
++ (BOOL)unitTest
+{
+    NSLog(@"GRArray unit test program.\n\
+          --------------------------------------------");
+    
+    // Seed the random number generator.
+    srandomdev();
+    
+    GRArray *a1 = [GRArray arrayWithLength:5];
+    NSLog(@"a1 = %@", [a1 description]);
+    
+    [a1 replaceObjectAtIndex:0 withObject:@(arc4random_uniform(100))];
+    [a1 replaceObjectAtIndex:1 withObject:@(arc4random_uniform(100))];
+    [a1 replaceObjectAtIndex:2 withObject:@(arc4random_uniform(100))];
+    [a1 replaceObjectAtIndex:3 withObject:@(arc4random_uniform(100))];
+    [a1 replaceObjectAtIndex:4 withObject:@(arc4random_uniform(100))];
+    
+    NSLog(@"a1[0] = %@", [a1 objectAtIndex:0]);
+    NSLog(@"a1[1] = %@", [a1 objectAtIndex:1]);
+    
+    [a1 exchangeObjectAtIndex:0 withObjectAtIndex:1];
+    NSLog(@"a1 = %@", a1);
+    
+    NSUInteger idx = 0;
+    
+    NSLog(@"Enumerating a1...");
+    for (NSNumber *number in a1) {
+        
+        NSLog(@"a1[%lu] = %@", (unsigned long)idx, number);
+        
+        idx++;
+    }
+    
+    a1.length = 3;
+    a1.baseIndex = 1;
+    NSLog(@"a1 = %@", a1);
+    
+    GRArray *b1 = a1.copy;
+    NSLog(@"b1 = %@", b1);
+    
+    b1.length = 3;
+    b1.baseIndex = 0;
+    NSLog(@"b1 = %@", b1);
+    
+    NSLog(@"Purging b1...");
+    [b1 purge];
+    NSLog(@"b1 = %@", b1);
+    
+    GRArray *a2 = [GRArray arrayWithLength:5];
+    NSLog(@"a2 = %@", a2);
+    
+    GRArray *a3 = [GRArray arrayWithLength:5 baseIndex:1];
+    NSLog(@"a3 = %@", a3);
+
+    // Successful.
+    return YES;
+}
+```
+

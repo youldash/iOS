@@ -251,7 +251,7 @@ static const int kNumberDefault = 0;
 @end
 ```
 
-* Type the code snippet listed below into `PhotoAlbum.m`:
+* Type the code snippets listed below into `PhotoAlbum.m`:
 
 ``` Objective-C
 #import "PhotoAlbum.h"
@@ -284,7 +284,9 @@ static const int kNumberDefault = 0;
     // Return this photo album.
     return self;
 }
+```
 
+``` Objective-C
 #pragma mark -
 #pragma mark Querying
 
@@ -317,7 +319,9 @@ static const int kNumberDefault = 0;
     // Return it.
     return string;
 }
+```
 
+``` Objective-C
 #pragma mark -
 #pragma mark Modifying
 
@@ -363,7 +367,9 @@ static const int kNumberDefault = 0;
     // Photo was not removed.
     return NO;
 }
+```
 
+``` Objective-C
 #pragma mark -
 #pragma mark Modifying
 
@@ -375,7 +381,9 @@ static const int kNumberDefault = 0;
     // Also remove all the photos and edges from the photo album.
     [self.photos removeAllObjects];
 }
+```
 
+``` Objective-C
 #pragma mark -
 #pragma mark Testing
 
