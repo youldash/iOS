@@ -134,7 +134,26 @@ If you take a closer look at your Grapher project, you'll see the SpriteKit Game
 * Enable "Copy items if needed". Also make sure "Add to targets" is checked for the Grapher app bundle, like so:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise6.0.9.png" width="100%" /></div>
 
+> **Important:** ARC needs to be disabled for both `GRArray` and `GRIntegerArray` before you attempt the following steps!
 
+### Disabling ARC
+
+* Reveal both Editor and Navigator areas and click on the "Grapher" project blue icon.
+
+* Configure your view according to the following sequence of actions: Highlight the "Grapher" app bundle (under "Targets") → Click on "Build Phases" to expand its options → Unfold "Compile Sources" to view seven implementation sources:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise6.0.10.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise6.0.11.png" width="50%" /></div>
+
+* Double-click on `GRArray.m` and set its compiler flag to `-fno-objc-arc` so that you disable ARC for this class whenever you build or rebuild your project.
+
+* Repeat the previous step for `GRIntegerArray.m` and disable ARC for it, too.
+
+* Confirm that you end up having a similar configuration to this one:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise6.0.12.png" width="100%" /></div>
+
+> Great! Xcode should not warn you about any possible ARC errors for these two classes.
+
+### Enumerating Array Objects
 
 
 

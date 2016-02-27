@@ -820,7 +820,7 @@ The behavior of this class is expected to be quite similar to the `GRArray` clas
 
 * Configure your view according to the following sequence of actions: Highlight the "Arrays" executable (under "TARGETS") → Click on "Build Phases" to expand its options → Unfold "Compile Sources" to view three implementation sources (`main.m`, `GRArray.m` and `GRIntegerArray.m`).
 
-* Double-click on `GRIntegerArray.m` and (like what you've done for `GRArray.m` in the previous exercise) set the compiler flag to `-fno-objc-arc` so that you disables ARC for this source whenever you build or rebuild your project.
+* Double-click on `GRIntegerArray.m` and (like what you've done for `GRArray.m` in the previous exercise) set the compiler flag to `-fno-objc-arc` so that you disable ARC for this source whenever you build or rebuild your project.
 
 * Confirm that you have a similar view to what follows:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise4.0.4.png" width="100%" /></div>
