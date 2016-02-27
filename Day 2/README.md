@@ -35,7 +35,7 @@ In this exercise, you will develop a Foundation tool using Xcode. This example s
 
 * Xcode then creates your project.
 
-### Creating your Model Class
+### Creating Your Model Class
 
 * Add a new class by highlighting on the "Arrays" yellow (group) folder and selecting "New File" from the File menu.
 
@@ -806,6 +806,8 @@ The behavior of this class is expected to be quite similar to the `GRArray` clas
 
 * Under the "OS X" section, select "Source", and choose "Cocoa Class" as follows:
 
+* Choose "Objective-C" from the Language pop-up menu.
+
 * When prompted for options, type `GRIntegerArray` as the class name. Make sure `GRArray` is selected for subclassing (a.k.a. inheriting) from, like so:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise4.0.2.png" width="100%" /></div>
 
@@ -827,7 +829,7 @@ The behavior of this class is expected to be quite similar to the `GRArray` clas
 
 > All ARC warnings and errors should disappear when you manually allocate and deallocate memory for this class!
 
-### Creating your Model Class
+### Creating Your Model Class
 
 * Replace what currently exists in `GRIntegerArray.h` with the following snippet:
 
@@ -1521,12 +1523,14 @@ For this, you will need to create a special `GRMultidimensionalArray` class, sui
 * When prompted for options, type `GRMultidimensionalArray` as the class name. Make sure you subclass `NSObject`, like so:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise5.0.1.png" width="100%" /></div>
 
+* Choose "Objective-C" from the Language pop-up menu.
+
 * Confirm by clicking Next and make sure "Targets" is checked for the executable. This step will add both header file `GRMultidimensionalArray.h` and the implementation file `GRMultidimensionalArray.m` to your project.
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise5.0.2.png" width="100%" /></div>
 
 > **Important:** ARC needs to be kept enabled for this class, in spite of what you have done in the previous two exercises.
 
-### Creating your Model Class
+### Creating Your Model Class
 
 * Replace what currently exists in the header file with the following two code snippets into `GRMultidimensionalArray.h`. They contain both protocol and class declarations for the `GRMultidimensionalArray` class, respectively:
 
