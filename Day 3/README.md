@@ -47,12 +47,83 @@ In practice, you will start building your final Scene Graph iOS app starting fro
 * Run the app on either your enrolled iOS device or Simulator, by making sure that the Scheme pop-up menu in the Xcode toolbar (top-left corner of Xcode) has Grapher > "YOUR DEVICE NAME" chosen. Then, press (⌘ + R). You should see something similar to the following:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise6.0.6.png" width="50%" /></div>
 
-> **Note:** As you attempt to touch anywhere inside the app's visible **Scene** view, you will immediately notice it adding rotating spaceships (rendered as textured point sprites) at exactly where you touch. In essence, Sprite Kit organizes your app into the concept of Scenes (which are kind of like the "levels" or "screens" of a typical game).
+> **Note:** As you attempt to touch anywhere inside the app's visible **Scene** view, you will immediately notice it adding rotating spaceships (rendered as textured point sprites) at exactly where you touch. In essence, Sprite Kit organizes your app into the concept of Scenes (which are kind of like the "levels" or "screens" of your average game).
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise6.0.7.png" width="37.5%" /></div>
 
+If you take a closer look at your Grapher project, you'll see the SpriteKit Game template has already created a scene for you by default (called "GameScene" and made present by both `GameScene.[h,m]` Objective-C class files, and the `GameScene.sks` SpriteKit Serialized Data file).
+
+* Inspect `GameScene.m` in the Editor area of Xcode and as you do so, you will witness code similar to the following snippet, which puts a centered white label on your screen, and adds a rotating spaceship whenever you tap on it:
+
+``` Objective-C
+#import "GameScene.h"
+
+@implementation GameScene
+
+-(void)didMoveToView:(SKView *)view {
+    /* Setup your scene here */
+    SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    
+    myLabel.text = @"Hello, World!";
+    myLabel.fontSize = 45;
+    myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
+                                   CGRectGetMidY(self.frame));
+    
+    [self addChild:myLabel];
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    /* Called when a touch begins */
+    
+    for (UITouch *touch in touches) {
+        CGPoint location = [touch locationInNode:self];
+        
+        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
+        
+        sprite.xScale = 0.5;
+        sprite.yScale = 0.5;
+        sprite.position = location;
+        
+        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
+        
+        [sprite runAction:[SKAction repeatActionForever:action]];
+        
+        [self addChild:sprite];
+    }
+}
+
+-(void)update:(CFTimeInterval)currentTime {
+    /* Called before each frame is rendered */
+}
+
+@end
+```
+
+* For starters, you need to modify this file by omitting code that is responsible for adding both label and spaceships. This step is necessary for the purpose of accomplishing this exercise (as this boilerplate code may well distract you from achieving the intended goal of this exercise), like so:
+
+``` Objective-C
+#import "GameScene.h"
+
+@implementation GameScene
+
+-(void)didMoveToView:(SKView *)view {
+    /* Setup your scene here */
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    /* Called when a touch begins */
+}
+
+-(void)update:(CFTimeInterval)currentTime {
+    /* Called before each frame is rendered */
+}
+
+@end
+```
 
 
 
+
+> **Note:** Xcode project files for this exercise will be pushed to this repo, later.
 
 ## What's Next?
 
