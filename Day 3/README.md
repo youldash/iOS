@@ -170,40 +170,93 @@ As the title of this exercise suggests, Scene Graph elements (literally Node and
 
 * Confirm by clicking Next and make sure "Targets" is checked for the executable. As you hit Create, you will immediately add both interface and implementation files `GREnumerator.[h,m]` to your project.
 
-* Type the code snippet listed below into `GREnumerator.h`:
+* Replace what currently exists in `GREnumerator.h` with the following two code snippets. They contain both protocol and class interface declarations for the `GREnumerator` class, respectively:
 
 ``` Objective-C
 @import Foundation;
 
 /**
- *	Protocol implement by object enumerators.
+ *  Protocol implement by object enumerators.
  */
 @protocol GREnumeratorDelegate <NSObject>
 
 /**
- *	Indicates whether there are more objects to be enumerated.
+ *  Indicates whether there are more objects to be enumerated.
  *
- *	@return	The boolean result.
+ *  @return  The boolean result.
  */
 - (BOOL)hasMoreObjects;
 
 /**
- *	The next object to be enumerated.
+ *  The next object to be enumerated.
  *
- *	@return	The next object.
+ *  @return  The next object.
  */
 - (id)nextObject;
 
 @end
+```
 
-#pragma mark -
-
+``` Objective-C
 /**
- *	Base class from which all enumerators are derived.
+ *  Base class from which all enumerators are derived.
  */
 @interface GREnumerator : NSObject <GREnumeratorDelegate>
 
 @end
+```
+
+* The `GREnumerator` interface is now ready for a proper implementation. Add the following class initializer stub in `GREnumerator.m`:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Initializing
+
+/**
+ *  Designated initializer.
+ *  Initializes a newly allocated enumerator.
+ *
+ *  @return The new enumerator.
+ */
+- (instancetype)init
+{
+    NSAssert(![self isMemberOfClass:[GREnumerator class]], @"GREnumerator class instantiated.");
+    
+    // Immutable enumerator, just return a new reference to itself (retained automatically by ARC).
+    self = [super init];
+    
+    // Return this enumerator along with its children.
+    return self;
+}
+```
+
+* Now, implement the `GREnumeratorDelegate` protocol methods `-hasMoreObjects` and `-nextObject` like so:
+
+``` Objective-C
+#pragma mark -
+#pragma mark GREnumeratorDelegate
+
+/**
+ *  Indicates whether there are more objects to be enumerated.
+ *
+ *  @return  The boolean result.
+ */
+- (BOOL)hasMoreObjects
+{
+    [self doesNotRecognizeSelector:_cmd];
+    return NO;
+}
+
+/**
+ *  The next object to be enumerated.
+ *
+ *  @return  The next object.
+ */
+- (id)nextObject
+{
+    [self doesNotRecognizeSelector:_cmd];
+    return nil;
+}
 ```
 
 

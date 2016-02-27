@@ -1532,7 +1532,7 @@ For this, you will need to create a special `GRMultidimensionalArray` class, sui
 
 ### Creating Your Model Class
 
-* Replace what currently exists in the header file with the following two code snippets into `GRMultidimensionalArray.h`. They contain both protocol and class declarations for the `GRMultidimensionalArray` class, respectively:
+* Replace what currently exists in `GRMultidimensionalArray.h` with the following two code snippets. They contain both protocol and class interface declarations for the `GRMultidimensionalArray` class, respectively:
 
 ``` Objective-C
 @import Foundation;
