@@ -98,7 +98,7 @@ If you take a closer look at your Grapher project, you'll see the SpriteKit Game
 @end
 ```
 
-* For starters, you need to modify this file by omitting code that is responsible for adding both label and spaceships. This step is necessary for the purpose of accomplishing this exercise (as this boilerplate code may well distract you from achieving the intended goal of this exercise), like so:
+* For starters, you need to modify this file by omitting code segments that are responsible for adding both label and spaceships. This step is necessary for the purpose of accomplishing this exercise (as this boilerplate code may well distract you from achieving the intended goal of this exercise), like so:
 
 ``` Objective-C
 #import "GameScene.h"

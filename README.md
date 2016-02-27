@@ -31,7 +31,7 @@ In this workshop, we present Apple's approach to building a a fully-fledged [Sce
 Your app will be capable of establishing two-dimensional Graph instances in a dynamic fashion. In other words, your app will be able to interactively construct the Node and Edge elements of a typical Scene Graph, while arranging their spacial positions using "touch" as the primary method of input.
 
 The final product should look similarly to the following iPad mockup (or screenshot):
-![Screenshot](https://raw.github.com/youldash/iOS/master/Grapher/ScreenshotLandscape.png)
+![Screenshot](https://raw.github.com/youldash/iOS/master/Misc/ScreenshotLandscape.png)
 
 ### Course Syllabus
 
