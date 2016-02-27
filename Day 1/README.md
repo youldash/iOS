@@ -503,7 +503,7 @@ Here, you will develop your very first iOS app that reuses code form the previou
 * Under the "iOS" section, select "Application", and choose "Single View Application", then Next.
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.1.png" width="100%" /></div>
 
-**App Frameworks:** "Single View Application" apps, along with similar view-based apps, generally depend on the [UIKit Framework](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIKit_Framework/) for creating various UI elements for UI display, and for handling user interaction.
+> **App Frameworks:** "Single View Application" apps, along with similar view-based apps, generally depend on the [UIKit Framework](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIKit_Framework/) for creating various UI elements for UI display, and for handling user interaction.
 
 * When prompted for options, type "iPhotography" as the Product Name.
 
