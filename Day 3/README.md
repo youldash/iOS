@@ -155,7 +155,54 @@ If you take a closer look at your Grapher project, you'll see the SpriteKit Game
 
 ### Enumerating Array Objects
 
+As the title of this exercise suggests, Scene Graph elements (literally Node and Edge collections) need to be enumerated (or traversed based on a specific algorithm or method). For this very reason we shall introduce ways for accomplishing this.
 
+#### Starting With the Enumerator Class
+
+* Add a new class by highlighting on the "Grapher" yellow (group) folder and selecting "New File" from the File menu.
+
+* Under the "OS X" section, select "Source", and choose "Cocoa Class".
+
+* When prompted for options, type `GREnumerator` as the class name. Make sure `NSObject` is selected for subclassing from, like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.5.png" width="100%" /></div>
+
+* Confirm by clicking Next and make sure "Targets" is checked for the executable. This step will add both header file `GREnumerator.h` and the implementation file `GREnumerator.m` to your project.
+
+* Type the code snippet listed below into `GREnumerator.h`. `GREnumerator` is a base class from which all enumerators object facades are derived.
+
+``` Objective-C
+@import Foundation;
+
+/**
+ *	Protocol implement by object enumerators.
+ */
+@protocol GREnumeratorDelegate <NSObject>
+
+/**
+ *	Indicates whether there are more objects to be enumerated.
+ *
+ *	@return	The boolean result.
+ */
+- (BOOL)hasMoreObjects;
+
+/**
+ *	The next object to be enumerated.
+ *
+ *	@return	The next object.
+ */
+- (id)nextObject;
+
+@end
+
+#pragma mark -
+
+/**
+ *	Base class from which all enumerators are derived.
+ */
+@interface GREnumerator : NSObject <GREnumeratorDelegate>
+
+@end
+```
 
 
 > **Note:** Xcode project files for this exercise will be pushed to this repo, later.
