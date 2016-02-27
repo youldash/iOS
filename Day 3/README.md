@@ -48,7 +48,7 @@ In practice, you will start building your final Scene Graph iOS app starting fro
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise6.0.6.png" width="50%" /></div>
 
 > **Note:** As you attempt to touch anywhere inside the app's visible **Scene** view, you will immediately notice it adding rotating spaceships (rendered as textured point sprites) at exactly where you touch. In essence, Sprite Kit organizes your app into the concept of Scenes (which are kind of like the "levels" or "screens" of a typical game).
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise6.0.7.png" width="50%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise6.0.7.png" width="25%" /></div>
 
 
 
