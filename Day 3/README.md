@@ -50,6 +50,8 @@ In practice, you will start building your final Scene Graph iOS app starting fro
 > **Note:** As you attempt to touch anywhere inside the app's visible **Scene** view, you will immediately notice it adding rotating spaceships (rendered as textured point sprites) at exactly where you touch. In essence, Sprite Kit organizes your app into the concept of Scenes (which are kind of like the "levels" or "screens" of your average game).
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise6.0.7.png" width="37.5%" /></div>
 
+### Customizing your Project
+
 If you take a closer look at your Grapher project, you'll see the SpriteKit Game template has already created a scene for you by default (called "GameScene" and made present by both `GameScene.[h,m]` Objective-C class files, and the `GameScene.sks` SpriteKit Serialized Data file).
 
 * Inspect `GameScene.m` in the Editor area of Xcode and as you do so, you will witness code similar to the following snippet, which puts a centered white label on your screen, and adds a rotating spaceship whenever you tap on it:
@@ -98,7 +100,7 @@ If you take a closer look at your Grapher project, you'll see the SpriteKit Game
 @end
 ```
 
-* For starters, you need to modify this file by omitting code segments that are responsible for adding both label and spaceships. This step is necessary for the purpose of accomplishing this exercise (as this boilerplate code may well distract you from achieving the intended goal of this exercise), like so:
+* For starters, you need to tweak this file by omitting code segments that are responsible for adding both label and spaceships. This step is necessary for the purpose of accomplishing this exercise (as this boilerplate code may well distract you from achieving the intended goal of this exercise), like so:
 
 ``` Objective-C
 #import "GameScene.h"
@@ -120,7 +122,9 @@ If you take a closer look at your Grapher project, you'll see the SpriteKit Game
 @end
 ```
 
+### Adding Files from Previous Exercises
 
+* Before you...
 
 
 > **Note:** Xcode project files for this exercise will be pushed to this repo, later.

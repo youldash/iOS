@@ -83,6 +83,8 @@ In this exercise, you will develop a Photography app as a Foundation tool using 
 * Confirm by clicking Next and make sure "Targets" is checked for the executable. This step will add both header file `Photo.h` and the implementation file `Photo.m` to your project.
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise1.0.8.png" width="100%" /></div>
 
+### Implementing
+
 * Type the code snippet listed below into `Photo.h`. This class represents the building block for creating new photo instances as part of an photo album, which will be created later as a separate class:
 
 ``` Objective-C
@@ -466,6 +468,8 @@ int main(int argc, const char * argv[]) {
 }
 ```
 
+### Compiling your Project
+
 * Compile and run the program by clicking on the Run button (located on the top-left corner of Xcode), or by pressing (⌘ + R). You should see an outcome similar to the following Debugger output:
 
 ```
@@ -530,6 +534,8 @@ Here, you will develop your very first iOS app that reuses code form the previou
 * Now, make sure you can see both Navigator and Utility areas. You are now ready to add a button for displaying `PhotoAlbum` data. Edit the `Main.storyboard` file in your project navigator to display the scene on the canvas, like so:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.6.png" width="100%" /></div>
 
+### Adding UI Elements
+
 * Open the Object library (appears at the bottom of the Utilities area), and choose Controls from the Objects pop-up menu.
 
 * Drag a Round Rect Button from the list to the view. Lay out your UI element appropriately to be centered on screen. Double-click on the Button and type the text "Show PhotoAlbum Info". Your view should confirm to the following screenshot:
@@ -560,6 +566,8 @@ Here, you will develop your very first iOS app that reuses code form the previou
 * Make sure that the Arguments pop-up menu contains Sender.
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.11.png" width="100%" /></div>
 
+### Connecting your UI to your Data Model
+
 * Finally in the popover, click Connect. Xcode adds a stub implementation of the new `showAddressBook:` method and indicates a connection has been made by showing a filled-in circle to the left of the method. Confirm your header includes this action method declaration:
 
 ``` Objective-C
@@ -578,6 +586,8 @@ Here, you will develop your very first iOS app that reuses code form the previou
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.12.png" width="100%" /></div>
 
 > You're making progress! Yet, there's still no way to show relevant data, even if you press on the button. To do that, you have to import files from the Photography exercise.
+
+### Importing Files from the Previous Exercise
 
 *  If you have completed the Photography project, add (by copying) the the following files into your current project: `Photo.[h,m]` and `PhotoAlbum.[h,m]`. Right-click on yellow project folder from the Navigator area and choose "Add Files to iPhotography"…
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.13.png" width="100%" /></div>
@@ -638,6 +648,8 @@ Here, you will develop your very first iOS app that reuses code form the previou
 ```
 
 > Your button is now ready for use! What you have done is simply declared an `PhotoAlbum` object and passed it a new `Photo` object. For the `PhotoAlbum` data to be prompted, a special `UIAlertController` object is allocated and then is passed a new `UIAlertAction` instance (which adds a button in the alert controller and effectively handles its interaction). The final stage involved invoking `UIViewController`'s `-presentViewController:animated:completion:` method, which was used to reveal the alert popup.
+
+### Running your App
 
 * Run and test the final version of the app on your iOS device (or Simulator), and confirm that an alert popup is prompted after clicking on the button, revealing data generated from the `PhotoAlbum` object.
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.15.png" width="100%" /></div>

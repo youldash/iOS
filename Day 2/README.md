@@ -35,6 +35,8 @@ In this exercise, you will develop a Foundation tool using Xcode. This example s
 
 * Xcode then creates your project.
 
+### Creating your Model Class
+
 * Add a new class by highlighting on the "Arrays" yellow (group) folder and selecting "New File" from the File menu.
 
 * Under the "OS X" section, select "Source", and choose "Cocoa Class" as follows:
@@ -715,6 +717,8 @@ static const NSUInteger kGRBaseDefault = 0;
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.8.png" width="100%" /></div>
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.9.png" width="100%" /></div>
 
+### Disabling ARC
+
 * To disable ARC for this class only (and not for the entire project), Hide both Utility and Debug areas and only show both Editor and Navigator areas. This view configuration grants you more space to work on and keeps you from getting distracted by other elements that might not be of relevance to tis current task.
 
 * Click on the "Arrays" project file (blue icon in the Navigator area) and confirm that you have a similar view like this one:
@@ -730,6 +734,8 @@ static const NSUInteger kGRBaseDefault = 0;
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.13.png" width="100%" /></div>
 
 > All compiler warnings should disappear by now!
+
+### Testing your Code
 
 * Everything is ready now for us to use this new class. Edit `main.m` (your project’s main implementation file) and make sure it confirms to the following code snippet:
 
@@ -808,6 +814,8 @@ The behavior of this class is expected to be quite similar to the `GRArray` clas
 
 > **Important:** ARC needs to be disabled for this file too, prior completing the following tasks.
 
+### Disabling ARC
+
 * Hide both Utility and Debug areas and only show both Editor and Navigator areas, and click on the "Arrays" project file (blue icon in the Navigator area).
 
 * Configure your view according to the following sequence of actions: Highlight the "Arrays" executable (under "TARGETS") → Click on "Build Phases" to expand its options → Unfold "Compile Sources" to view three implementation sources (`main.m`, `GRArray.m` and `GRIntegerArray.m`).
@@ -818,6 +826,8 @@ The behavior of this class is expected to be quite similar to the `GRArray` clas
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise4.0.4.png" width="100%" /></div>
 
 > All ARC warnings and errors should disappear when you manually allocate and deallocate memory for this class!
+
+### Creating your Model Class
 
 * Replace what currently exists in `GRIntegerArray.h` with the following snippet:
 
@@ -1431,6 +1441,8 @@ static const NSUInteger kGRValueDefault = 0;
 }
 ```
 
+### Testing your Code
+
 * Everything is ready now for us to use this new class. Modify `main.m` by commenting out the previous unit testing program for `GRArray` and add a new unit testing program for `GRIntegerArray` like so:
 
 ``` Objective-C
@@ -1513,6 +1525,8 @@ For this, you will need to create a special `GRMultidimensionalArray` class, sui
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise5.0.2.png" width="100%" /></div>
 
 > **Important:** ARC needs to be kept enabled for this class, in spite of what you have done in the previous two exercises.
+
+### Creating your Model Class
 
 * Replace what currently exists in the header file with the following two code snippets into `GRMultidimensionalArray.h`. They contain both protocol and class declarations for the `GRMultidimensionalArray` class, respectively:
 
@@ -1889,6 +1903,8 @@ For this, you will need to create a special `GRMultidimensionalArray` class, sui
     return YES;
 }
 ```
+
+### Testing your Code
 
 * Everything is ready now for us to use this new class. Modify `main.m` by commenting out the previous unit testing program for `GRIntegerArray` and add a new unit testing program for `GRMultidimensionalArray` like so:
 
