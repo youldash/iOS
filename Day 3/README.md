@@ -163,12 +163,14 @@ As the title of this exercise suggests, Scene Graph elements (literally Node and
 
 * Under the "OS X" section, select "Source", and choose "Cocoa Class".
 
-* When prompted for options, type `GREnumerator` as the class name. Make sure `NSObject` is selected for subclassing from, like so:
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.5.png" width="100%" /></div>
+* When prompted for options, type `GREnumerator` as the class name. Make sure `NSObject` is selected for subclassing from. `GREnumerator` is a base class from which all enumerators object facades are derived.
 
-* Confirm by clicking Next and make sure "Targets" is checked for the executable. This step will add both header file `GREnumerator.h` and the implementation file `GREnumerator.m` to your project.
+* Choose "Objective-C" from the Language pop-up menu, like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise6.0.13.png" width="100%" /></div>
 
-* Type the code snippet listed below into `GREnumerator.h`. `GREnumerator` is a base class from which all enumerators object facades are derived.
+* Confirm by clicking Next and make sure "Targets" is checked for the executable. As you hit Create, you will immediately add both interface and implementation files `GREnumerator.[h,m]` to your project.
+
+* Type the code snippet listed below into `GREnumerator.h`:
 
 ``` Objective-C
 @import Foundation;
