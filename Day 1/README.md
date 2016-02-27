@@ -53,7 +53,7 @@ In this exercise, you will develop a Photography app as a Foundation tool using 
 
 * You may consider leaving the Organization Identifier field as is by default (which is allowed in previous major releases of Xcode), or use a reverse DNS (Domain Name System). For instance, if you take a look at the College of Computer and Information Systems' domain name "http://cis.uqu.edu.sa", then its reverse DNS string should look like `sa.edu.uqu.cis`. The Bundle Identifier will be set automatically, which is used for identifying your app in the App Store. Your Bundle Identifier should look like `sa.edu.uqu.cis.Photography`.
 
-* Choose "Objective-C" from the Language pop-up menu. By doing so, you allow your code to be linked to the Foundation Framework that holds all the necessary handlers for defining simple data types like `NSObject` and others, using this language.
+* Choose "Objective-C" from the Language pop-up menu. By doing so, you allow your code to be linked to the [Foundation Framework](https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/Foundation/ObjC_classic/index.html) that holds all the necessary handlers for defining simple data types like `NSObject` and others, using this language.
 
 > **Note:** Choosing "Swift" will be entirely up to you, as this workshop is specifically aimed at teaching Objective-C as grounds for developing the final product in **[Day 5](https://github.com/youldash/iOS/blob/master/Day%205/)**. Objective-C has a lot to offer, and the differences between it and Swift will be briefly elaborated in **[Day 5](https://github.com/youldash/iOS/blob/master/Day%205/)**.
 
@@ -502,6 +502,8 @@ Here, you will develop your very first iOS app that reuses code form the previou
 
 * Under the "iOS" section, select "Application", and choose "Single View Application", then Next.
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.1.png" width="100%" /></div>
+
+**App Frameworks:** "Single View Application" apps, along with similar view-based apps, generally depend on the [UIKit Framework](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIKit_Framework/) for creating various UI elements for UI display, and for handling user interaction.
 
 * When prompted for options, type "iPhotography" as the Product Name.
 

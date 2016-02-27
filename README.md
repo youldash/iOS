@@ -24,7 +24,7 @@ Over the course of training, participants will be asked to signup (using this si
 
 ## Preface
 
-The app-making process for iOS devices (iPod Touch, iPhone, and iPad) relies on a special, yet easy to learn paradigm for creating mobile apps. Developers are challenged to provide their users with fun, joyful, and memorable experiences.
+The app-making process for the iOS ecosystem relies on a special, yet easy to learn paradigm for creating mobile apps. Developers are challenged to provide their users with fun, joyful, and memorable experiences.
 
 In this workshop, we present Apple's approach to building a a fully-fledged [Scene Graph](https://en.wikipedia.org/wiki/Scene_graph) iOS app. A **Scene Graph** is a general [Data Structure](https://en.wikipedia.org/wiki/Data_structure) that is commonly used by vector-based graphics editing apps like [Adobe Illustrator](http://www.adobe.com/products/illustrator.html) and  [AutoCAD](http://www.autodesk.com/products/autocad/overview), and modern computer games. These apps often arrange both logical and spatial representations of a graphical scene using specific **Graph** structure elements: **Nodes** and **Edges**.
 

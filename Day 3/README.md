@@ -9,9 +9,9 @@ By using this site, you agree to the **Terms of Use** that are defined in [LICEN
 
 ## Outline
 
-Over the course of this day, you will be introduced to other topics pertaining to the construction of Scene Graphs. In particular, we will explain how [the work in the previous three exercises ](https://github.com/youldash/iOS/blob/master/Day%202/) can be incorporated into a much bigger component. That is, forming the Nodes and Edges of a Graph, along with other vital components that allow such Graphs to be constructed, enumerated, and queried.
+Over the course of this day, you will be introduced to other topics pertaining to the construction of Scene Graphs. In particular, we will explain how the [work in the previous three exercises ](https://github.com/youldash/iOS/blob/master/Day%202/) can be incorporated into a much bigger component. That is, forming the Nodes and Edges of a Graph, along with other vital components that allow such Graphs to be constructed, enumerated, and queried.
 
-In practice, you will start building your final Scene Graph iOS app starting from **Exercise 6**. As you start, we will guide you through the necessary steps in configuring your app to gradually accept new components, test them out, and to move on to the final phases of the app development lifecycle.
+In practice, you will start building your final Scene Graph iOS app starting from **Exercise 6**. As you start, we will guide you through the necessary steps for configuring your app to gradually accept new components, test them out, and to move on to the final phases of your app development lifecycle.
 
 ## Exercise 6: Enumerators and Enumerables
 
@@ -20,11 +20,16 @@ In practice, you will start building your final Scene Graph iOS app starting fro
 * Under the "iOS" section, select "Application", and choose the "Game" template, then Next.
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise6.0.1.png" width="100%" /></div>
 
-* When prompted for options, type "Grapher" as the Product Name (which is the final product name of your iOS training course).
+* When prompted for options, enter "Grapher" in the Product Name field (which is the final product outcome of this training course).
 
-* You may consider leaving the Organization Identifier field as is by default (which is allowed in previous major releases of Xcode), or use a reverse DNS (Domain Name System). Here, the chosen reverse DNS string for Umm Al-Qura's College URL looks like `sa.edu.uqu.cis`. By doing so, you should confirm the Bundle Identifier to look like `sa.edu.uqu.cis.Grapher`.
+* Use a reverse DNS in the Organization Identifier field. For example, the chosen reverse DNS string for Umm Al-Qura's College URL is `sa.edu.uqu.cis`. Then, confirm the Bundle Identifier ends up looking like `sa.edu.uqu.cis.Grapher`.
 
 * Choose "Objective-C" from the Language pop-up menu.
+
+* Make sure you select "SpriteKit" from the Game Technology pop-up menu.
+
+**App Frameworks:** The "Game" technology template is a good starting point for developing apps that heavily depend on extensive graphics drawings and animations as their output. With Xcode you have the ability to develop graphics-rich apps using (at least one, or more than one in advanced cases) of the following four app frameworks: **SceneKit**, **SpriteKit**, **OpenGL ES** and finally, **Metal**. For simplicity, it is best to incorporate the [SpriteKit Framework](https://developer.apple.com/library/ios/documentation/SpriteKit/Reference/SpriteKitFramework_Ref/) in your project, as it is suitable for rendering two-dimensional (2D) Graph-based primitives like Nodes and Edges, and beyond. Of course all of this will make sense in later parts of this training course as you continue from this point onwards :)
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise6.0.2.png" width="100%" /></div>
 
 * Leave the Include Unit Tests and Include UI Tests checkboxes unchecked (as they are not necessary for this part of the exercises).
 
@@ -32,12 +37,12 @@ In practice, you will start building your final Scene Graph iOS app starting fro
 
 > **Note:** Since the exercises will be deployed on an iPad that will be brought during the course of the workshop, we will assume you have already chosen "iPad" form the Devices pop-up menu. Selecting which device to target and working on the design aspects of your project will be entirely up to you.
 
-* Confirm the final steps by clicking Next, then creating and saving the project to disk. You may wish to leave "Create Git repository on" checked and "My Mac" selected:
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise6.0.2.png" width="100%" /></div>
+* Confirm the final steps by clicking Next, You may wish to leave "Create Git repository on" checked and "My Mac" selected:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise6.0.3.png" width="100%" /></div>
-
-* Xcode then creates your project. It should look something like so:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise6.0.4.png" width="100%" /></div>
+
+* Choose somewhere on your drive to save your project, and click Create. Xcode then creates your project, and it should look something like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise6.0.5.png" width="100%" /></div>
 
 
 
