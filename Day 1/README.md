@@ -589,7 +589,7 @@ Here, you will develop your very first iOS app that reuses code form the previou
 
 ### Importing Files from the Previous Exercise
 
-*  If you have completed the Photography project, add (by copying) the the following files into your current project: `Photo.[h,m]` and `PhotoAlbum.[h,m]`. Right-click on yellow project folder from the Navigator area and choose "Add Files to iPhotography"…
+*  If you have completed the Photography project, add (by copying) the following files into your current project: `Photo.[h,m]` and `PhotoAlbum.[h,m]`. Right-click on yellow project folder from the Navigator area and choose "Add Files to iPhotography"…
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise2.0.13.png" width="100%" /></div>
 
 * Navigate to where you saved the four files and import them.

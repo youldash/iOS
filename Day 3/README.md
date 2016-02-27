@@ -122,9 +122,21 @@ If you take a closer look at your Grapher project, you'll see the SpriteKit Game
 @end
 ```
 
-### Adding Files from Previous Exercises
+### Importing Files from Previous Exercises
 
-* Before you...
+> **Important:** If you have already finished Exercises [3](https://github.com/youldash/iOS/tree/master/Day%202#exercise-3-arrays), [4](https://github.com/youldash/iOS/tree/master/Day%202#exercise-4-integer-arrays) and [5](https://github.com/youldash/iOS/tree/master/Day%202#exercise-5-multidimensional-arrays), you need to add copies of certain classes into your Grapher project (namely: `GRArray.[h,m]`, `GRIntegerArray.[h,m]` and `GRMultidimensionalArray.[h,m]`). These classes are import and as such, they play an important part in constructing new components for your Scene Graph iOS project!
+
+* Start by right-clicking on yellow project folder from the Navigator area and choose "Add Files to Grapher"…
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise6.0.8.png" width="100%" /></div>
+
+* Navigate to where you saved the four files and import them.
+
+* Enable "Copy items if needed". Also make sure "Add to targets" is checked for the Grapher app bundle, like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise6.0.9.png" width="100%" /></div>
+
+
+
+
 
 
 > **Note:** Xcode project files for this exercise will be pushed to this repo, later.
