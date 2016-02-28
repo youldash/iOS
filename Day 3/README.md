@@ -851,7 +851,7 @@ Congratulations! Your Base class `GRContainer` is now properly defined and is re
 
 ## Exercise 8: Scene Graph Nodes
 
-As the title of this exercise suggests, Nodes are considered the building blocks of any Graph facade, as they they are the key ingredient for constructing Scene Graphs in your final iOS project.
+As the title suggests, Nodes are considered vital building blocks of any Graph facade (regardless if it is drawable or not), as they they are the key ingredient for constructing Scene Graphs in your final iOS project.
 
 ### Defining the Node Class
 
