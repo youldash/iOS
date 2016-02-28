@@ -853,7 +853,32 @@ Congratulations! Your Base class `GRContainer` is now properly defined and is re
 
 As the title suggests, Nodes and Edges are both considered vital building blocks of any Graph facade (regardless if they are drawable or not), since they are key ingredients for constructing Scene Graphs in your final iOS project.
 
-### At First, we Start With the Node Class
+### But First...
+
+Before we introduce both Node and Edge classes, we need to make a few adjustments to your Grapher `GameScene` class.
+
+Since we are working with the same **prefix** in every element of our project (i.e. the `GR` class prefix), let us **enforce** (or rather, follow) the same naming convention to existing project files. This obviously includes the `GameScene` class, along with the `GameViewController` class (which hosts our main and only available scene in the final app).
+
+### At First, Refractor Existing Scene and View Controller Sources
+
+> **Note:** The refractor process means that files/code segments in our working Xcode project can be renamed, extracted, etc. In Xcode, you can easily refractor/rename files **automatically** without going through the hassle in attempting this tedious process manually! In fact, whenever your project gets any bigger, you might want to consider making good use of this feature before you ever decide on going through this process, manually.
+
+> **Note:** The refractor mechanism in Xcode **only works** if you have enabled the **"Create Git repository on"** when you've first started your project, or if you've moved your entire Xcode project folder in a folder that is already tied-up/linked-to an existing Git repo. If you are working under the assumption that Git is in fact enabled for your project(s), then Xcode will create local Snapshots of your project (should you wish to revert back to code segments used prior any new changes in your code). [This article](https://developer.apple.com/library/ios/recipes/xcode_help-structure_navigator/articles/RestoringaProjectorWorkspacefromaSnapshot.html) has more to say regarding this topic.
+
+#### Renaming "GameScene" to "GRScene".
+
+Edit `GameScene.h` in the Editor area of Xcode and perform the following:
+
+* Highlight the `GameScene` class name (declaration) by selecting the while word using either mouse/trackpad of your computer:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise8.0.1.png" width="100%" /></div>
+
+* Goto "Edit" → "Refractor" → "Rename" from Xcode's menu bar (top menu), like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise8.0.2.png" width="100%" /></div>
+
+* Goto "Edit" → "Refractor" → "Rename" from Xcode's menu bar (top menu), like so:
+
+
+### Then, Start Working on the Node Class
 
 * Add a new class by highlighting on the "Grapher" yellow icon and selecting "New File" from the File menu.
 
@@ -864,7 +889,7 @@ As the title suggests, Nodes and Edges are both considered vital building blocks
 > **Pro Tip:** The `SKShapeNode` class is a special kind of `SKNode` that is ideally used for drawing custom shapes defined by a the app's graphics path context. In our context, `SKShapeNode` will be used for defining the shape of a typical Node data structure. See the [SKShapeNode Class Reference](https://developer.apple.com/library/ios/documentation/SpriteKit/Reference/SKShapeNode_Ref/index.html#//apple_ref/occ/cl/SKShapeNode) for more information on how to properly use it in your SpriteKit projects.
 
 * Choose "Objective-C" from the Language pop-up menu, like so:
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise8.0.1.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise8.0.13.png" width="100%" /></div>
 
 * Confirm by clicking Next and make sure "Targets" is checked for the executable. As you hit Create, you will immediately add both interface and implementation files `GRNode.[h,m]` to your project.
 
