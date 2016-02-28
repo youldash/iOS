@@ -1245,10 +1245,10 @@ Awesome! You are now ready to start creating both Nodes and Edges for your iOS a
     CGFloat y = self.position.y - node.position.y;
     
     // Calculate the product.
-    double product = powf(x, 2.0f) + powf(y, 2.0f);
+    double product = pow(x, 2.0) + pow(y, 2.0);
     
     // Retun the computed length/norm.
-    return sqrtf(product);
+    return sqrt(product);
 }
 ```
 
