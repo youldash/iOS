@@ -865,11 +865,11 @@ Since we are working with the same **prefix** in every element of our project (i
 
 > **Note:** The refractor mechanism in Xcode **only works** if you have enabled the **"Create Git repository on"** when you've first started your project, or if you've moved your entire Xcode project folder in a folder that is already tied-up/linked-to an existing Git repo. If you are working under the assumption that Git is in fact enabled for your project(s), then Xcode will create local Snapshots of your project (should you wish to revert back to code segments used prior any new changes in your code). [This article](https://developer.apple.com/library/ios/recipes/xcode_help-structure_navigator/articles/RestoringaProjectorWorkspacefromaSnapshot.html) has more to say regarding this topic.
 
-#### Renaming "GameScene" to "GRScene".
+#### Renaming "GameScene" to "GRScene"
 
 Edit `GameScene.h` in the Editor area of Xcode and perform the following:
 
-* Highlight the `GameScene` class name (declaration) by selecting the while word using either mouse/trackpad of your computer:
+* Highlight the `GameScene` class name (or interface) by selecting the whole word using your keyboard/mouse/trackpad:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise8.0.1.png" width="100%" /></div>
 
 * Goto "Edit" → "Refractor" → "Rename" from Xcode's menu bar (top menu), like so:
@@ -877,9 +877,40 @@ Edit `GameScene.h` in the Editor area of Xcode and perform the following:
 
 * A dialog will appear, prompting for the new class name. Change it from `GameScene`:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise8.0.3.png" width="100%" /></div>
-to `GRScene` like so:
+to `GRScene`:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise8.0.4.png" width="100%" /></div>
 
+* If for any reason Xcode warns about any uncommitted changes in your project, don't worry!
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise8.0.5.png" width="100%" /></div>
+You can simply click on Continue and proceed with the next steps. Xcode will rename the class for you.
+
+#### Renaming "GameScene.sks" to "GRScene.sks"
+
+In addition to the `GRScene` Objective-C class, you may wish to rename its referencing `GameScene.sks` SpriteKit Serialized Data file in `GameViewController.m`. This can be achieved by Editing `GameViewController.h` and performing the following actions:
+
+* Highlight the `GameScene` file name from within the `-viewDidLoad` implementation:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise8.0.6.png" width="100%" /></div>
+and change it to reference `GRScene.sks` like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise8.0.7.png" width="100%" /></div>
+
+#### Renaming "GameViewController" to "GRViewController"
+
+Edit `GameViewController.h` and perform the following actions:
+
+* Highlight the `GameViewController` class interface by selecting the whole word:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise8.0.8.png" width="100%" /></div>
+
+* Goto "Edit" → "Refractor" → "Rename" from Xcode's top menu bar, like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise8.0.9.png" width="100%" /></div>
+
+* A dialog will appear, prompting for the new class name. Change it from `GameViewController`:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise8.0.10.png" width="100%" /></div>
+to `GRViewController`:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise8.0.11.png" width="100%" /></div>
+
+* If Xcode warns you about uncommitted changes in your project, don't worry! Just click on Continue and rename the file. Xcode will (behind the scenes) automatically rename every reference to this classname change in your project.
+
+Awesome! You are now ready to start creating both Nodes and Edges for your iOS app :)
 
 ### Then, Start Working on the Node Class
 
@@ -892,7 +923,7 @@ to `GRScene` like so:
 > **Pro Tip:** The `SKShapeNode` class is a special kind of `SKNode` that is ideally used for drawing custom shapes defined by a the app's graphics path context. In our context, `SKShapeNode` will be used for defining the shape of a typical Node data structure. See the [SKShapeNode Class Reference](https://developer.apple.com/library/ios/documentation/SpriteKit/Reference/SKShapeNode_Ref/index.html#//apple_ref/occ/cl/SKShapeNode) for more information on how to properly use it in your SpriteKit projects.
 
 * Choose "Objective-C" from the Language pop-up menu, like so:
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise8.0.13.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise8.0.12.png" width="100%" /></div>
 
 * Confirm by clicking Next and make sure "Targets" is checked for the executable. As you hit Create, you will immediately add both interface and implementation files `GRNode.[h,m]` to your project.
 
