@@ -271,7 +271,7 @@ Aster defining our base Enumerator class in Grapher, we need a host that would a
 
 * When prompted for options, type `GRAbstractEnumerable` as the class name. Make sure SceneKit's base `SKNode` class is selected for subclassing from. `GRAbstractEnumerable` is a base class from which all enumerable object facades are derived.
 
-> **Pro Tip:** The `SKNode` class represents a fundamental building block of our Scene Graph rendering content. Because our visible objects will visualized as Nodes and Edges of a typical Graph structure, we may well expect to enumerate them, using an enumerable (container) reference type that matches their base `SKNode` type. See the [SKNode Class Reference](https://developer.apple.com/library/ios/documentation/SpriteKit/Reference/SKNode_Ref/) for more information on how to properly use it in your SpriteKit projects.
+> **Pro Tip:** The `SKNode` class represents a fundamental building block of our Scene Graph rendering content. Because our visible objects will be exclusively visualized as Nodes and Edges, we may well expect to enumerate them, using an enumerable (container) reference type that matches their base `SKNode` type. See the [SKNode Class Reference](https://developer.apple.com/library/ios/documentation/SpriteKit/Reference/SKNode_Ref/) for more information on how to properly use it in your SpriteKit projects.
 
 * Choose "Objective-C" from the Language pop-up menu, like so:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise6.0.14.png" width="100%" /></div>
