@@ -624,9 +624,9 @@ You are now finished with the Base class for the Enumerable data type and as suc
 
 > **Note:** Xcode project files for this exercise will be pushed to this repo, later.
 
-## Exercise 6: Containers
+## Exercise 7: Containers
 
-As the title of this exercise suggests, Scene Graph elements need to be hosted in some sort of special Container facade. This host will introduced next (and will be used later in future exercises of this training course).
+As the title of this exercise suggests, Scene Graph elements need to be hosted in some sort of special Container facade. This host will be introduced next (and will be used later in future exercises of this training course).
 
 ### Defining the Container "Abstract" Class
 
@@ -848,6 +848,25 @@ As the title of this exercise suggests, Scene Graph elements need to be hosted i
 Congratulations! Your Base class `GRContainer` is now properly defined and is ready for later use. What follows is the last two exercises for constructing Node and Edge data types for your final Grapher iOS app.
 
 > **Note:** Xcode project files for this exercise will be pushed to this repo, later.
+
+## Exercise 8: Scene Graph Nodes
+
+As the title of this exercise suggests, Nodes are considered the building blocks of any Graph facade, as they they are the key ingredient for constructing Scene Graphs in your final iOS project.
+
+### Defining the Node Class
+
+* Add a new class by highlighting on the "Grapher" yellow icon and selecting "New File" from the File menu.
+
+* Under the "OS X" section, select "Source", and choose "Cocoa Class".
+
+* When prompted for options, type `GRNode` as the class name. Make sure the `SKShapeNode` superclass is selected for it.
+
+> **Pro Tip:** The `SKShapeNode` class is a special kind of `SKNode` that is ideally used for drawing custom shapes defined by a the app's graphics path context. In our context, `SKShapeNode` will be used for defining the shape of a typical Node data structure. See the [SKShapeNode Class Reference](https://developer.apple.com/library/ios/documentation/SpriteKit/Reference/SKShapeNode_Ref/index.html#//apple_ref/occ/cl/SKShapeNode) for more information on how to properly use it in your SpriteKit projects.
+
+* Choose "Objective-C" from the Language pop-up menu, like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise8.0.1.png" width="100%" /></div>
+
+* Confirm by clicking Next and make sure "Targets" is checked for the executable. As you hit Create, you will immediately add both interface and implementation files `GRNode.[h,m]` to your project.
 
 
 
