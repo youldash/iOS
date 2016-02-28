@@ -868,6 +868,115 @@ As the title suggests, Nodes are considered vital building blocks of any Graph f
 
 * Confirm by clicking Next and make sure "Targets" is checked for the executable. As you hit Create, you will immediately add both interface and implementation files `GRNode.[h,m]` to your project.
 
+* Replace what code is currently present for `GRNode.h` with the following two code snippets. They contain both protocol and class interface declarations for the `GRNode` class, respectively:
+
+``` Objective-C
+@import SpriteKit;
+
+@class GRNode;
+@class GRScene;
+
+/**
+ *  Protocol implemented by a graph node.
+ */
+@protocol GRNodeDelegate <NSObject>
+
+#pragma mark -
+#pragma mark Accessing
+
+/**
+ *  An identifier.
+ */
+@property (copy, nonatomic) NSString *identifier;
+
+/**
+ *  A weight on this graphic.
+ */
+@property (strong, nonatomic) NSNumber *weight;
+
+/**
+ *  The number of this node.
+ */
+@property (readwrite, nonatomic) NSUInteger number;
+
+/**
+ *  Circular reference to a Grapher scene (not retained).
+ */
+@property (weak, nonatomic) GRScene *scene;
+
+/**
+ *  Default node color.
+ *
+ *  @return The color.
+ */
++ (SKColor *)nodeColor;
+
+#pragma mark -
+#pragma mark Modifying
+
+/**
+ *  Centers this node's position in world space.
+ */
+- (void)center;
+
+#pragma mark -
+#pragma mark Querying
+
+/**
+ *  Calculates/recalculates the Euclidean distance.
+ *
+ *  @return The Euclidean distance from node.
+ */
+- (double)calculateEuclideanDistanceFromNode:(id<GRNodeDelegate>)node;
+
+@end
+```
+
+``` Objective-C
+/**
+ *  Represents a node in a scene graph.
+ */
+@interface GRNode : SKShapeNode <GRNodeDelegate>
+
+#pragma mark -
+#pragma mark Initializing
+
+/**
+ *  Designated initializer.
+ *  Initializes a newly allocated node with an identifier, weight, color, and scene properties.
+ *
+ *  @param  identifier  An identifier.
+ *  @param  weight    A weight.
+ *  @param  color    A color.
+ *  @param  scene    A Grapher scene associated with this edge.
+ *
+ *  @return  The new node.
+ */
+- (instancetype)initWithIdentifier:(id<NSObject>)identifier
+                            weight:(NSNumber *)weight
+                             color:(SKColor *)color
+                             scene:(GRScene *)scene;
+
+/**
+ *  Initializes a newly allocated node with an identifier, weight, color, position, and scene properties.
+ *
+ *  @param  identifier  An identifier.
+ *  @param  weight    A weight.
+ *  @param  size    A size.
+ *  @param  color    A color.
+ *  @param  scene    A Grapher scene associated with this edge.
+ *
+ *  @return  The new node.
+ */
+- (instancetype)initWithIdentifier:(id<NSObject>)identifier
+                            weight:(NSNumber *)weight
+                          position:(CGPoint)position
+                             color:(SKColor *)color
+                             scene:(GRScene *)scene;
+
+@end
+```
+
 
 
 ## What's Next?
