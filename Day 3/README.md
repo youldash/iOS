@@ -881,17 +881,15 @@ to `GRScene`:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise8.0.4.png" width="100%" /></div>
 
 * If for any reason Xcode warns about any uncommitted changes in your project, don't worry!
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise8.0.5.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise8.0.5.png" width="75%" /></div>
 You can simply click on Continue and proceed with the next steps. Xcode will rename the class for you.
 
 #### Renaming "GameScene.sks" to "GRScene.sks"
 
 In addition to the `GRScene` Objective-C class, you may wish to rename its referencing `GameScene.sks` SpriteKit Serialized Data file in `GameViewController.m`. This can be achieved by Editing `GameViewController.h` and performing the following actions:
 
-* Highlight the `GameScene` file name from within the `-viewDidLoad` implementation:
+* Highlight the `GameScene` file reference from within the `-viewDidLoad` implementation, and change it to reference `GRScene.sks` like so:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise8.0.6.png" width="100%" /></div>
-and change it to reference `GRScene.sks` like so:
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise8.0.7.png" width="100%" /></div>
 
 #### Renaming "GameViewController" to "GRViewController"
 
