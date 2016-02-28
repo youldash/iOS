@@ -278,6 +278,18 @@ Aster defining our base Enumerator class in Grapher, we need a host that would a
 
 * Confirm by clicking Next and make sure "Targets" is checked for the executable. As you hit Create, you will immediately add both interface and implementation files `GRAbstractEnumerable.[h,m]` to your project.
 
+> **Important:** ARC needs to be disabled for the `GRAbstractEnumerable` class!
+
+* Reveal both Editor and Navigator areas and click on the "Grapher" project blue icon.
+
+* Highlight the "Grapher" app bundle (under "Targets") → Click on "Build Phases" to expand its options → Unfold "Compile Sources" to view seven implementation sources.
+
+* Double-click on `GRAbstractEnumerable.m` and set its compiler flag to `-fno-objc-arc` so that you disable ARC for this class whenever you build or rebuild your project.
+
+* Confirm that you end up having a similar configuration to this one:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise6.0.15.png" width="100%" /></div>
+
+> Good job! You should not be warned about what you will be doing next :)
 
 
 
