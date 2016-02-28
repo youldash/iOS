@@ -849,11 +849,11 @@ Congratulations! Your Base class `GRContainer` is now properly defined and is re
 
 > **Note:** Xcode project files for this exercise will be pushed to this repo, later.
 
-## Exercise 8: Scene Graph Nodes
+## Exercise 8: Scene Graph Nodes and Edges
 
-As the title suggests, Nodes are considered vital building blocks of any Graph facade (regardless if it is drawable or not), as they they are the key ingredient for constructing Scene Graphs in your final iOS project.
+As the title suggests, Nodes and Edges are both considered vital building blocks of any Graph facade (regardless if they are drawable or not), since they are key ingredients for constructing Scene Graphs in your final iOS project.
 
-### Defining the Node Class
+### At First, we Start With the Node Class
 
 * Add a new class by highlighting on the "Grapher" yellow icon and selecting "New File" from the File menu.
 
