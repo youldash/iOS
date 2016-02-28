@@ -875,7 +875,9 @@ Edit `GameScene.h` in the Editor area of Xcode and perform the following:
 * Goto "Edit" → "Refractor" → "Rename" from Xcode's menu bar (top menu), like so:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise8.0.2.png" width="100%" /></div>
 
-* Goto "Edit" → "Refractor" → "Rename" from Xcode's menu bar (top menu), like so:
+* A dialog will appear, prompting for the new class name. Change it from `GameScene` to `GRScene` like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise8.0.3.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise8.0.4.png" width="100%" /></div>
 
 
 ### Then, Start Working on the Node Class
