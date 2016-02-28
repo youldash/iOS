@@ -269,7 +269,7 @@ Aster defining our base Enumerator class in Grapher, we need a host that would a
 
 * Under the "OS X" section, select "Source", and choose "Cocoa Class".
 
-* When prompted for options, type `GRAbstractEnumerable` as the class name. Make sure SceneKit's base `SKNode` class is selected for subclassing from. `GRAbstractEnumerable` is a base class from which all enumerable object facades are derived.
+* When prompted for options, type `GRAbstractEnumerable` as the class name. Make sure SceneKit's base `SKNode` class is selected for subclassing from. `GRAbstractEnumerable` is a generic class from which all enumerable object facades are derived.
 
 > **Pro Tip:** The `SKNode` class represents a fundamental building block of our Scene Graph rendering content. Because our visible objects will be exclusively visualized as Nodes and Edges, we may well expect to enumerate them, using an enumerable (container) reference type that matches their base `SKNode` type. See the [SKNode Class Reference](https://developer.apple.com/library/ios/documentation/SpriteKit/Reference/SKNode_Ref/) for more information on how to properly use it in your SpriteKit projects.
 
@@ -453,6 +453,35 @@ Aster defining our base Enumerator class in Grapher, we need a host that would a
     return YES;
 }
 ```
+
+> Great! You are now finished with the Abstract class for the Enumerable data type. Next, we will introduce you to a new Base class for constructing Enumerable data types in your final iOS project.
+
+##### Defining the Enumerable "Base" Class
+
+* Add a new class by highlighting on the "Grapher" yellow (group) folder and selecting "New File" from the File menu.
+
+* Under the "OS X" section, select "Source", and choose "Cocoa Class".
+
+* When prompted for options, type `GREnumerable` as the class name. Make sure `GRAbstractEnumerable` is selected for subclassing from. `GREnumerable` is a base class from which all enumerable object facades (e.g. Node and Edge enumerable containers) will be deriving from, in your Graph.
+
+* Choose "Objective-C" from the Language pop-up menu, like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise6.0.16.png" width="100%" /></div>
+
+* Confirm by clicking Next and make sure "Targets" is checked for the executable. As you hit Create, you will immediately add both interface and implementation files `GREnumerable.[h,m]` to your project.
+
+> **Important:** ARC needs to be disabled for this class, too!
+
+* Reveal both Editor and Navigator areas and click on the "Grapher" project blue icon.
+
+* Highlight the "Grapher" app bundle (under "Targets") → Click on "Build Phases" to expand its options → Unfold "Compile Sources" to view seven implementation sources.
+
+* Double-click on `GREnumerable.m` and set its compiler flag to `-fno-objc-arc` so that you disable ARC for this class.
+
+* Confirm that you end up having a similar configuration to this one:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise6.0.17.png" width="100%" /></div>
+
+> Good job! You should not be warned about what you will be doing next :)
+
 
 
 
