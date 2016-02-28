@@ -265,7 +265,7 @@ Aster defining our base Enumerator class in Grapher, we need a host that would a
 
 ##### Defining the Enumerable "Abstract" Class
 
-* Add a new class by highlighting on the "Grapher" yellow (group) folder and selecting "New File" from the File menu.
+* Add a new class by highlighting on the "Grapher" yellow icon and selecting "New File" from the File menu.
 
 * Under the "OS X" section, select "Source", and choose "Cocoa Class".
 
@@ -458,7 +458,7 @@ Aster defining our base Enumerator class in Grapher, we need a host that would a
 
 ##### Defining the Enumerable "Base" Class
 
-* Add a new class by highlighting on the "Grapher" yellow (group) folder and selecting "New File" from the File menu.
+* Add a new class by highlighting on the "Grapher" yellow icon and selecting "New File" from the File menu.
 
 * Under the "OS X" section, select "Source", and choose "Cocoa Class".
 
@@ -480,14 +480,376 @@ Aster defining our base Enumerator class in Grapher, we need a host that would a
 * Confirm that you end up having a similar configuration to this one:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise6.0.17.png" width="100%" /></div>
 
-> Good job! You should not be warned about what you will be doing next :)
+> No warnings, nor any errors for the `GREnumerable` should ever be prompted, at this stage.
 
+* Replace what currently exists in `GREnumerable.h` with the following code snippet:
 
+``` Objective-C
+#import "GRAbstractEnumerable.h"
 
+/**
+ *  An enumerable object facade.
+ */
+@interface GREnumerable : GRAbstractEnumerable {
+    
+    /**
+     *  An object that provides an enumerator.
+     */
+    id _target;
+    
+    /**
+     *  Action invoked to get the enumerator from the object.
+     */
+    SEL _action;
+    
+    /**
+     *  Optional argument for action.
+     */
+    id _object;
+}
 
+#pragma mark -
+#pragma mark Initializing
 
+/**
+ *  Designed initializer.
+ *  Initializes this enumerable object facade for the given target object and action selector.
+ *
+ *  @param  target  The target object.
+ *  @param  action  An action selector.
+ *
+ *  @return  The new enumerable.
+ */
+- (instancetype)initWithTarget:(id)target action:(SEL)action;
+
+/**
+ *  Initializes this enumerable object facade for the given target object, action selector, and argument object.
+ *
+ *  @param  target  The target object.
+ *  @param  action  An action selector.
+ *  @param  object  The argument.
+ *
+ *  @return  The new enumerable.
+ */
+- (instancetype)initWithTarget:(id)target action:(SEL)action object:(id)object;
+
+@end
+```
+
+* The `GREnumerable` interface is now ready for implementation. Add the following initializer stubs in `GREnumerable.m`:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Initializing
+
+/**
+ *  Designed initializer.
+ *  Initializes this enumerable object facade for the given target object and action selector.
+ *
+ *  @param  target  The target object.
+ *  @param  action  An action selector.
+ *
+ *  @return  The new enumerable.
+ */
+- (instancetype)initWithTarget:(id)target action:(SEL)action
+{
+    // Immutable enumerable, just return a new reference to itself (retained automatically by ARC).
+    return [self initWithTarget:target action:action object:nil];
+}
+
+/**
+ *  Initializes this enumerable object facade for the given target object, action selector, and argument object.
+ *
+ *  @param  target  The target object.
+ *  @param  action  An action selector.
+ *  @param  object  The argument.
+ *
+ *  @return  The new enumerable.
+ */
+- (instancetype)initWithTarget:(id)target action:(SEL)action object:(id)object
+{
+    // Immutable enumerable, just return a new reference to itself (retained automatically by ARC).
+    self = [super init];
+    
+    if (self) {
+        
+        // Pass the parameters.
+        _target = [target retain];
+        _action = action;
+        _object = [object retain];
+    }
+    
+    // Return this enumerable along with its children.
+    return self;
+}
+```
+
+* Add the following stub implementation for the `-dealloc` method, for releasing `GREnumerable` object blocks from memory:
+
+``` Objective-C
+/**
+ *  Deallocates the memory occupied by this enumerable object facade.
+ */
+- (void)dealloc
+{
+    [_target release];
+    [_object release];
+    
+    [super dealloc];
+}
+```
+
+* Awesome! Now override the `GREnumeratorDelegate` protocol method implementation for `-objectEnumerator` (that was initially defined in its superclass, `GRAbstractEnumerable`) using this stub:
+
+``` Objective-C
+#pragma mark -
+#pragma mark GREnumeratorDelegate
+
+/**
+ *  Returns an enumerator.
+ *
+ *  @return  The enumerator.
+ */
+- (id<GREnumeratorDelegate>)objectEnumerator
+{
+    if (_object)
+        return [_target performSelector:_action withObject:_object];
+    else
+        
+        return [_target performSelector:_action];
+}
+```
+
+You are now finished with the Base class for the Enumerable data type and as such, you have completed this exercise! In the proceeding exercise we will introduce you to a new Container class that defines the behavior of the Scene Graph data type.
 
 > **Note:** Xcode project files for this exercise will be pushed to this repo, later.
+
+## Exercise 6: Containers
+
+As the title of this exercise suggests, Scene Graph elements need to be hosted in some sort of special Container facade. This host will introduced next (and will be used later in future exercises of this training course).
+
+### Defining the Container "Abstract" Class
+
+* Add a new class by highlighting on the "Grapher" yellow icon and selecting "New File" from the File menu.
+
+* Under the "OS X" section, select "Source", and choose "Cocoa Class".
+
+* When prompted for options, type `GRContainer` as the class name. Make sure `GRAbstractEnumerable` is selected for subclassing from. Like the `GREnumerable` class, `GRContainer` will act as an Enumerable data type.
+
+* Choose "Objective-C" from the Language pop-up menu, like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise7.0.1.png" width="100%" /></div>
+
+* Confirm by clicking Next and make sure "Targets" is checked for the executable. As you hit Create, you will immediately add both interface and implementation files `GRContainer.[h,m]` to your project.
+
+* Replace what currently exists in `GRContainer.h` with the following two code snippets. They contain both protocol and class interface declarations for the `GRContainer` class, respectively:
+
+``` Objective-C
+#import "GRAbstractEnumerable.h"
+#import "GREnumerable.h"
+
+/**
+ *  Protocol implemented by all containers.
+ */
+@protocol GRContainerDelegate <GREnumerableDelegate>
+
+#pragma mark -
+#pragma mark Accessing
+
+/**
+ *  The number of objects in this container.
+ */
+@property (readonly, nonatomic) NSUInteger count;
+
+/**
+ *  Indicates whether this container is empty.
+ */
+@property (readonly, nonatomic) BOOL isEmpty;
+
+/**
+ *  Indicates whether this container is full.
+ */
+@property (readonly, nonatomic) BOOL isFull;
+
+/**
+ *  Purges the objects from this container.
+ */
+- (void)purge;
+
+@end
+```
+
+``` Objective-C
+/**
+ *  Base class from which all containers are derived.
+ */
+@interface GRContainer : GRAbstractEnumerable <GRContainerDelegate> {
+    
+    /**
+     *  The number of objects in this container.
+     */
+    NSUInteger _count;
+}
+
+#pragma mark -
+#pragma mark Testing
+
+/**
+ *  GRContainer test program.
+ *
+ *  @param  container  The container to test.
+ *
+ *  @return  A boolean value that indicates whether all the tests were successful.
+ */
++ (BOOL)testContainer:(id<GRContainerDelegate>)container;
+
+@end
+```
+
+* The `GRContainer` interface is now ready for implementation. Edit `GRContainer.m` and add the following property synthesizer stub that defines the scope and behavior of the accessible properties of `GRContainer`:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Accessing
+
+/**
+ *  The number of objects in this container.
+ */
+@synthesize count = _count;
+```
+
+* Your class properties are now defined. Now, add the following class initializer stub to `GRContainer.m`:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Initializing
+
+/**
+ *  Designated initializer.
+ *  Initializes a newly allocated container.
+ *
+ *  @return  The new container.
+ */
+- (instancetype)init
+{
+    NSAssert(![self isMemberOfClass:[GRContainer class]], @"GRContainer class instantiated.");
+    
+    // Immutable container, just return a new reference to itself (retained automatically by ARC).
+    self = [super init];
+    
+    if (self) {
+        
+        // Initialize all parameters.
+        _count = 0;
+    }
+    
+    // Return this container along with its children.
+    return self;
+}
+```
+
+* Next, add the following stub implementation to overriding the default behavior of the `-description` method:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Querying
+
+/**
+ *  Returns a string that describes this container.
+ *
+ *  @return  The string.
+ */
+- (NSString *)description
+{
+    NSMutableString *string = [NSMutableString string];
+    
+    for (id object in self) {
+        
+        if (string.length > 0)
+            [string appendFormat:@", "];
+        
+        [string appendFormat:@"%@", object];
+    }
+    
+    return [NSString stringWithFormat:@"<%@: %@>", [self class], string];
+}
+```
+
+* Great! The next thing to do is to specify how the `GRContainerDelegate` protocol properties will behave when called, or set (to be precise, both `isEmpty` and `isFull` properties, and the `-purge` method):
+
+``` Objective-C
+#pragma mark -
+#pragma mark OCContainerDelegate
+
+/**
+ *  Indicates whether this container is empty.
+ *
+ *  @return The boolean result.
+ */
+- (BOOL)isEmpty
+{
+    return _count == 0;
+}
+
+/**
+ *  Indicates whether this container is full.
+ *
+ *  @return The boolean result.
+ */
+- (BOOL)isFull
+{
+    return NO;
+}
+
+/**
+ *  Removes all the objects from this container.
+ */
+- (void)purge
+{
+    [self doesNotRecognizeSelector:_cmd];
+}
+```
+
+* One last thing to do. You need to implement the class method `+testContainer` like so:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Testing
+
+/**
+ *  GRContainer unit test program.
+ *
+ *  @param  container  The container to test.
+ *
+ *  @return  A boolean value that indicates whether all the tests were successful.
+ */
++ (BOOL)testContainer:(id<GRContainerDelegate>)container
+{
+    [GRAbstractEnumerable testEnumerable:container];
+    
+    NSLog(@"GRContainer test program.\n\
+          --------------------------------------------");
+    
+    NSLog(@"container = %@", container);
+    NSLog(@"count = %lu", container.count);
+    NSLog(@"isEmpty = %@", container.isEmpty ? @"YES" : @"NO");
+    NSLog(@"isFull = %@", container.isFull ? @"YES" : @"NO");
+    
+    NSLog(@"Purging...");
+    [container purge];
+    NSLog(@"container = %@", container);
+    NSLog(@"count = %lu", container.count);
+    NSLog(@"isEmpty = %@", container.isEmpty ? @"YES" : @"NO");
+    NSLog(@"isFull = %@", container.isFull ? @"YES" : @"NO");
+    
+    return YES;
+}
+```
+
+Congratulations! Your Base class `GRContainer` is now properly defined and is ready for later use. What follows is the last two exercises for constructing Node and Edge data types for your final Grapher iOS app.
+
+> **Note:** Xcode project files for this exercise will be pushed to this repo, later.
+
+
 
 ## What's Next?
 

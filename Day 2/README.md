@@ -390,7 +390,7 @@ static const NSUInteger kGRBaseDefault = 0;
 
 > **Beerus:** *"It might be best to renew the whole planet at once. Of course before any Creation must come Destruction."*
 
-* Add the following stub implementation for `-dealloc` method, which implements the procedure that frees `GRArray` instances from memory:
+* Add the following stub implementation for the `-dealloc` method, which implements the procedure that frees `GRArray` instances from memory:
 
 ``` Objective-C
 /**
@@ -1151,7 +1151,7 @@ static const NSUInteger kGRValueDefault = 0;
 }
 ```
 
-* Add the following stub implementation for `-dealloc` method, which implements the procedure that frees `GRIntegerArray` objects from memory:
+* Add the following stub implementation for the `-dealloc` method, which implements the procedure that frees `GRIntegerArray` objects from memory:
 
 ``` Objective-C
 /**
@@ -1658,7 +1658,7 @@ For this, you will need to create a special `GRMultidimensionalArray` class, sui
 @end
 ```
 
-* Your class interface is now ready for a proper implementation! Add the following stub implementation that defines the scope and behavior of the accessible properties for the `GRMultidimensionalArray` class:
+* Your class interface is now ready for a proper implementation! Add the following stub implementation that defines the scope and behavior of the accessible properties of the `GRMultidimensionalArray` class:
 
 ``` Objective-C
 #pragma mark -
