@@ -291,6 +291,170 @@ Aster defining our base Enumerator class in Grapher, we need a host that would a
 
 > Good job! You should not be warned about what you will be doing next :)
 
+* Replace what currently exists in `GRAbstractEnumerable.h` with the following two code snippets. They contain both protocol and class interface declarations for the `GRAbstractEnumerable` class, respectively:
+
+``` Objective-C
+@import Foundation;
+@import SpriteKit;
+
+#import "GREnumerator.h"
+
+/**
+ *  Protocol implemented by enumerable classes.
+ */
+@protocol GREnumerableDelegate <NSFastEnumeration>
+
+/**
+ *  Returns an enumerator.
+ *
+ *  @return  The enumerator.
+ */
+- (id<GREnumeratorDelegate>)objectEnumerator;
+
+@end
+```
+
+``` Objective-C
+/**
+ *  Base class from which all enumerable classes are derived.
+ */
+@interface GRAbstractEnumerable : SKNode <GREnumerableDelegate>
+
+#pragma mark -
+#pragma mark Testing
+
+/**
+ *  OCAbstractEnumerable test program.
+ *
+ *  @param  enumerable  The enumerable object to test.
+ *
+ *  @return  A boolean value that indicates whether all the tests were successful.
+ */
++ (BOOL)testEnumerable:(id<GREnumerableDelegate>)enumerable;
+
+@end
+```
+
+* The `GRAbstractEnumerable` interface is now ready for implementation. Add the following initializer stub in `GRAbstractEnumerable.m`:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Initializing
+
+/**
+ *  Designated initializer.
+ *  Initializes a newly allocated abstract enumerable.
+ *
+ *  @return  The new abstract enumerable.
+ */
+- (instancetype)init
+{
+    NSAssert(![self isMemberOfClass:[GRAbstractEnumerable class]], @"GRAbstractEnumerable class instantiated.");
+    
+    // Immutable abstract enumerable, just return a new reference to itself (retained automatically by ARC).
+    self = [super init];
+    
+    // Return this abstract enumerable along with its children.
+    return self;
+}
+```
+
+* Now, implement the `GREnumeratorDelegate` protocol method `-objectEnumerator` like so:
+
+``` Objective-C
+#pragma mark -
+#pragma mark GREnumerableDelegate
+
+/**
+ *  Returns an enumerator that enumerates the objects.
+ *
+ *  @return  The enumerator.
+ */
+- (id<GREnumeratorDelegate>)objectEnumerator
+{
+    [self doesNotRecognizeSelector:_cmd];
+    return nil;
+}
+```
+
+* Next, type the following stub implementation for `-countByEnumeratingWithState:objects:count:` method, which confirms to the `NSFastEnumeration` protocol:
+
+``` Objective-C
+#pragma mark -
+#pragma mark NSFastEnumeration
+
+/**
+ *  Returns by reference a C array of objects over which the sender should iterate,
+ *  and as the return value the number of objects in the array.
+ *
+ *  @param  state  Context information that is used in the enumeration to,
+ *  in addition to other possibilities, ensure that the collection has not been mutated.
+ *  @param  buffer  A C array of objects over which the sender is to iterate.
+ *  @param  len  The maximum number of objects to return in stackbuf.
+ *
+ *  @return  The number of objects returned in stackbuf. Returns 0 when the iteration is finished.
+ */
+- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state
+                                  objects:(id __unsafe_unretained [])buffer
+                                    count:(NSUInteger)len
+{
+    NSUInteger count = 0;
+    
+    id<GREnumeratorDelegate> enumerator = (id<GREnumeratorDelegate>)(state->state);
+    
+    if (enumerator == nil)
+        enumerator = [self objectEnumerator];
+    
+    if (len > 0 && [enumerator hasMoreObjects]) {
+        
+        buffer[0] = [enumerator nextObject];
+        state->state = (unsigned long)enumerator;
+        state->itemsPtr = buffer;
+        state->mutationsPtr = (unsigned long *)self;
+        
+        count = 1;
+    }
+    
+    return count;
+}
+```
+
+* Add the following final stub implementation for the remaining class method `+testEnumerable` to `GRAbstractEnumerable.m`:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Testing
+
+/**
+ *  GRAbstractEnumerable test program.
+ *
+ *  @param  enumerable  The enumerable object to test.
+ *
+ *  @return  A boolean value that indicates whether all the tests were successful.
+ */
++ (BOOL)testEnumerable:(id<GREnumerableDelegate>)enumerable
+{
+    NSLog(@"GRAbstractEnumerable test program.\n\
+          --------------------------------------------");
+    
+    NSLog(@"Using objectEnumerator:");
+    id<GREnumeratorDelegate> objectEnumerator = [enumerable objectEnumerator];
+    while ([objectEnumerator hasMoreObjects]) {
+        
+        NSLog(@"%@", [objectEnumerator nextObject]);
+    }
+    
+    NSLog(@"Using fast enumeration:");
+    for (id object in enumerable) {
+        
+        NSLog(@"%@", object);
+    }
+    
+    return YES;
+}
+```
+
+
 
 
 
