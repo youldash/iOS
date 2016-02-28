@@ -1032,7 +1032,245 @@ Awesome! You are now ready to start creating both Nodes and Edges for your iOS a
 @end
 ```
 
+* The `GRNode` interface is now ready for implementation. Continue by edit `GRNode.m` and placing the following definition for new Node numbers (on top of the `@implementation` declarative):
 
+``` Objective-C
+/**
+ *  Default node number (used every time whenever a new node is created).
+ */
+#define kGRNumberDefault 0
+```
+
+* Also, make sure that you include a reference to `GRScene.h` in your Node class:
+
+``` Objective-C
+#import "GRScene.h"
+```
+
+* Next, add the following property synthesizer stub that defines the scope and behavior of the accessible properties for your Nodes:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Accessing
+
+/**
+ *  An identifier.
+ */
+@synthesize identifier = _identifier;
+
+/**
+ *  Returns the identifier of this cluster (name).
+ */
+- (NSString *)identifier
+{
+    return self.name;
+}
+
+/**
+ *  A weight on this graphic.
+ */
+@synthesize weight = _weight;
+
+/**
+ *  The number of this node.
+ */
+@synthesize number = _number;
+
+/**
+ *  Circular reference to a Grapher scene (not retained).
+ */
+@synthesize scene = _scene;
+
+/**
+ *  Default node color.
+ *
+ *  @return The color.
+ */
++ (SKColor *)nodeColor
+{
+    return [SKColor colorWithRed:174.0 / 255.0
+                           green:128.0 / 255.0
+                            blue:255.2 / 255.0
+                           alpha:001.0];
+}
+```
+
+* Your class properties are now defined. Now, add the following class initializer stub to `GRNode.m`:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Initializing
+
+/**
+ *  Designated initializer.
+ *  Initializes a newly allocated node with an identifier, weight, color, and scene properties.
+ *
+ *  @param  identifier  An identifier.
+ *  @param  weight    A weight.
+ *  @param  color    A color.
+ *  @param  scene    A Grapher scene associated with this edge.
+ *
+ *  @return  The new node.
+ */
+- (instancetype)initWithIdentifier:(id<NSObject>)identifier
+                            weight:(NSNumber *)weight
+                             color:(SKColor *)color
+                             scene:(GRScene *)scene
+{
+    // Immutable node, just return a new reference to itself (retained automatically by ARC).
+    return [self initWithIdentifier:identifier
+                             weight:weight
+                           position:CGPointZero
+                              color:color
+                              scene:scene];
+}
+
+/**
+ *  Initializes a newly allocated node with an identifier, weight, color, position, and scene properties.
+ *
+ *  @param  identifier  An identifier.
+ *  @param  weight    A weight.
+ *  @param  color    A color.
+ *  @param  scene    A Grapher scene associated with this edge.
+ *
+ *  @return  The new node.
+ */
+- (instancetype)initWithIdentifier:(id<NSObject>)identifier
+                            weight:(NSNumber *)weight
+                          position:(CGPoint)position
+                             color:(SKColor *)color
+                             scene:(GRScene *)scene
+{
+    // Immutable node, just return a new reference to itself (retained automatically by ARC).
+    self = [super init];
+    
+    if (self) {
+        
+        // Pass the parameters.
+        self.name = [identifier description];
+        self.weight = weight;
+        
+        // Assign its scene reference.
+        self.scene = scene;
+        
+        // The position of the node in the parent's coordinate system.
+        self.position = position;
+        
+        // Creating a shape node from a path shows an example of how to create a shape node.
+        // In the following lines we will create a circle with a "nodeColor" interior and a black outline.
+        CGMutablePathRef path = CGPathCreateMutable();
+        CGPathAddArc(path, /* CGMutablePathRef. */
+                     NULL, /* CGAffineTransform. */
+                     0.0f, /* x. */
+                     0.0f, /* y. */
+                     30.0f, /* radius. */
+                     0.0f, /* startAngle. */
+                     M_PI * 2.0f, /* endAngle. */
+                     YES); /* clockwise. */
+        
+        // The path is created and attached to the shape node's path property.
+        self.path = path;
+        
+        // The width used to stroke the path
+        self.lineWidth = 1.0f;
+        
+        // The color to draw the path with.
+        self.strokeColor = [[self class] nodeColor];
+        
+        // Add a glow to the path stroke of the specified width.
+        self.glowWidth = 1.0f;
+        
+        // The color to fill the path with.
+        self.fillColor = (color == nil ? [UIColor blackColor] : color);
+        
+        // init its number to default.
+        self.number = kGRNumberDefault;
+        
+        // Add a label node using the identifier.
+        SKLabelNode *identifierLabel = [SKLabelNode labelNodeWithFontNamed:@"Farah"];
+        identifierLabel.text = self.identifier;
+        identifierLabel.fontSize = 36.0f;
+        identifierLabel.position = CGPointMake(self.position.x, self.position.y - 10.0f);
+        
+        // Add it to the Grapher scene.
+        [self.scene addChild:identifierLabel];
+    }
+    
+    // Return this node and its children.
+    return self;
+}
+```
+
+* Next, add the following stub implementation to overriding the default behavior of the `-description` method:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Querying
+
+/**
+ *  Returns a string that describes this node.
+ *
+ *  @return  The string.
+ */
+- (NSString *)description
+{
+    // Establish the description string.
+    NSMutableString *string = [NSMutableString string];
+    [string appendFormat:@"%@ [#%ld]", self.name, self.number];
+    
+    // Append its position.
+    [string appendFormat:@" at %@", NSStringFromCGPoint(self.position)];
+    
+    // Weighted?
+    if (self.weight)
+        [string appendFormat:@" [%@]", self.weight];
+    
+    // Return it.
+    return string;
+}
+```
+
+* Next, implement the `GRNodeDelegate` protocol method: `-calculateEuclideanDistanceFromNode:`:
+
+``` Objective-C
+/**
+ *  Calculates/recalculates the Euclidean distance.
+ *
+ *  @return The Euclidean distance from node.
+ */
+- (double)calculateEuclideanDistanceFromNode:(GRNode *)node
+{
+    // Calculate the difference.
+    CGFloat x = self.position.x - node.position.x;
+    CGFloat y = self.position.y - node.position.y;
+    
+    // Calculate the product.
+    double product = powf(x, 2.0f) + powf(y, 2.0f);
+    
+    // Retun the computed length/norm.
+    return sqrtf(product);
+}
+```
+
+* Finally, implement the `GRNodeDelegate` protocol method: `-center`:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Modifying
+
+/**
+ *  Centers this node's position in world space.
+ */
+- (void)center
+{
+    // Reset the position vector.
+    self.position = CGPointZero;
+}
+```
+
+Fantastic! You now have a valid Node data structure for your Grapher app. All that remains is to add a little bit of effort to complete the Edge data structure. This part of the exercise will be introduced in the following day :)
+
+> **Note:** Xcode project files for this exercise will be pushed to this repo, later.
 
 ## What's Next?
 
