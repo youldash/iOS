@@ -377,7 +377,7 @@ Good job! You now have a valid Edge data structure for your Grapher app.
 
 As you may have already noticed, the implementation included a few lines for an expected Graph facade. To fill in the gaps, we shall instruct you to commence work on two new Graph-related classes: a `GRAbstractGraph` class, and immediately after that a new `GRSceneGraph` class...
 
-> **Important:** This part of the exercises assumes that you have already finished constructing the GRContainer class form [Exercise 7](https://github.com/youldash/iOS/tree/master/Day%203#exercise-7-containers). If this isn't the case, then we strongly encourage you to complete it first prior going ahead with what follows :)
+> **Important:** This part of the exercises assumes that you have already finished constructing the GRContainer class form [Exercise 7](https://github.com/youldash/iOS/tree/master/Day%203#exercise-7-containers). If this isn't the case, then we strongly encourage you to complete it first prior going ahead with what follows.
 
 
 
