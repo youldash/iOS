@@ -1247,7 +1247,115 @@ As the title of this exercise suggests, Scene Graph Nodes and Edges can be enume
 
 * Confirm by clicking Next and make sure "Targets" is checked for the executable. As you hit Create, you will immediately add both interface and implementation files `GRConnectedNodeEnumerator.[h,m]` to your project.
 
-* Replace what currently exists in `GRConnectedNodeEnumerator.h` with the following two code snippets. They contain both protocol and class interface declarations for the `GRConnectedNodeEnumerator` class, respectively:
+* Replace what currently exists in `GRConnectedNodeEnumerator.h` with the class declaration stub:
+
+``` Objective-C
+#import "GREnumerator.h"
+#import "GREnumerable.h"
+
+@class GRNode;
+
+/**
+ *  Represents an enumerator that enumerates the nodes connected to a given node by a given set of edges.
+ */
+@interface GRConnectedNodeEnumerator : GREnumerator {
+    
+    /**
+     *  A node.
+     */
+    GRNode *_node;
+    
+    /**
+     *  An edge enumerator.
+     */
+    id<GREnumeratorDelegate> _enumerator;
+}
+
+#pragma mark -
+#pragma mark Initializing
+
+/**
+ *  Designed initializer.
+ *  Initializes a newly allocated connected node enumerator with the given node and edge enumerator.
+ *
+ *  @param  node  A node.
+ *  @param  edges  The edges adjacent to the given node.
+ *
+ *  @return  The new enumerator.
+ */
+- (instancetype)initWithNode:(GRNode *)node edges:(id<GREnumerableDelegate>)edges;
+
+@end
+```
+
+* Next, edit the corresponding `GRConnectedNodeEnumerator.m` file and add the following import statement (right under `#import "GRConnectedNodeEnumerator.h"`):
+
+``` Objective-C
+#import "GREdge.h"
+```
+
+* Now, add the following class initializer stub to `GRConnectedNodeEnumerator.m`:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Initializing
+
+/**
+ *  Designed initializer.
+ *  Initializes a newly allocated connected node enumerator with the given node and edge enumerator.
+ *
+ *  @param  node  A node.
+ *  @param  edges  The edges adjacent to the given node.
+ *
+ *  @return  The new connected node enumerator.
+ */
+- (instancetype)initWithNode:(GRNode *)node edges:(id<GREnumerableDelegate>)edges
+{
+    // Immutable connected node enumerator, just return a new reference to itself (retained automatically by ARC).
+    self = [super init];
+    
+    if (self) {
+        
+        // Initialize all parameters.
+        _node = node;
+        _enumerator = [edges objectEnumerator];
+    }
+    
+    // Return this connected node enumerator along with its children.
+    return self;
+}
+```
+
+* Last, but not least, implement the `GREnumeratorDelegate` protocol methods `-hasMoreObjects` and `nextObject`, using the following stub:
+
+``` Objective-C
+#pragma mark -
+#pragma mark GREnumeratorDelegate
+
+/**
+ *  Indicates whether there are more nodes to be enumerated.
+ *
+ *  @return  The boolean result.
+ */
+- (BOOL)hasMoreObjects
+{
+    return [_enumerator hasMoreObjects];
+}
+
+/**
+ *  The next object to be enumerated.
+ *
+ *  @return  The next object.
+ */
+- (id)nextObject
+{
+    GREdge *edge = [_enumerator nextObject];
+    
+    return [edge mateOfNode:_node];
+}
+```
+
+> Good! You now have access to a valid ConnectedNodeEnumerator data structure for your Grapher app.
 
 
 
