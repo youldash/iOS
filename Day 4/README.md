@@ -1234,7 +1234,7 @@ As the title of this exercise suggests, Scene Graph Nodes and Edges can be enume
 * The `GREdgeEnumerator` class for enumerating "connected" Graph Nodes, and
 * The `GRContainerAsArrayEnumerator` class for enumerating the Scene Graph (as a whole).
 
-### Starting With the ConnectedNodeEnumerator Class
+### Starting With the an Enumerator for Connected Nodes
 
 * Add a new class by highlighting on the "Grapher" yellow (group) folder and selecting "New File" from the File menu.
 
