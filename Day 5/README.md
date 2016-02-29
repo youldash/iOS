@@ -299,6 +299,12 @@ Time to update your View Controller class, too!
 
 Here, you will take you through a series of steps to initialize, and setup your Scene...
 
+The story goes as follows:
+
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise10.0.1.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise10.0.2.png" width="100%" /></div>
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise10.0.3.png" width="100%" /></div>
+
 
 
 
