@@ -700,7 +700,7 @@ Rebuild your project and witness the Node identifiers appear in Arabic. Cool, hu
 
 **Congratulations!** You have made it through our intensive training course :)
 
-Though... I have a confession to make! This is an enormous amount of information and should probably be a very lengthy handout. Nevertheless, I hope that you've enjoyed what was covered so far, and at least you've got a better understanding in making your ideas a living reality.
+But... I have a confession to make! This is an enormous amount of information and should probably be a very lengthy handout. Nevertheless, I hope that you've enjoyed what was covered so far, and at least you've got a better understanding in making your ideas a living reality.
 
 Thank you for sharing your interests!
 
