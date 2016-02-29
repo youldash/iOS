@@ -99,31 +99,7 @@ As the title suggests, you will be guided through a series of steps for making y
 @end
 ```
 
-* The `GREnumerator` interface is now ready for a proper implementation. Add the following class initializer stub in `GREnumerator.m`:
-
-``` Objective-C
-#pragma mark -
-#pragma mark Initializing
-
-/**
- *  Designated initializer.
- *  Initializes a newly allocated enumerator.
- *
- *  @return The new enumerator.
- */
-- (instancetype)init
-{
-    NSAssert(![self isMemberOfClass:[GREnumerator class]], @"GREnumerator class instantiated.");
-    
-    // Immutable enumerator, just return a new reference to itself (retained automatically by ARC).
-    self = [super init];
-    
-    // Return this enumerator along with its children.
-    return self;
-}
-```
-
-* Your `GRScene` interface is now ready for some tweaks. Continue by editing the corresponding `GRScene.m` file and adding the following import statements (under `#import "GRScene.h"`), along with the property synthesizer stub for your Scene properties:
+* Your `GRScene` implementation file is now ready for some tweaks. Continue by editing the corresponding `GRScene.m` file and adding the following import statements (under `#import "GRScene.h"`), along with the property synthesizer stub for your Scene properties:
 
 ``` Objective-C
 #import "GRSceneGraph.h"
@@ -281,7 +257,7 @@ placing the following definition for new Node numbers (on top of the `@implement
 
 ``` Objective-C
 /**
- *  Called before each frame is rendered
+ *  Called before each frame is rendered.
  *
  *  @param currentTime The current time interval.
  */
@@ -297,17 +273,355 @@ Time to update your View Controller class, too!
 
 ## Exercise 11: Modifying Your ViewController Class
 
-Here, you will take you through a series of steps to initialize, and setup your Scene...
+Here, you will take you through a series of steps to initialize and setup your Scene...
 
-The story goes as follows:
+### But What About Sound Effects..?
 
+One thins to point out is that your main `GRViewController` class will do more than just control your Scene. In fact, we have expanded its capabilities to incorporate sound.. (yes you heard it folks: Sound!) into your app. Sound plays an important part in making your app experience (as a user) a more appealing and memorable experience.
+
+> **Note:** Sound is simplified in your Grapher project via [AVFoundation](https://developer.apple.com/library/ios/documentation/AVFoundation/Reference/AVFoundationFramework/). See the [AVFoundation Reference](https://developer.apple.com/library/ios/documentation/AVFoundation/Reference/AVFoundationFramework/) for more information on how to utilize sound in your projects.
+
+> **Note:** Although SpriteKit does have the ability to play sound effects, we made it deliberate to use other frameworks (for educational purpose i.e. by expanding your knowledge base by exploring additional iOS frameworks).
+
+### Storytelling
+
+Before you attempt to address the following tasks, let us tell you a little story that would ultimately make easier for you to fully grasp the idea behind the code...
+
+Imagine a situation where you launch the app. You tap on anywhere within the screen boundaries, and you get the following result:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise10.0.1.png" width="100%" /></div>
+
+Your first Node is rendered, and is also added to your currently active Scene (as part of the Scene Graph, and is numbered `0`).
+
+Then after a few seconds you tap again somewhere else and you have another Node added, like so:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise10.0.2.png" width="100%" /></div>
+
+The resulting Scene inserts two new Nodes: the previous "root" Node and this one (numbered `1`). Also, you immediately notice a new Edge is also inserted into the Scene Graph. This new Edge is also labelled (with the computed Euclidean distance between Node `#0` and Node `#1`). The label reflects that distance in a 2D Cartesian space.
+
+Soon after a few more seconds, you tap on the screen once more and you end up having a third Node and an additional Edge, like so:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise10.0.3.png" width="100%" /></div>
 
+For each tap/touch, a specific tone is played, indicating what sort of action was made...
 
+Got it..? Brilliant! Now you can commence work on the `GRViewController` class, knowingly that you are fully aware of the app logic.
 
+* Edit the `GRViewController.h` header and modify it to match the following code snippet. It contains a class interface declarations for defining the behavior of your ViewController class:
 
+``` Objective-C
+@import UIKit;
+@import SpriteKit;
+@import AVFoundation;
+
+#import "GRScene.h"
+
+/**
+ *	Main view controller class.
+ *	Used for rendering 2D nodes and edges.
+ */
+@interface GRViewController : UIViewController <GRSceneDelegate, AVAudioPlayerDelegate>
+
+#pragma mark -
+#pragma mark Utilities
+
+/**
+ *  Audio playback.
+ */
+@property (strong, nonatomic) AVAudioPlayer *audioPlayer;
+
+@end
+```
+
+* Your `GRViewController` implementation file is now ready for modification. Edit `GRViewController.m` and make sure you have the following three import statements on top of your file:
+
+``` Objective-C
+#import "GRSceneGraph.h"
+#import "GRNode.h"
+#import "GREdge.h"
+```
+
+* Now, add a global variable definition for audio playback errors (it is just a dummy error code):
+
+``` Objective-C
+/**
+ *  Error code.
+ */
+#define kGRErrorCode 0
+```
+
+* Next, add audio support in your app by implementing two `AVAudioPlayerDelegate` protocol methods (`-audioPlayerDidFinishPlaying:successfully:` and `-audioPlayerDecodeErrorDidOccur:error:`) in no particular order:
+
+``` Objective-C
+#pragma mark -
+#pragma mark AVAudioPlayerDelegate
+
+/**
+ *  For some reason, the audio player fails to load the associated audio file.
+ *
+ *  @param player An audio player.
+ *  @param error  An error.
+ */
+- (void)audioPlayerDecodeErrorDidOccur:(AVAudioPlayer *)player error:(NSError *)error
+{
+    // Pass the error to the handler.
+    [self handleError:error];
+}
+
+/**
+ *  Called when a sound has finished playing.
+ *  This method is NOT called if the player is stopped due to an interruption.
+ *
+ *  @param player An audio player.
+ *  @param flag   A flag.
+ */
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
+{
+    _audioPlayer = nil;
+}
+```
+
+* You will also need to implement the `-handleError:` method as follows:
+
+placing the following definition for new Node numbers (on top of the `@implementation` declarative):
+
+``` Objective-C
+#pragma mark -
+#pragma mark Error Handling
+
+/**
+ *  Error handler.
+ *
+ *  @param error An error.
+ */
+- (void)handleError:(NSError *)error
+{
+    // Inform of error in the application's main queue.
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        // No need to check to see if the audioPlayer is nil, since calling 'stop' will do nothing if it's nil.
+        if (_audioPlayer.isPlaying)
+            [_audioPlayer stop];
+        _audioPlayer = nil;
+        
+        // Present the PhotoAlbum info in an AlertController instance.
+        UIAlertController *alertController =
+        [UIAlertController alertControllerWithTitle:NSLocalizedString(@"App Name", NULL)
+                                            message:error.localizedDescription
+                                     preferredStyle:UIAlertControllerStyleAlert];
+        
+        // Establish a "Dismiss" AlertAction object.
+        UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"Dismiss"
+                                                                style:UIAlertActionStyleDefault
+                                                              handler:NULL];
+        
+        // Add the AlertAction object to the AlertController object.
+        [alertController addAction:dismissAction];
+        
+        // Present it.
+        [self presentViewController:alertController animated:YES completion:nil];
+    });
+}
+```
+
+* Next, add a new method for handling audio playback:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Audio Playback
+
+/**
+ *  Setup audio playback, and play.
+ *
+ *  @param name      A filename.
+ *  @param extension A file extension.
+ *  @param sender    A sender.
+ */
+- (void)setupAudioPlaybackAndPlayResource:(nullable NSString *)name
+                            withExtension:(nullable NSString *)extension
+                                   sender:(nullable id)sender
+{
+    // Play sound in the application's main queue.
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        // Assign an audio sound (played when random point sets are generated and saved to file).
+        NSError *error = nil;
+        
+        // No need to check to see if the audioPlayer is nil, since calling 'stop' will do nothing if it's nil.
+        if (_audioPlayer.isPlaying)
+            [_audioPlayer stop];
+        _audioPlayer = nil;
+        _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:
+                        [[NSBundle mainBundle] URLForResource:name withExtension:extension]
+                                                              error:&error];
+        
+        // If error, return.
+        if (error) {
+            
+            [self handleError:error];
+            return;
+        }
+        
+        // All seems good.
+        [_audioPlayer setDelegate:self];
+        [_audioPlayer setVolume:1.0f];
+        [_audioPlayer prepareToPlay];
+        [_audioPlayer play];
+    });
+}
+```
+
+* Next, implement all methods of the `GRSceneDelegate` protocol:
+
+#pragma mark -
+#pragma mark GRSceneDelegate
+/**
+ *  Scene graph did add a new node to its graph.
+ *
+ *  @param  scene  A Grapher scene associated with this edge.
+ *  @param log  A log.
+ */
+- (void)scene:(GRScene *)scene addedNodeWithLog:(NSMutableString *)log
+{
+    [self setupAudioPlaybackAndPlayResource:@"Pop" withExtension:@"wav" sender:nil];
+}
+
+/**
+ *  Scene graph did purge its graph.
+ *
+ *  @param  scene  A Grapher scene associated with this edge.
+ *  @param log  A log.
+ */
+- (void)scene:(GRScene *)scene purgedGraphWithLog:(NSMutableString *)log
+{
+    [self setupAudioPlaybackAndPlayResource:@"Rattle" withExtension:@"wav" sender:nil];
+}
+```
+
+* You may also wish to leave the `-update:` method block empty, like so:
+
+``` Objective-C
+/**
+ *  Called before each frame is rendered.
+ *
+ *  @param currentTime The current time interval.
+ */
+- (void)update:(CFTimeInterval)currentTime
+{
+    // NSLog(@"%s", __FUNCTION__);
+}
+```
+
+* You're doing great! One last "relatively large" code segment to finish, and your implementation stages should be complete! Make sure your view lifecycle methods look like the following:
+
+``` Objective-C
+#pragma mark -
+#pragma mark View lifecycle
+
+/**
+ *  Called after the view has been loaded,
+ */
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    // Configure the view.
+    SKView * skView = (SKView *)self.view;
+    skView.showsFPS = YES;
+    skView.showsNodeCount = YES;
+    
+    /* Sprite Kit applies additional optimizations to improve rendering performance */
+    skView.ignoresSiblingOrder = YES;
+    
+    // Create and configure the scene.
+    GRScene *scene = [GRScene nodeWithFileNamed:@"GRScene"];
+    scene.sceneDelegate = self;
+    scene.scaleMode = SKSceneScaleModeAspectFill;
+    scene.backgroundColor = SKColor.darkGrayColor;
+    
+    // Present the scene.
+    [skView presentScene:scene];
+    
+    // Setup audio playback and play the file.
+    [self setupAudioPlaybackAndPlayResource:@"ComputerBeeps2" withExtension:@"wav" sender:nil];
+}
+
+/**
+ *  Autorotation support.
+ *
+ *  @return The boolean value.
+ */
+- (BOOL)shouldAutorotate
+{
+    return YES;
+}
+
+/**
+ *  Supported interface orientations.
+ *
+ *  @return The interface orientation mask value.
+ */
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        
+        return UIInterfaceOrientationMaskAllButUpsideDown;
+        
+    } else {
+        
+        return UIInterfaceOrientationMaskAll; // Current device (iPad).
+    }
+}
+
+/**
+ *  Called when the parent application receives a memory warning.
+ */
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc that aren't in use.
+    // Dispose of any resources that can be recreated.
+    
+    // Show the warning.
+    [self handleError:[NSError errorWithDomain:NSCocoaErrorDomain
+                                          code:kGRErrorCode
+                                      userInfo:@{NSLocalizedDescriptionKey:@"Memory Warning!"}]];
+}
+
+/**
+ *  Controls the attributes of the status bar when this view controller is shown.
+ *  They can be overridden in view controller subclasses to return the desired status bar attributes.
+ *  Default is NO.
+ *
+ *  @return The status bar flag.
+ */
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+```
+
+> Splendid! You are now officially done with the hard parts of your Grapher project :)
+
+**The remainder of the exercises are a broken down in twofold:**
+
+* **Exercise 12** → Importing media assets into your project, and
+* **Exercise 13** → Localizing your app (to display Arabic strings instead of default English terms).
+
+Here, you will take you through a series of steps to initialize and setup your Scene...
+
+## Exercise 12: Importing Media Assets
+
+In this exercise, you will be instructed to import an Asset Catalog into your Xcode project workspace. Asset Catalogs are a good resource for hosting "literally" all of your images and icons.
+
+After you [download and obtain](https://twitter.com/youldash) a copy of the accompanying `Media.xcassets` folder:
+
+* Drag it into Xcode (preferably under the the "Grapher" group "yellow" icon).
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise12.0.1.png" width="100%" /></div>
+
+The following dialog will appear if this step is successful:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise12.0.2.png" width="100%" /></div>
+
+* If all goes well, confirm by editing `Media.xcassets` and inspect its contents. It should reveal an icon set that looks similar to the following:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise12.0.3.png" width="100%" /></div>
 
 
 
