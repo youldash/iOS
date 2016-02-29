@@ -291,8 +291,13 @@ placing the following definition for new Node numbers (on top of the `@implement
 }
 ```
 
-> Perfect! You now have a valid Scene that responds to user input, and Graph creation and population. 
+> Awesome! Now you have a perfect good-looking Scene that responds to both user input, in addition to Graph creation and population. 
 
+Time to update your View Controller class, too!
+
+## Exercise 11: Modifying Your ViewController Class
+
+Here, you will take you through a series of steps to initialize, and setup your Scene...
 
 
 
