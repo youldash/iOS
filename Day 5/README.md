@@ -628,7 +628,7 @@ If you compile your project and test you app now, you should witness a new icon 
 
 Next comes the part where you import a few selected sound files into you project...
 
-* Drag it into Xcode (preferably under the the "Grapher" group icon).
+* Drag them all into Xcode (preferably under the the "Grapher" group icon).
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise12.0.4.png" width="100%" /></div>
 
 The same dialog from previous, will appear if this step is successful (again, make sure you mark "Copy items if needed")
