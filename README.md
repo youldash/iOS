@@ -77,7 +77,7 @@ Umm Al-Qura University accepts no responsibility or liability for the content av
 	</table>
 </div>
 
-This repo is sponsored in part by:
+This repo was made possible, thanks to:
 - [Department of Computer Science](http://cis.uqu.edu.sa/) of Umm Al-Qura University, Mecca, Saudi Arabia.
 - [Tam Development, LLC](http://tam.sa/).
 
