@@ -1232,7 +1232,7 @@ As the title of this exercise suggests, Scene Graph Nodes and Edges can be enume
 
 * The `GRConnectedNodeEnumerator` class for enumerating "connected" Graph Nodes,
 * The `GREdgeEnumerator` class for enumerating "connected" Graph Nodes, and
-* The `GRContainerAsArrayEnumerator` class for enumerating the Scene Graph (as a whole).
+* The `GRContainerAsArrayEnumerator` class for enumerating the Scene Graph (for a container, implemented as an array).
 
 ### Starting With the an Enumerator for Connected Nodes
 
@@ -1516,29 +1516,174 @@ As the title of this exercise suggests, Scene Graph Nodes and Edges can be enume
 }
 ```
 
-> That's it! You now have access to a valid EdgeEnumerator data structure for your Grapher app. All that remains is just one final class :)
+> That's it! You now have access to a valid EdgeEnumerator data structure for your Grapher app.
 
+All that remains is just one final class :)
 
+### Finally, an Enumerator for an "Array" Container
 
+* Add a new class by highlighting on the "Grapher" yellow (group) folder and selecting "New File" from the File menu.
 
+* Under the "OS X" section, select "Source", and choose "Cocoa Class".
 
+* When prompted for options, type `GRContainerAsArrayEnumerator` as the class name. Make sure `GREnumerator` is selected for subclassing from. This class is an enumerator for a container, implemented as an array.
 
+* Choose "Objective-C" from the Language pop-up menu, like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise9.0.3.png" width="100%" /></div>
 
+* Confirm by clicking Next and make sure "Targets" is checked for the executable. As you hit Create, you will immediately add both interface and implementation files `GRContainerAsArrayEnumerator.[h,m]` to your project.
 
+* Replace what currently exists in `GRContainerAsArrayEnumerator.h` with the this interface snippet (after you import the `GRContainer.h` header first, then declare a forward call to the `GRArray` class header of course):
 
+``` Objective-C
+#import "GRContainer.h"
 
+@class GRArray;
+```
 
+``` Objective-C
+/**
+ *  Represents an enumerator for a container implemented as an array.
+ */
 
+@interface GRContainerAsArrayEnumerator : GREnumerator {
+    
+    /**
+     *  The container.
+     */
+    id<GRContainerDelegate> _container;
+    
+    /**
+     *  The array.
+     */
+    GRArray *_array;
+    
+    /**
+     *  The number of objects in the container.
+     */
+    NSUInteger _count;
+    
+    /**
+     *  The array index from which to start the enumeration.
+     */
+    NSUInteger _fromIndex;
+    
+    /**
+     *  The current position pointer.
+     */
+    NSUInteger _pointer;
+}
 
+#pragma mark -
+#pragma mark Initializing
 
+/**
+ *  Designed initializer.
+ *  Initializes a newly allocated container as array enumerator for the given container, array, count and start index.
+ *
+ *  @param  container  The container.
+ *  @param  array    The underlying array.
+ *  @param  count    The number of objects in the array.
+ *  @param  index    The start index.
+ *
+ *  @return  The new container as array enumerator.
+ */
+- (instancetype)initWithContainer:(id<GRContainerDelegate>)container
+                            array:(GRArray *)array
+                            count:(NSUInteger)count
+                        fromIndex:(NSUInteger)index;
 
+@end
+```
 
+* Next, import `GRArray.h` and edit the corresponding `GRContainerAsArrayEnumerator.m` file and add the following class initializer stub to `GRContainerAsArrayEnumerator.m`:
 
+``` Objective-C
+#import "GRArray.h"
+```
+
+``` Objective-C
+#pragma mark -
+#pragma mark Initializing
+
+/**
+ *  Designed initializer.
+ *  Initializes a newly allocated container as array enumerator for the given container, array, count and start index.
+ *
+ *  @param  container  The container.
+ *  @param  array    The underlying array.
+ *  @param  count    The number of objects in the array.
+ *  @param  index    The start index.
+ *
+ *  @return  The new container as array enumerator.
+ */
+- (instancetype)initWithContainer:(id<GRContainerDelegate>)container
+                            array:(GRArray *)array
+                            count:(NSUInteger)count
+                        fromIndex:(NSUInteger)index
+{
+    // Immutable container as array enumerator, just return a new reference to itself (retained automatically by ARC).
+    self = [super init];
+    
+    if (self) {
+        
+        // Initialize all parameters.
+        _container = container;
+        _array = array;
+        _count = count;
+        _fromIndex = index;
+        _pointer = 0;
+    }
+    
+    // Return this container as array enumerator along with its children.
+    return self;
+}
+```
+
+* Lastly, override the `GREnumeratorDelegate` protocol methods `-hasMoreObjects` and `nextObject`, using the following stub:
+
+``` Objective-C
+#pragma mark -
+#pragma mark GREnumeratorDelegate
+
+/**
+ *  Returns a boolean that indicates whether there are more objects to be enumerated.
+ *
+ *  @return  The boolean result.
+ */
+- (BOOL)hasMoreObjects
+{
+    return _pointer < _count;
+}
+
+/**
+ *  Returns the next object to be enumerated.
+ *
+ *  @return  The next object.
+ */
+- (id)nextObject
+{
+    id object = nil;
+    
+    if (_pointer < _count) {
+        
+        NSUInteger offset = (_fromIndex + _pointer - _array.baseIndex) % _array.length + _array.baseIndex;
+        
+        object = [_array objectAtIndex:offset];
+        
+        _pointer++;
+    }
+    
+    return object;
+}
+```
+
+> That is all, folks! You now have access to everything you need for your Grapher app.
+
+What remains is the finishing touches for the app. This final part is left for the last day of the training course.
 
 > **Note:** Xcode project files for this exercise will be pushed to this repo, later.
 
 ## What's Next?
 
 **Congratulations!** You are now ready to tackle the final challenges presented in [Day 5: Scene Graphs (Part III)](https://github.com/youldash/iOS/blob/master/Day%205/).
-
-
