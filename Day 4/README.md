@@ -374,7 +374,7 @@ As the title suggests, Nodes and Edges are both considered vital building blocks
 }
 ```
 
-Good job! You now have a valid Edge data structure for your Grapher app. 
+> Good job! You now have a valid Edge data structure for your Grapher app. 
 
 ### But Wait!
 
@@ -1053,7 +1053,9 @@ As you may have already noticed, the implementation included a few lines for an 
 }
 ```
 
-> Good job! You are now finished with the Abstract class for creating Graphs. Next, we will introduce you to a new Base class for constructing actual Scene Graphs in your final iOS project.
+> Good job! You are now finished with the Abstract class for creating Graphs.
+
+Next, we will introduce you to a new Base class for constructing actual Scene Graphs in your final iOS project.
 
 ### The "Base" Scene Graph Class
 
@@ -1218,8 +1220,34 @@ As you may have already noticed, the implementation included a few lines for an 
 }
 ```
 
-> That is all! You are now finished with the Base class for creating Graphs, which will be used for rendering your scene. Next, we will introduce you to the remaining Enumerator classes (specifically `GRConnectedNodeEnumerator`, `GREdgeEnumerator` and `GRContainerAsArrayEnumerator`) that were referenced in you Graph code earlier, for constructing actual Scene Graphs in your final iOS project.
+> That is all! You are now finished with the Base class for creating Graphs, which will be used for rendering your scene.
 
+Next, we will introduce you to the remaining Enumerator classes (specifically `GRConnectedNodeEnumerator`, `GREdgeEnumerator` and `GRContainerAsArrayEnumerator`) that were referenced in you Graph code earlier, for constructing actual Scene Graphs in your final iOS project.
+
+These tasks are made part of a separate exercise, which is described below:
+
+## Exercise 9: Enumerating Scene Graph Objects
+
+As the title of this exercise suggests, Scene Graph Nodes and Edges can be enumerated using some sort of Enumerator mechanism (which was presented in an earlier exercise: [Exercise 6: Enumerators and Enumerables](https://github.com/youldash/iOS/tree/master/Day%203#exercise-6-enumerators-and-enumerables)). These classes are defined as follows:
+
+* The `GRConnectedNodeEnumerator` class for enumerating "connected" Graph Nodes,
+* The `GREdgeEnumerator` class for enumerating "connected" Graph Nodes, and
+* The `GRContainerAsArrayEnumerator` class for enumerating the Scene Graph (as a whole).
+
+### Starting With the ConnectedNodeEnumerator Class
+
+* Add a new class by highlighting on the "Grapher" yellow (group) folder and selecting "New File" from the File menu.
+
+* Under the "OS X" section, select "Source", and choose "Cocoa Class".
+
+* When prompted for options, type `GRConnectedNodeEnumerator` as the class name. Make sure `GREnumerator` is selected for subclassing from. This class is used as an enumerator that iterates through Node facades, connected to other Nodes by a given set of Edges.
+
+* Choose "Objective-C" from the Language pop-up menu, like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise9.0.1.png" width="100%" /></div>
+
+* Confirm by clicking Next and make sure "Targets" is checked for the executable. As you hit Create, you will immediately add both interface and implementation files `GRConnectedNodeEnumerator.[h,m]` to your project.
+
+* Replace what currently exists in `GRConnectedNodeEnumerator.h` with the following two code snippets. They contain both protocol and class interface declarations for the `GRConnectedNodeEnumerator` class, respectively:
 
 
 
