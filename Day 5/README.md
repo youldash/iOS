@@ -615,6 +615,8 @@ In this exercise, you will be instructed to import an Asset Catalog into your Xc
 
 After you [download and obtain](https://raw.github.com/youldash/iOS/master/Misc/Media.xcassets.zip) a copy of the accompanying `Media.xcassets` folder:
 
+* Unarchive the archive to access Assets Catalog folder (rename it to match the exact name if this step is necessary).
+
 * Drag it into Xcode (preferably under the the "Grapher" group "yellow" icon).
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise12.0.1.png" width="100%" /></div>
 
@@ -626,7 +628,11 @@ The following dialog will appear if this step is successful (and make sure you m
 
 If you compile your project and test you app now, you should witness a new icon for your app.
 
-Next comes the part where you import a few selected sound files into you project...
+**Next comes the part where you import a few selected sound files into you project...**
+
+After you [download and obtain](https://raw.github.com/youldash/iOS/master/Misc/AudioArchive.zip) a copy of the accompanying sound files "Zip" archive:
+
+* Unarchive the archive to access the WAV sample files.
 
 * Drag them all into Xcode (preferably under the the "Grapher" group icon).
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise12.0.4.png" width="100%" /></div>
