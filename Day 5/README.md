@@ -613,19 +613,47 @@ Here, you will take you through a series of steps to initialize and setup your S
 
 In this exercise, you will be instructed to import an Asset Catalog into your Xcode project workspace. Asset Catalogs are a good resource for hosting "literally" all of your images and icons.
 
-After you [download and obtain](https://twitter.com/youldash) a copy of the accompanying `Media.xcassets` folder:
+After you [download and obtain](https://raw.github.com/youldash/iOS/master/Misc/Media.xcassets.zip) a copy of the accompanying `Media.xcassets` folder:
 
 * Drag it into Xcode (preferably under the the "Grapher" group "yellow" icon).
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise12.0.1.png" width="100%" /></div>
 
-The following dialog will appear if this step is successful:
+The following dialog will appear if this step is successful (and make sure you mark "Copy items if needed"):
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise12.0.2.png" width="100%" /></div>
 
 * If all goes well, confirm by editing `Media.xcassets` and inspect its contents. It should reveal an icon set that looks similar to the following:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise12.0.3.png" width="100%" /></div>
 
+If you compile your project and test you app now, you should witness a new icon for your app.
 
+Next comes the part where you import a few selected sound files into you project...
 
+* Drag it into Xcode (preferably under the the "Grapher" group icon).
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise12.0.4.png" width="100%" /></div>
+
+The same dialog from previous, will appear if this step is successful (again, make sure you mark "Copy items if needed")
+
+* If all goes well, confirm by editing you project structure and identifying each file (by playing selected audio files if you will):
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise12.0.5.png" width="100%" /></div>
+
+If you compile your project and test you app now, you should hear sound effects whenever you tap on the screen.
+
+> **Note:** Xcode project files for this exercise will be pushed to this repo, later.
+
+## Exercise 13: Localizing Your App
+
+After you [download and obtain](https://twitter.com/youldash) a copy of the accompanying `Media.xcassets` folder:
+
+* Drag it into Xcode (preferably under the the "Grapher" group "yellow" icon).
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise12.0.1.png" width="100%" /></div>
+
+The following dialog will appear if this step is successful (and make sure you mark "Copy items if needed"):
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise12.0.2.png" width="100%" /></div>
+
+* If all goes well, confirm by editing `Media.xcassets` and inspect its contents. It should reveal an icon set that looks similar to the following:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise12.0.3.png" width="100%" /></div>
+
+If you compile your project and test you app now, you should witness a new icon for your app.
 
 
 > **Note:** Xcode project files for this exercise will be pushed to this repo, later.
