@@ -109,6 +109,9 @@ As the title suggests, Nodes and Edges are both considered vital building blocks
 - (GRNode *)mateOfNode:(GRNode *)node;
 
 @end
+```
+
+``` Objective-C
 /**
  *  Represents an edge in a graph.
  */
@@ -378,6 +381,237 @@ Good job! You now have a valid Edge data structure for your Grapher app.
 As you may have already noticed, the implementation included a few lines for an expected Graph facade. To fill in the gaps, we shall instruct you to commence work on two new Graph-related classes: a `GRAbstractGraph` class, and immediately after that a new `GRSceneGraph` class...
 
 > **Important:** This part of the exercises assumes that you have already finished constructing the GRContainer class form [Exercise 7](https://github.com/youldash/iOS/tree/master/Day%203#exercise-7-containers). If this isn't the case, then we strongly encourage you to complete it first prior going ahead with what follows.
+
+### The `GRAbstractGraph` Class
+
+* Add a new class by highlighting on the "Grapher" yellow icon and selecting "New File" from the File menu.
+
+* Under the "OS X" section, select "Source", and choose "Cocoa Class".
+
+* When prompted for options, type `GRAbstractGraph` as the class name. Make sure the `GRContainer` superclass is selected for it.
+
+* Choose "Objective-C" from the Language pop-up menu, like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise8.0.14.png" width="100%" /></div>
+
+* Confirm by clicking Next and make sure "Targets" is checked for the executable. As you hit Create, you will immediately add both interface and implementation files `GRAbstractGraph.[h,m]` to your project.
+
+* Replace what code is currently present for `GRAbstractGraph.h` with the following two code snippets. They contain both protocol and class interface declarations, respectively:
+
+``` Objective-C
+#import "GRContainer.h"
+
+@class GRAbstractGraph;
+@class GRNode;
+@class GREdge;
+@class GRScene;
+@class GRArray;
+
+@import SpriteKit;
+
+/**
+ *  Protocol implemented by all graphs.
+ */
+@protocol GRGraphDelegate <GRContainerDelegate>
+
+#pragma mark -
+#pragma mark Accessing
+
+/**
+ *  An identifier.
+ */
+@property (readonly, nonatomic) NSString *identifier;
+
+/**
+ *  The number of nodes.
+ */
+@property (readonly, nonatomic) NSUInteger numberOfNodes;
+
+/**
+ *  The number of edges.
+ */
+@property (readonly, nonatomic) NSUInteger numberOfEdges;
+
+/**
+ *  The nodes in this graph.
+ *
+ *  An array of pointers to node instances, used to represent the elements of the node set N.
+ */
+@property (strong, readonly, nonatomic) id<GREnumerableDelegate> nodes;
+
+/**
+ *  The edges in this graph.
+ *
+ *  An array of pointers to edge instances, used to represent the elements of the edge set E.
+ */
+@property (strong, readonly, nonatomic) id<GREnumerableDelegate> edges;
+
+#pragma mark -
+#pragma mark Querying
+
+/**
+ *  Returns the node in this graph at the given index.
+ *
+ *  @param  index  An index.
+ *
+ *  @return  The node at the given index.
+ */
+- (GRNode *)nodeAtIndex:(NSUInteger)index;
+
+/**
+ *  Returns a boolean value that indicates whether there is an edge in this graph between the nodes with the given indices.
+ *
+ *  @param  index1  index1 The from index.
+ *  @param  index2  index2 The to index.
+ *
+ *  @return  The boolean result.
+ */
+- (BOOL)isEdgeFromIndex:(NSUInteger)index1 toIndex:(NSUInteger)index2;
+
+/**
+ *  Returns the edge in this graph between the given nodes with the given indices.
+ *
+ *  @param  index1  The from index.
+ *  @param  index2  The to index.
+ *
+ *  @return  The edge joining the given nodes.
+ */
+- (GREdge *)edgeFromIndex:(NSUInteger)index1 toIndex:(NSUInteger)index2;
+
+/**
+ *  Indicates whether this graph is valid or not.
+ *
+ *  @return  The boolean result.
+ */
+- (BOOL)isValid;
+
+#pragma mark -
+#pragma mark Mutating
+
+/**
+ *  Adds a node to this graph with parameters: identifier, weight, position, color, and scene.
+ *  Node's position will be assigned later.
+ *  Returns the number of the new node.
+ *
+ *  This mutator (-addNodeWithIdentifier:weight:size:color:scene:) inserts new node into a graph.
+ *  For simplicity, we shall assume that a given node is inserted into exactly one graph.
+ *  All the nodes contained in a graph must have a unique node number.
+ *  Furthermore, if a graph contains (n) nodes, those nodes shall be numbered 0, 1, 2, ..., n-1.
+ *  Therefore, the next node inserted into the graph shall have the number (n).
+ *
+ *  This accessor (brought forward from -indexOfNode:) takes an integer, say (i) where 0 <= i < n,
+ *  and returns reference to the i'th node contained in the graph.
+ *
+ *  @param  identifier  An identifier.
+ *  @param  weight    A weight.
+ *  @param  position  A position.
+ *  @param  color    A color.
+ *  @param  scene    A Grapher scene associated with this edge.
+ *
+ *  @return  The index of the new node.
+ */
+- (NSUInteger)addNodeWithIdentifier:(id<NSObject>)identifier
+                             weight:(NSNumber *)weight
+                           position:(CGPoint)position
+                              color:(SKColor *)color
+                              scene:(GRScene *)scene;
+
+/**
+ *  Adds an edge to this graph between the nodes with the given indices, weight.
+ *
+ *  @param  index1  The from index.
+ *  @param  index2  The to index.
+ *  @param  weight  The weight on the edge.
+ *  @param  scene  A Grapher scene associated with this edge.
+ */
+- (void)addEdgeFromIndex:(NSUInteger)index1
+                 toIndex:(NSUInteger)index2
+                  weight:(NSNumber *)weight
+                   scene:(GRScene *)scene;
+
+/**
+ *  Removes all the nodes and edges from this graph.
+ */
+- (void)purge;
+
+#pragma mark -
+#pragma mark Enumerating
+
+/**
+ *  Returns an enumerator that enumerates the nodes of this graph.
+ *
+ *  @return  The enumerator.
+ */
+- (id<GREnumeratorDelegate>)nodeEnumerator;
+
+/**
+ *  Returns an enumerator that enumerates the edges of this graph.
+ *
+ *  @return  The enumerator.
+ */
+- (id<GREnumeratorDelegate>)edgeEnumerator;
+
+@end
+```
+
+``` Objective-C
+/**
+ *  Base class from which all graph classes are derived.
+ */
+@interface GRAbstractGraph : GRContainer <GRGraphDelegate> {
+    
+    /**
+     *  The number of nodes.
+     */
+    NSUInteger _numberOfNodes;
+    
+    /**
+     *  The number of edges.
+     */
+    NSUInteger _numberOfEdges;
+    
+    /**
+     *  A "mutable" array of nodes.
+     */
+    GRArray *_nodeArray;
+}
+
+#pragma mark -
+#pragma mark Initializing
+
+/**
+ *  Designated initializer.
+ *  Initializes a newly allocated graph with the given length (maximum number of nodes).
+ *
+ *  @param  identifier  An identifier.
+ *  @param  length    The maximum number of nodes.
+ *
+ *  @return  The new graph.
+ */
+- (instancetype)initWithIdentifier:(id<NSObject>)identifier length:(NSUInteger)length;
+
+#pragma mark -
+#pragma mark Testing
+
+/**
+ *  Weighted graph test program.
+ *
+ *  @param  graph  The graph to test.
+ *
+ *  @return  A boolean value that indicates whether all the tests were successful.
+ */
++ (BOOL)testWeightedGraph:(id<GRGraphDelegate>)graph;
+
+/**
+ *  Graph test program.
+ *
+ *  @param  graph  The graph to test.
+ *
+ *  @return  A boolean value that indicates whether all the tests were successful.
+ */
++ (BOOL)testGraph:(id<GRGraphDelegate>)graph;
+
+@end
+```
 
 
 
