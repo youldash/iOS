@@ -613,7 +613,7 @@ Here, you will take you through a series of steps to initialize and setup your S
 
 In this exercise, you will be instructed to import an Asset Catalog into your Xcode project workspace. Asset Catalogs are a good resource for hosting "literally" all of your images and icons.
 
-After you [download and obtain](https://raw.github.com/youldash/iOS/master/Misc/Media.xcassets.zip) a copy of the accompanying `Media.xcassets` folder:
+After you [download and obtain](https://raw.github.com/youldash/iOS/master/Misc/Media.xcassets.zip) a copy of the accompanying `Media.xcassets` "Zip" archive:
 
 * Unarchive the archive to access Assets Catalog folder (rename it to match the exact name if this step is necessary).
 
