@@ -158,7 +158,7 @@ As the title suggests, Nodes and Edges are both considered vital building blocks
 @end
 ```
 
-* The `GREdge` interface is now ready for implementation. Continue by editing the corresponding `GREdge.m` file adding the following import statements (under `#import "GREdge.h"`), along with the property synthesizer stub for your Edge properties:
+* The `GREdge` interface is now ready for implementation. Continue by editing the corresponding `GREdge.m` file and adding the following import statements (under `#import "GREdge.h"`), along with the property synthesizer stub for your Edge properties:
 
 ``` Objective-C
 #import "GRNode.h"
@@ -602,7 +602,7 @@ As you may have already noticed, the implementation included a few lines for an 
 + (BOOL)testWeightedGraph:(id<GRGraphDelegate>)graph;
 
 /**
- *  Graph test program.
+ *  GRAbstractGraph test program.
  *
  *  @param  graph  The graph to test.
  *
@@ -613,8 +613,447 @@ As you may have already noticed, the implementation included a few lines for an 
 @end
 ```
 
+* The `GRAbstractGraph` interface is now ready for coding. Edit the corresponding implementation file and add the following import statements (under `#import "GRAbstractGraph.h"`), along with the proceeding `GRAbstractGraph` Category class declaration:
 
+``` Objective-C
+#import "GRNode.h"
+#import "GREdge.h"
+#import "GREdgeEnumerator.h"
+#import "GRScene.h"
+#import "GRArray.h"
+#import "GRContainerAsArrayEnumerator.h"
+```
 
+``` Objective-C
+/**
+ *  Grapher graph category.
+ */
+@interface GRAbstractGraph ()
+
+#pragma mark -
+#pragma mark Accessing
+
+/**
+ *  By re-declaring class properties as read-write,
+ *  this class can assign values to the properties while still keeping everyone else from being able to do so.
+ * 'nonatomic' means that the setter isn't guaranteed to be thread-safe.
+ */
+@property (readwrite, nonatomic) NSUInteger numberOfNodes;
+@property (readwrite, nonatomic) NSUInteger numberOfEdges;
+
+@end
+```
+
+* Next, add the `GRGraphDelegate` property synthesizer stub:
+
+``` Objective-C
+#pragma mark -
+#pragma mark GRGraphDelegate
+
+/**
+ *  Returns the identifier of this cluster (name).
+ */
+- (NSString *)identifier
+{
+    return self.name;
+}
+
+/**
+ *  The number of nodes.
+ */
+@synthesize numberOfNodes = _numberOfNodes;
+
+/**
+ *  The number of edges.
+ */
+@synthesize numberOfEdges = _numberOfEdges;
+```
+
+* Next, add the `GRContainerDelegate` property synthesizer stub and protocol methods:
+
+``` Objective-C
+#pragma mark -
+#pragma mark GRContainerDelegate
+
+/**
+ *  Returns the number of nodes in this graph.
+ *
+ *  @return  The number of nodes.
+ */
+- (NSUInteger)count
+{
+    return _numberOfNodes;
+}
+
+/**
+ *  Returns a boolean that indicates whether this graph is full.
+ *
+ *  @return  The boolean result.
+ */
+- (BOOL)isFull
+{
+    return self.count == _nodeArray.length;
+}
+
+/**
+ *  Removes all the nodes and edges from this graph.
+ *
+ *  @param  graph  The graph.
+ */
+- (void)purge
+{
+    [_nodeArray purge];
+    
+    _numberOfNodes = 0;
+    
+    // Also remove all the nodes and edges from the Grapher scene.
+    [self.scene removeAllChildren];
+}
+```
+
+* Next, add the following class initializer stub to `GRAbstractGraph.m`:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Initializing
+
+/**
+ *  Designated initializer.
+ *  Initializes a newly allocated graph with the given length (maximum number of nodes).
+ *
+ *  @param  identifier  An identifier.
+ *  @param  length    The maximum number of nodes.
+ *
+ *  @return  The new graph.
+ */
+- (instancetype)initWithIdentifier:(id<NSObject>)identifier length:(NSUInteger)length
+{
+    // Immutable graph, just return a new reference to itself (retained automatically by ARC).
+    self = [super init];
+    
+    if (self) {
+        
+        // Initialize all parameters.
+        self.name = identifier.description;
+        _numberOfNodes = 0;
+        _numberOfEdges = 0;
+        _nodeArray = [[GRArray class] arrayWithLength:length];
+    }
+    
+    // Returns this graph along with its children.
+    return self;
+}
+```
+
+* Next, add the following stub implementation to overriding the default behavior of the `-objectEnumerator` method:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Enumerating
+
+/**
+ *  Returns an enumerator that enumerates the nodes in this graph.
+ *
+ *  @return  The enumerator.
+ */
+- (id<GREnumeratorDelegate>)objectEnumerator
+{
+    return [self nodeEnumerator];
+}
+```
+
+* Next, add the following stub implementation to overriding the default behavior of the `-description` method:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Querying
+
+/**
+ *  Returns a string that contains a description of this graph.
+ *
+ *  @return  The string.
+ */
+- (NSString *)description
+{
+    NSMutableString *string = [NSMutableString string];
+    
+    NSUInteger idx = 0;
+    
+    for (GRNode *node in self.nodes)
+        [string appendFormat:@"%@ %@\n", @(++idx), node];
+    
+    idx = 0;
+    
+    for (GREdge *edge in self.edges)
+        [string appendFormat:@"%@ %@\n", @(++idx), edge];
+    
+    return [NSString stringWithFormat:@"%@ {\n%@}", self.identifier, string];
+}
+```
+
+* Next, implement the remaining `GRAbstractGraph` methods:
+
+``` Objective-C
+/**
+ *  Indicates whether this graph is valid or not.
+ *
+ *  @return  The boolean result.
+ */
+- (BOOL)isValid
+{
+    return _numberOfNodes > 0;
+}
+
+/**`
+ *  Returns the node at the given index in this graph.
+ *
+ *  @param  index  An index.
+ *
+ *  @return  The node at the given index.
+ */
+- (GRNode *)nodeAtIndex:(NSUInteger)index
+{
+    return [_nodeArray objectAtIndex:index];
+}
+
+/**
+ *  Returns an enumerator that enumerates the nodes of this graph.
+ *
+ *  @return  The enumerator.
+ */
+- (id<GREnumeratorDelegate>)nodeEnumerator
+{
+    return [[GRContainerAsArrayEnumerator alloc] initWithContainer:self array:_nodeArray count:_numberOfNodes fromIndex:0];
+}
+
+/**
+ *  Returns the nodes of this graph.
+ *
+ *  @return  The nodes.
+ */
+- (id<GREnumerableDelegate>)nodes
+{
+    return [[GREnumerable alloc] initWithTarget:self action:@selector(nodeEnumerator)];
+}
+
+/**
+ *  Returns an enumerator that enumerates the edges of this graph.
+ *
+ *  @return  The enumerator.
+ */
+- (id<GREnumeratorDelegate>)edgeEnumerator
+{
+    return [[GREdgeEnumerator alloc] initWithGraph:self];
+}
+
+/**
+ *  The edges of this graph.
+ *
+ *  @return  The edges of this graph.
+ */
+- (id<GREnumerableDelegate>)edges
+{
+    return [[GREnumerable alloc] initWithTarget:self action:@selector(edgeEnumerator)];
+}
+
+/**
+ *  Returns a boolean that indicates whether there is an edge in this graph that connects the given nodes.
+ *
+ *  (-indexOfEdgeBeginningAt:endingAt:) accessor takes two node identification arguments.
+ *  It returns a reference to the egde instance (if it exists) that connects the corresponding nodes.
+ *  The behavior of this routine is undefined when the edge does not exist.
+ *  An implementation SHOULD typically throw an exception!
+ *
+ *  This boolean-valued accessor takes two node identifications (assuming numbers) as arguments.
+ *  It returns YES if the graph contains an edge that connects the corresponding nodes.
+ *
+ *  (-isEdgeBeginningAt:endingAt:) uses either an overflow exception or a warning exception...
+ *
+ *  @param  index1  index1 The from index.
+ *  @param  index2  index2 The to index.
+ *
+ *  @return  The boolean result.
+ */
+- (BOOL)isEdgeFromIndex:(NSUInteger)index1 toIndex:(NSUInteger)index2
+{
+    return [self edgeFromIndex:index1 toIndex:index2] != nil;
+}
+
+/**
+ *  Returns the edge in this graph between the given nodes with the given indices.
+ *
+ *  @param  index1  The from index.
+ *  @param  index2  The to index.
+ *
+ *  @return  The edge joining the given nodes.
+ */
+- (GREdge *)edgeFromIndex:(NSUInteger)index1 toIndex:(NSUInteger)index2
+{
+    [self doesNotRecognizeSelector:_cmd];
+    return nil;
+}
+
+#pragma mark -
+#pragma mark Mutating
+
+/**
+ *  Adds a node to this graph with parameters: identifier, weight, position, color, and scene.
+ *  Node's position will be assigned later.
+ *  Returns the number of the new node.
+ *
+ *  This mutator (-addNodeWithIdentifier:weight:size:color:scene:) inserts new node into a graph.
+ *  For simplicity, we shall assume that a given node is inserted into exactly one graph.
+ *  All the nodes contained in a graph must have a unique node number.
+ *  Furthermore, if a graph contains (n) nodes, those nodes shall be numbered 0, 1, 2, ..., n-1.
+ *  Therefore, the next node inserted into the graph shall have the number (n).
+ *
+ *  This accessor (brought forward from -indexOfNode:) takes an integer, say (i) where 0 <= i < n,
+ *  and returns reference to the i'th node contained in the graph.
+ *
+ *  @param  identifier  An identifier.
+ *  @param  weight    A weight.
+ *  @param  position  A position.
+ *  @param  color    A color.
+ *  @param  scene    A Grapher scene associated with this edge.
+ *
+ *  @return  The index of the new node.
+ */
+- (NSUInteger)addNodeWithIdentifier:(id<NSObject>)identifier
+                             weight:(NSNumber *)weight
+                           position:(CGPoint)position
+                              color:(SKColor *)color
+                              scene:(GRScene *)scene
+{
+    GRNode *node = [[GRNode alloc] initWithIdentifier:identifier
+                                               weight:weight
+                                             position:position
+                                                color:color
+                                                scene:scene];
+    
+    // Insert the given node into this graph.
+    [self insertNode:node];
+    
+    // Retain its designated number.
+    return node.number;
+}
+
+/**
+ *  Inserts the given node into this graph.
+ *
+ *  @param  node  The node to insert.
+ */
+- (void)insertNode:(GRNode *)node
+{
+    NSAssert(!self.isFull, @"Container full.");
+    
+    // Swap.
+    [_nodeArray replaceObjectAtIndex:_numberOfNodes withObject:node];
+    
+    // Update its number with relation to the current total number of added nodes.
+    node.number = _numberOfNodes;
+    
+    // Increment by 1.
+    _numberOfNodes++;
+}
+
+/**
+ *  Adds an edge to this graph between the nodes with the given indices, weight.
+ *
+ *  @param  index1  The from index.
+ *  @param  index2  The to index.
+ *  @param  weight  The weight on the edge.
+ *  @param  scene  A Grapher scene associated with this edge.
+ */
+- (void)addEdgeFromIndex:(NSUInteger)index1
+                 toIndex:(NSUInteger)index2
+                  weight:(NSNumber *)weight
+                   scene:(GRScene *)scene
+{
+    // Create an appropriate identifier string.
+    NSMutableString *identityString =
+    [NSMutableString stringWithFormat:@"%lu-%lu", index1, index2];
+    
+    // Weighted?
+    if (weight)
+        [identityString appendFormat:@" [%.1f]", weight.doubleValue];
+    
+    // Create it.
+    GREdge *edge = [[GREdge alloc] initWithIdentifier:identityString
+                                                graph:self
+                                               weight:weight
+                                   emanatingFromIndex:index1
+                                      insidentOnIndex:index2
+                                                color:nil
+                                                scene:scene];
+    
+    // Insert it.
+    [self insertEdge:edge];
+}
+
+/**
+ *  Inserts the given edge into this graph.
+ *
+ *  @param  edge  The edge to insert.
+ */
+- (void)insertEdge:(GREdge *)edge
+{
+    [self doesNotRecognizeSelector:_cmd];
+}
+```
+
+* What remains now is the following stub implementation for the `+testGraph:` class method:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Testing
+
+/**
+ *  GRAbstractGraph test program.
+ *
+ *  @param  graph  The graph to test.
+ *
+ *  @return  A boolean value that indicates whether all the tests were successful.
+ */
++ (BOOL)testGraph:(id<GRGraphDelegate>)graph
+{
+    NSLog(@"GRAbstractGraph test program.\n\
+          --------------------------------------------");
+
+    GRScene *scene = [[GRScene alloc] init];
+    
+    NSUInteger n0 = [graph addNodeWithIdentifier:@"n0" weight:@345 position:CGPointZero color:nil scene:scene];
+    NSUInteger n1 = [graph addNodeWithIdentifier:@"n1" weight:@123 position:CGPointZero color:nil scene:scene];
+    NSUInteger n2 = [graph addNodeWithIdentifier:@"n2" weight:@234 position:CGPointZero color:nil scene:scene];
+    
+//  [graph addEdgeFromIndex:n0 toIndex:n0 weight:@0 scene:scene]; /* Will not work! */
+    [graph addEdgeFromIndex:n0 toIndex:n1 weight:@9 scene:scene];
+    [graph addEdgeFromIndex:n0 toIndex:n2 weight:@2 scene:scene];
+//  [graph addEdgeFromIndex:n1 toIndex:n0 weight:@9 scene:scene]; /* Will not work if (n0--n1) already exists! */
+//  [graph addEdgeFromIndex:n1 toIndex:n1 weight:@0 scene:scene]; /* Will not work! */
+    [graph addEdgeFromIndex:n1 toIndex:n2 weight:@3 scene:scene];
+//  [graph addEdgeFromIndex:n2 toIndex:n0 weight:@2 scene:scene]; /* Will not work if (n0--n2) already exists! */
+//  [graph addEdgeFromIndex:n2 toIndex:n1 weight:@3 scene:scene]; /* Will not work if (n1--n2) already exists! */
+//  [graph addEdgeFromIndex:n2 toIndex:n2 weight:@0 scene:scene]; /* Will not work! */
+    
+    NSLog(@"%@", graph);
+    NSLog(@"Number of nodes = %@", @(graph.numberOfNodes));
+    NSLog(@"Number of edges = %@", @(graph.numberOfEdges));
+    
+    NSLog(@"%@", [NSString stringWithFormat:@"Enumerating %lu nodes...", graph.numberOfNodes]);
+    for (id<GRNodeDelegate> node in graph.nodes)
+        NSLog(@"%@", node);
+    
+    NSLog(@"%@", [NSString stringWithFormat:@"Enumerating %lu edges...", graph.numberOfEdges]);
+    for (id<GREdgeDelegate> edge in graph.edges)
+        NSLog(@"%@", edge);
+
+    [graph purge];
+    
+    return YES;
+}
+```
+
+> Good job! You are now finished with the Abstract class for creating Graphs. Next, we will introduce you to a new Base class for constructing actual Scene Graphs in your final iOS project.
 
 
 
