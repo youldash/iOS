@@ -382,7 +382,7 @@ As you may have already noticed, the implementation included a few lines for an 
 
 > **Important:** This part of the exercises assumes that you have already finished constructing the GRContainer class form [Exercise 7](https://github.com/youldash/iOS/tree/master/Day%203#exercise-7-containers). If this isn't the case, then we strongly encourage you to complete it first prior going ahead with what follows.
 
-### The "Abstract" Graph Class
+### The "Abstract" Scene Graph Class
 
 * Add a new class by highlighting on the "Grapher" yellow icon and selecting "New File" from the File menu.
 
@@ -492,7 +492,7 @@ As you may have already noticed, the implementation included a few lines for an 
  *  Node's position will be assigned later.
  *  Returns the number of the new node.
  *
- *  This mutator (-addNodeWithIdentifier:weight:size:color:scene:) inserts new node into a graph.
+ *  This mutator inserts new node into a graph.
  *  For simplicity, we shall assume that a given node is inserted into exactly one graph.
  *  All the nodes contained in a graph must have a unique node number.
  *  Furthermore, if a graph contains (n) nodes, those nodes shall be numbered 0, 1, 2, ..., n-1.
@@ -901,7 +901,7 @@ As you may have already noticed, the implementation included a few lines for an 
  *  Node's position will be assigned later.
  *  Returns the number of the new node.
  *
- *  This mutator (-addNodeWithIdentifier:weight:size:color:scene:) inserts new node into a graph.
+ *  This mutator inserts new node into a graph.
  *  For simplicity, we shall assume that a given node is inserted into exactly one graph.
  *  All the nodes contained in a graph must have a unique node number.
  *  Furthermore, if a graph contains (n) nodes, those nodes shall be numbered 0, 1, 2, ..., n-1.
@@ -1054,6 +1054,183 @@ As you may have already noticed, the implementation included a few lines for an 
 ```
 
 > Good job! You are now finished with the Abstract class for creating Graphs. Next, we will introduce you to a new Base class for constructing actual Scene Graphs in your final iOS project.
+
+### The "Base" Scene Graph Class
+
+* Add a new class by highlighting on the "Grapher" yellow icon and selecting "New File" from the File menu.
+
+* Under the "OS X" section, select "Source", and choose "Cocoa Class".
+
+* When prompted for options, type `GRSceneGraph` as the class name. Make sure the `GRAbstractGraph` superclass is selected for it.
+
+* Choose "Objective-C" from the Language pop-up menu, like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise8.0.15.png" width="100%" /></div>
+
+* Confirm by clicking Next and make sure "Targets" is checked for the executable. As you hit Create, you will immediately add both interface and implementation files `GRSceneGraph.[h,m]` to your project.
+
+* Replace what code is currently present for `GRSceneGraph.h` with the following class declaration stub:
+
+``` Objective-C
+#import "GRAbstractGraph.h"
+
+@class GRMultidimensionalArray;
+
+/**
+ *  Represents a graph implemented using a dense matrix.
+ */
+@interface GRSceneGraph : GRAbstractGraph {
+    
+    /**
+     *  A dense matrix.
+     */
+    GRMultidimensionalArray *_matrix;
+}
+
+#pragma mark -
+#pragma mark Testing
+
+/**
+ *  GRSceneGraph unit test program.
+ *
+ *  @return  A boolean value that indicates whether all the tests were successful.
+ */
++ (BOOL)unitTest;
+
+@end
+```
+
+* The `GRSceneGraph` interface is now ready for coding. Edit the corresponding implementation file and add the following import statements (under `#import "GRSceneGraph.h"`):
+
+``` Objective-C
+#import "GRMultidimensionalArray.h"
+#import "GRIntegerArray.h"
+#import "GREdge.h"
+#import "GRNode.h"
+#import "GRArray.h"
+```
+
+* Next, add the `GRGraphDelegate` property synthesizer stub:
+
+``` Objective-C
+#pragma mark -
+#pragma mark GRGraphDelegate
+
+/**
+ *  Removes the nodes and edges from this graph as matrix.
+ */
+- (void)purge
+{
+    // Purge the matrix.
+    [_matrix purge];
+    
+    // Reset the number of edges to 0.
+    _numberOfEdges = 0;
+    
+    // Purge the node array.
+    [super purge];
+}
+
+/**
+ *  Inserts the given edge into this graph.
+ *
+ *  @param  edge  The edge to insert.
+ */
+- (void)insertEdge:(GREdge *)edge
+{
+    NSUInteger headIdx = edge.head.number;
+    NSUInteger tailIdx = edge.tail.number;
+    
+    NSAssert(headIdx != tailIdx, @"Illegal argument.");
+    NSAssert(![self isEdgeFromIndex:headIdx toIndex:tailIdx], @"Illegal argument.");
+    
+    [_matrix replaceObjectAtIndices:GRTuple(headIdx, tailIdx) withObject:edge];
+    [_matrix replaceObjectAtIndices:GRTuple(tailIdx, headIdx) withObject:edge];
+    
+    // Increment the number of edges by 1.
+    _numberOfEdges += 1;
+}
+
+/**
+ *  Returns the edge in this graph for the given node indices.
+ *
+ *  @param  index1  The from index.
+ *  @param  index2  The to index.
+ *
+ *  @return  The edge joining the given nodes.
+ */
+- (GREdge *)edgeFromIndex:(NSUInteger)index1 toIndex:(NSUInteger)index2
+{
+    return [_matrix objectAtIndices:GRTuple(index1, index2)];
+}
+```
+
+* Next, add the following class initializer stub to `GRSceneGraph.m`:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Initializing
+
+/**
+ *  Designated initializer.
+ *  Initializes a newly allocated graph as matrix with the given length (maximum number of nodes).
+ *
+ *  @param  identifier  An identifier.
+ *  @param  length    The maximum number of nodes.
+ *
+ *  @return  The new graph as matrix.
+ */
+- (instancetype)initWithIdentifier:(id<NSObject>)identifier length:(NSUInteger)length
+{
+    // Immutable graph as matrix, just return a new reference to itself (retained automatically by ARC).
+    self = [super initWithIdentifier:identifier length:length];
+    
+    if (self) {
+        
+        // Initialize all parameters.
+        _matrix = [[GRMultidimensionalArray alloc] initWithDimensions:GRTuple(length, length)];
+    }
+    
+    // Return this graph as matrix along with its children.
+    return self;
+}
+```
+
+* Finally, add the following stub implementation for the `+unitTest` class method:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Testing
+
+/**
+ *  GRSceneGraph unit test program.
+ *
+ *  @return  A boolean value that indicates whether all the tests were successful.
+ */
++ (BOOL)unitTest
+{
+    NSLog(@"GRSceneGraph unit test program.\n\
+          --------------------------------------------");
+    
+    GRSceneGraph *graph = [[GRSceneGraph alloc] initWithIdentifier:@"Scene Graph" length:5];
+    [GRAbstractGraph testGraph:graph];
+    
+    return YES;
+}
+```
+
+> That is all! You are now finished with the Base class for creating Graphs, which will be used for rendering your scene. Next, we will introduce you to the remaining Enumerator classes (specifically `GRConnectedNodeEnumerator`, `GREdgeEnumerator` and `GRContainerAsArrayEnumerator`) that were referenced in you Graph code earlier, for constructing actual Scene Graphs in your final iOS project.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
