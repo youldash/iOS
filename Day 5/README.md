@@ -470,6 +470,7 @@ placing the following definition for new Node numbers (on top of the `@implement
 
 * Next, implement all methods of the `GRSceneDelegate` protocol:
 
+``` Objective-C
 #pragma mark -
 #pragma mark GRSceneDelegate
 /**
