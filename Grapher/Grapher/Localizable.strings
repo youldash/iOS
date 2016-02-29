@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Grapher
+
+  Created by Mustafa Youldash on 1/03/2016.
+  Copyright © 2016 Umm Al-Qura University. All rights reserved.
+*/
+
+CFBundleDisplayName = "الرسام";
+CFBundleName = "App Name – in Arabic";

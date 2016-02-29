@@ -631,7 +631,7 @@ Next comes the part where you import a few selected sound files into you project
 * Drag them all into Xcode (preferably under the the "Grapher" group icon).
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise12.0.4.png" width="100%" /></div>
 
-The same dialog from previous, will appear if this step is successful (again, make sure you mark "Copy items if needed")
+The same dialog from previous, will appear if this step is successful (again, make sure you mark "Copy items if needed").
 
 * If all goes well, confirm by editing you project structure and identifying each file (by playing selected audio files if you will):
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise12.0.5.png" width="100%" /></div>
@@ -642,19 +642,72 @@ If you compile your project and test you app now, you should hear sound effects 
 
 ## Exercise 13: Localizing Your App
 
-After you [download and obtain](https://twitter.com/youldash) a copy of the accompanying `Media.xcassets` folder:
+To add a bit of "Arabic flavor" into your app, you need to accomplish the following:
 
-* Drag it into Xcode (preferably under the the "Grapher" group "yellow" icon).
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise12.0.1.png" width="100%" /></div>
+### Adding a new Localization "Strings" File
 
-The following dialog will appear if this step is successful (and make sure you mark "Copy items if needed"):
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise12.0.2.png" width="100%" /></div>
+* Add a new class by highlighting on the "Grapher" yellow icon and selecting "New File" from the File menu.
 
-* If all goes well, confirm by editing `Media.xcassets` and inspect its contents. It should reveal an icon set that looks similar to the following:
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise12.0.3.png" width="100%" /></div>
+* Under the "iOS" section, select "Resource", and then choose "Strings File".
 
-If you compile your project and test you app now, you should witness a new icon for your app.
+* When prompted for the filename, enter `Localizable.strings` as the specific filename (the filename **MUST BE EXACT!**), like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise12.0.6.png" width="100%" /></div>
 
+* Enter the following two lines in the `Localizable.strings` (both of which are needed so that Xcode can look them up and use them to rename your Grapher app to its equivalent naming in Arabic):
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise12.0.7.png" width="100%" /></div>
+
+* Confirm by clicking Create. Xcode will add and edit this new file for you.
+
+```
+CFBundleDisplayName = "الرسام";
+CFBundleName = "App Name – in Arabic";
+```
+
+Rebuild your project and witness the app's name change. It should reveal the Arabic string value now.
+
+### Adding a new InfoPlist "Strings" File
+
+* Add a new class by highlighting on the "Grapher" yellow icon and selecting "New File" from the File menu.
+
+* Under the "iOS" section, select "Resource", and then choose "Strings File", like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise12.0.6.png" width="100%" /></div>
+
+* When prompted for the filename, enter `InfoPlist.strings` as the specific filename (the filename **MUST BE EXACT!**), like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise12.0.7.png" width="100%" /></div>
+
+* Enter the these two lines in `InfoPlist.strings` (both of which are needed so that Xcode can look them up and use them to rename your Grapher app to its equivalent naming in Arabic):
+
+```
+CFBundleDisplayName = "الرسام";
+CFBundleName = "App Name – in Arabic";
+```
+
+* Confirm by clicking Create. Xcode will add and edit this new file for you.
+
+Rebuild your project and witness the app's name change. It should reveal the Arabic string value now.
+
+### Adding a new Localization "Strings" File
+
+* Add a new class by highlighting on the "Grapher" yellow icon and selecting "New File" from the File menu.
+
+* Under the "iOS" section, select "Resource", and then choose "Strings File".
+
+* When prompted for the filename, enter `Localizable.strings` as the specific filename (the filename **MUST BE EXACT!**), like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise12.0.8.png" width="100%" /></div>
+
+* Enter the following lines in `Localizable.strings`. These of which are required for replacing any string calls from within your code (i.e. by invoking the `NSLocalizedString()` function) with their corresponding Arabic string phrases:
+
+```
+"Hello" = "مرحباً";
+"Node" = "عقدة";
+"Edge" = "حافة";
+"Graph" = "رسم بياني";
+"App Name" = "تطبيق الرسام";
+```
+
+* Confirm by clicking Create. Xcode will add and edit this new file for you.
+
+Rebuild your project and witness the Node identifiers appear in Arabic. Cool, huh? :)
 
 > **Note:** Xcode project files for this exercise will be pushed to this repo, later.
 
@@ -665,9 +718,9 @@ If you compile your project and test you app now, you should witness a new icon 
 Though... I have a confession to make! This is an enormous amount of information and should probably be a very lengthy handout. Nevertheless, I hope that you've enjoyed what was covered so far, and at least you've got a better understanding in making your ideas a living reality.
 
 Thank you for sharing your interests!
-Your feedback would definitely count towards making such workshops a success!
+**Your feedback would definitely count towards making such workshops a success!**
 
-For any training requests (and if you have any specific topic you would like me to explain), please [**follow me on Twitter**](https://twitter.com/youldash) and I will (definitely) get back to as soon as I can!
+For any questions, or perhaps if you require further clarification (and if you have any specific topic you would like me to explain as a separate tutorial or workshop), please [**follow me on Twitter**](https://twitter.com/youldash) and I will (definitely) get back to as soon as I can!
 
 Best wishes,
 
