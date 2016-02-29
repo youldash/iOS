@@ -1326,7 +1326,7 @@ As the title of this exercise suggests, Scene Graph Nodes and Edges can be enume
 }
 ```
 
-* Last, but not least, implement the `GREnumeratorDelegate` protocol methods `-hasMoreObjects` and `nextObject`, using the following stub:
+* Last, but not least, override the `GREnumeratorDelegate` protocol methods `-hasMoreObjects` and `nextObject`, using the following stub:
 
 ``` Objective-C
 #pragma mark -
@@ -1356,6 +1356,167 @@ As the title of this exercise suggests, Scene Graph Nodes and Edges can be enume
 ```
 
 > Good! You now have access to a valid ConnectedNodeEnumerator data structure for your Grapher app.
+
+### After That, an Enumerator for Edges
+
+* Add a new class by highlighting on the "Grapher" yellow (group) folder and selecting "New File" from the File menu.
+
+* Under the "OS X" section, select "Source", and choose "Cocoa Class".
+
+* When prompted for options, type `GREdgeEnumerator` as the class name. Make sure `GREnumerator` is selected for subclassing from. This class is used as an enumerator that iterates through existing Grapher Edges.
+
+* Choose "Objective-C" from the Language pop-up menu, like so:
+<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise9.0.2.png" width="100%" /></div>
+
+* Confirm by clicking Next and make sure "Targets" is checked for the executable. As you hit Create, you will immediately add both interface and implementation files `GREdgeEnumerator.[h,m]` to your project.
+
+* Replace what currently exists in `GREdgeEnumerator.h` with the this interface snippet:
+
+``` Objective-C
+#import "GREnumerator.h"
+#import "GRAbstractGraph.h"
+
+/**
+ *  Represents an enumerator that enumerates the edges of a graph.
+ */
+@interface GREdgeEnumerator : GREnumerator {
+    
+    /**
+     *  The graph.
+     */
+    id<GRGraphDelegate> _graph;
+    
+    /**
+     *  The from index.
+     */
+    NSUInteger _headIdx;
+    
+    /**
+     *  The to index.
+     */
+    NSUInteger _tailIdx;
+}
+
+#pragma mark -
+#pragma mark Initializing
+
+/**
+ *  Designed initializer.
+ *  Initializes a newly allocated edge enumerator for the given graph.
+ *
+ *  @param  graph  The graph the edges of which are to be enumerated.
+ *
+ *  @return  The new edge enumerator.
+ */
+- (instancetype)initWithGraph:(id<GRGraphDelegate>)graph;
+
+@end
+```
+
+* Next, edit the corresponding `GREdgeEnumerator.m` file and add the following class initializer stub to `GREdgeEnumerator.m`:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Initializing
+
+/**
+ *  Designed initializer.
+ *  Initializes a newly allocated edge enumerator for the given graph.
+ *
+ *  @param  graph  The graph the edges of which are to be enumerated.
+ *
+ *  @return  The new edge enumerator.
+ */
+- (instancetype)initWithGraph:(id<GRGraphDelegate>)graph
+{
+    // Immutable edge enumerator, just return a new reference to itself (retained automatically by ARC).
+    self = [super init];
+    
+    if (self) {
+        
+        // Initialize all parameters.
+        _graph = graph;
+        
+        for (_headIdx = 0;
+             _headIdx < graph.numberOfNodes;
+             ++_headIdx) {
+            
+            for (_tailIdx = _headIdx + 1;
+                 _tailIdx < graph.numberOfNodes;
+                 ++_tailIdx) {
+                
+                if ([graph isEdgeFromIndex:_headIdx
+                                   toIndex:_tailIdx])
+                    goto found;
+            }
+        }
+        
+    found:;
+    }
+    
+    // Return this edge enumerator along with its children.
+    return self;
+}
+```
+
+* Last, but not least, override the `GREnumeratorDelegate` protocol methods `-hasMoreObjects` and `nextObject`, using the following stub:
+
+``` Objective-C
+#pragma mark -
+#pragma mark GREnumeratorDelegate
+
+/**
+ *  Returns true if there are more objects to be enumerated.
+ *
+ *  @return  The boolean result.
+ */
+- (BOOL)hasMoreObjects
+{
+    return _headIdx < _graph.numberOfNodes && _tailIdx < _graph.numberOfNodes;
+}
+
+/**
+ *  Returns the next object to be enumerated.
+ *
+ *  @return  The next edge.
+ */
+- (id)nextObject
+{
+    id result = nil;
+    
+    if (_headIdx < _graph.numberOfNodes && _tailIdx < _graph.numberOfNodes) {
+        
+        result = [_graph edgeFromIndex:_headIdx toIndex:_tailIdx];
+        
+        for (++_tailIdx;
+             _tailIdx < _graph.numberOfNodes;
+             ++_tailIdx) {
+            
+            if ([_graph isEdgeFromIndex:_headIdx toIndex:_tailIdx])
+                goto found;
+        }
+        
+        for (++_headIdx;
+             _headIdx < _graph.numberOfNodes;
+             ++_headIdx) {
+            
+            for (_tailIdx = _headIdx + 1;
+                 _tailIdx < _graph.numberOfNodes;
+                 ++_tailIdx) {
+                
+                if ([_graph isEdgeFromIndex:_headIdx toIndex:_tailIdx])
+                    goto found;
+            }
+        }
+        
+    found:;
+    }
+    
+    return result;
+}
+```
+
+> That's it! You now have access to a valid EdgeEnumerator data structure for your Grapher app. All that remains is just one final class :)
 
 
 
