@@ -644,27 +644,6 @@ If you compile your project and test you app now, you should hear sound effects 
 
 To add a bit of "Arabic flavor" into your app, you need to accomplish the following:
 
-### Adding a new Localization "Strings" File
-
-* Add a new class by highlighting on the "Grapher" yellow icon and selecting "New File" from the File menu.
-
-* Under the "iOS" section, select "Resource", and then choose "Strings File".
-
-* When prompted for the filename, enter `Localizable.strings` as the specific filename (the filename **MUST BE EXACT!**), like so:
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise12.0.6.png" width="100%" /></div>
-
-* Enter the following two lines in the `Localizable.strings` (both of which are needed so that Xcode can look them up and use them to rename your Grapher app to its equivalent naming in Arabic):
-<div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise12.0.7.png" width="100%" /></div>
-
-* Confirm by clicking Create. Xcode will add and edit this new file for you.
-
-```
-CFBundleDisplayName = "الرسام";
-CFBundleName = "App Name – in Arabic";
-```
-
-Rebuild your project and witness the app's name change. It should reveal the Arabic string value now.
-
 ### Adding a new InfoPlist "Strings" File
 
 * Add a new class by highlighting on the "Grapher" yellow icon and selecting "New File" from the File menu.
@@ -684,7 +663,7 @@ CFBundleName = "App Name – in Arabic";
 
 * Confirm by clicking Create. Xcode will add and edit this new file for you.
 
-Rebuild your project and witness the app's name change. It should reveal the Arabic string value now.
+Rebuild your project and witness the app's name change. It should reveal the Arabic string value by now.
 
 ### Adding a new Localization "Strings" File
 
