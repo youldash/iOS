@@ -24,7 +24,7 @@ Over the course of training, participants will be asked to signup (using this si
 
 ## Welcome!
 
-> Our mission is to provide high-quality training and education for both of our highly-valued [UQU](http://www.uqu.edu.sa) students (for both genders), to open up new horizons and new career pathways for out beloved students, to establish innovative ideas, and to offer professional services to the Saudi community as a whole. This includes preparing students to be leaders in their profession, creating and disseminating knowledge by means of scholarly and creative achievements, and by establishing partnerships with the local Saudi industry, governmental organizations and leading academic institutions (both domestic and international).
+> Our mission is to enhance the education and the training, to open up new horizons and new career pathways, for all of our highly-valued [UQU](http://www.uqu.edu.sa) students (both genders alike). In addition, we thrive to establish new breakthroughs, and to offer professional services to the Saudi community as a whole. This includes preparing students to be leaders in their profession, creating and disseminating knowledge through means of scholarly and creative achievements, and through establishing partnerships with both local and global industry leaders, governments, and sound academic institutions worldwide.
 
 <div align="right">
 	<strong>Sultan Almutairi, Ph.D.</strong><br />
