@@ -27,8 +27,11 @@ Over the course of training, participants will be asked to signup (using this si
 > Our mission is to provide high-quality training and education for both of our highly-valued [UQU](http://www.uqu.edu.sa) student (for both genders), to open up new horizons and new career pathways for out beloved students, to establish innovative ideas, and to offer professional services to the Saudi community as a whole. This includes preparing students to be leaders in their profession, creating and disseminating knowledge by means of scholarly and creative achievements, and by establishing partnerships with the local Saudi industry, governmental organizations and leading international academic institutions (both domestic and overseas).
 
 **Sultan Almutairi, Ph.D.**
+
 **Assistant Professor in Cyber Security**
+
 **Head of Computer Science Department at UQU**
+
 **[@sultan_motiri](https://twitter.com/UQU_CS)**
 
 ## Preface
