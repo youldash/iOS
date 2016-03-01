@@ -18,7 +18,7 @@ Over the course of this workshop, we have shown you how to accomplish:
 * Exercise [7](https://github.com/youldash/iOS/tree/master/Day%203#exercise-7-containers) → Build the skeleton code (using the Container class) for building Scene Graphs.
 * Exercise [8 (Part I)](https://github.com/youldash/iOS/tree/master/Day%203#exercise-8-scene-graph-nodes-and-edges) → Construct the Nodes of your Scene Graphs.
 * Exercise [8 (Part II) ](https://github.com/youldash/iOS/tree/master/Day%204#exercise-8-scene-graph-nodes-and-edges-continueds) → Construct the Edges and actual Graph facades of your Scene Graph app. The exercise also included a few tasks for constructing both Node and Edge enumerator and enumerable utility classes.
-* Exercise [9](https://github.com/youldash/iOS/tree/master/Day%204#exercise-9-enumerating-scene-graph-objects) → Build the skeleton code (using the Container class) for building Scene Graphs.
+* Exercise [9](https://github.com/youldash/iOS/tree/master/Day%204#exercise-9-enumerating-scene-graph-objects) → Build Enumerator-based classes for iterating through Scene Graph objects.
 
 In this final part, we will take you through the necessary steps for putting everything you've built together, along with a number of important steps for making your final product more appealing, and user responsive.
 

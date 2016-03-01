@@ -22,13 +22,17 @@ Over the course of training, participants will be asked to signup (using this si
 
 > **Important:** **Certificates of Completion** will be granted to attendees, upon the successful completion of tasks that will be announced during the event. **Certificates for Attendance** on the other hand, will not be issued, to guarantee the full benefit of training, participation, and collaboration during the course of the workshop.
 
+## Welcome!
+
+TBA.
+
 ## Preface
 
 The app-making process for the iOS ecosystem relies on a special, yet easy to learn paradigm for creating mobile apps. Developers are challenged to provide their users with fun, joyful, and memorable experiences.
 
-In this workshop, we present Apple's approach to building a a fully-fledged [Scene Graph](https://en.wikipedia.org/wiki/Scene_graph) iOS app. A **Scene Graph** is a general [Data Structure](https://en.wikipedia.org/wiki/Data_structure) that is commonly used by vector-based graphics editing apps like [Adobe Illustrator](http://www.adobe.com/products/illustrator.html) and  [AutoCAD](http://www.autodesk.com/products/autocad/overview), and modern computer games. These apps often arrange both logical and spatial representations of a graphical scene using specific **Graph** structure elements: **Nodes** and **Edges**.
+In this workshop, we present Apple's approach to building a a fully-fledged [Scene Graph](https://en.wikipedia.org/wiki/Scene_graph) iOS app. A **Scene Graph** is a general [Data Structure](https://en.wikipedia.org/wiki/Data_structure) that is commonly used by vector-based graphics editing apps like [Adobe Illustrator](http://www.adobe.com/products/illustrator.html) and [AutoCAD](http://www.autodesk.com/products/autocad/overview), and modern computer games of our time. These apps often arrange both logical and spatial representations of a graphical scene using specific **Graph** structure elements: **Nodes** and **Edges**.
 
-Your app will be capable of establishing two-dimensional Graph instances in a dynamic fashion. In other words, your app will be able to interactively construct the Node and Edge elements of a typical Scene Graph, while arranging their spacial positions using "touch" as the primary method of input.
+> Your app will be capable of establishing **two-dimensional Graph instances** in a **dynamic fashion**. In other words, your app will be able to interactively construct the Node and Edge elements of a typical Scene Graph, while arranging their spacial positions using "touch" as the primary method of input.
 
 The final product should look similarly to the following iPad mockup (or screenshot):
 ![Screenshot](https://raw.github.com/youldash/iOS/master/Misc/ScreenshotLandscape.png)
@@ -53,6 +57,20 @@ The final product should look similarly to the following iPad mockup (or screens
 * [Day 3: Scene Graphs (Part I)](https://github.com/youldash/iOS/blob/master/Day%203/).
 * [Day 4: Scene Graphs (Part II)](https://github.com/youldash/iOS/blob/master/Day%204/).
 * [Day 5: Scene Graphs (Part III)](https://github.com/youldash/iOS/blob/master/Day%205/).
+
+This course structure is **further broken down** into **10 unique tasks** (with each one depending on the completion of its predecessor):
+
+* Exercise [1](https://github.com/youldash/iOS/tree/master/Day%201#exercise-1-photography-10) → Building atomic components using Xcode's Command Line Utility for testing and debugging, and for later insertion into bigger projects.
+* Exercise [2](https://github.com/youldash/iOS/tree/master/Day%201#exercise-2-photography-20) → Building your very first iOS app for populating output based on your previous components through simple UI. In this exercise, we further elaborate on the ideas behind the MVC (Model View Controller) design pattern, and how it can be adopted with Xcode.
+* Exercises [3](https://github.com/youldash/iOS/tree/master/Day%202#exercise-3-arrays) through [5](https://github.com/youldash/iOS/tree/master/Day%202#exercise-5-multidimensional-arrays) → Constructing custom Collection classes (i.e. both Unidimensional and Multidimensional Array facades) as important components for future tasks.
+* Exercise [6](https://github.com/youldash/iOS/tree/master/Day%203#exercise-6-enumerators-and-enumerables) → Establishing the foundations of your final iOS app.
+* Exercise [7](https://github.com/youldash/iOS/tree/master/Day%203#exercise-7-containers) → Building the skeleton code for Scene Graphs.
+* Exercise [8 (Part I)](https://github.com/youldash/iOS/tree/master/Day%203#exercise-8-scene-graph-nodes-and-edges) → Constructing the Nodes of your Scene Graphs.
+* Exercise [8 (Part II) ](https://github.com/youldash/iOS/tree/master/Day%204#exercise-8-scene-graph-nodes-and-edges-continueds) → Constructing the Edges and Graph facades, in addition to constructing both Node and Edge enumerator and enumerable utility classes.
+* Exercise [9](https://github.com/youldash/iOS/tree/master/Day%204#exercise-9-enumerating-scene-graph-objects) → Building Enumerator-based classes for iterating Scene Graph objects.
+* Exercises [10](https://github.com/youldash/iOS/tree/master/Day%205#exercise-10-modifying-your-scene-class) and [11](https://github.com/youldash/iOS/tree/master/Day%205#exercise-11-modifying-your-viewcontroller-class) → Refining your Scene and ViewController to handle user input, Graph creation, and audio feedback.
+* Exercise [12](https://github.com/youldash/iOS/tree/master/Day%205#exercise-12-importing-media-assets) → Importing media assets into your project to make your final app more appealing.
+* Exercise [13](https://github.com/youldash/iOS/tree/master/Day%205#exercise-13-localizing-your-app) → Localizing your app to (mainly) display Arabic text phrases.
 
 ## Disclaimer
 
