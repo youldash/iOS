@@ -10,8 +10,6 @@ Brought to you by:
 
 You have made it to the iOS developer essentials workshop repo! Congratulations :)
 
-> ***Update:*** This repo is under construction at the moment. For more updates please follow [@UQU_CS](https://twitter.com/UQU_CS) on Twitter.
-
 This workshop (or course if you will) is an intensive 5-day event, which is designed for UQU college students whom are proficient with any modern, Object-Oriented language like Java and C++. **Attendees must have a solid (sound) understanding of Object-Oriented principles prior entry into the course.**
 
 Attendees will receive 5-full days of training on campus (with sessions varying from 3- to 4-hours depending on the allocated schedule, which will be allocated by the Department).
@@ -22,9 +20,16 @@ Over the course of training, participants will be asked to signup (using this si
 
 > **Important:** **Certificates of Completion** will be granted to attendees, upon the successful completion of tasks that will be announced during the event. **Certificates for Attendance** on the other hand, will not be issued, to guarantee the full benefit of training, participation, and collaboration during the course of the workshop.
 
+> For more updates please follow [@UQU_CS](https://twitter.com/UQU_CS) on Twitter.
+
 ## Welcome!
 
-TBA.
+> Our mission is to provide high-quality training and education for both of our highly-valued [UQU](http://www.uqu.edu.sa) student (for both genders), to open up new horizons and new career pathways for out beloved students, to establish innovative ideas, and to offer professional services to the Saudi community as a whole. This includes preparing students to be leaders in their profession, creating and disseminating knowledge by means of scholarly and creative achievements, and by establishing partnerships with the local Saudi industry, governmental organizations and leading international academic institutions (both domestic and overseas).
+
+**Sultan Almutairi, Ph.D.**
+**Assistant Professor in Cyber Security**
+**Head of Computer Science Department at UQU**
+**[@sultan_motiri](https://twitter.com/UQU_CS)**
 
 ## Preface
 
