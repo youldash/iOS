@@ -706,7 +706,7 @@ Thank you for sharing your interests!
 
 **Your feedback would definitely count towards making such workshops a success!**
 
-For any questions, or perhaps if you require further clarification (and if you have any specific topic you would like me to explain as a separate tutorial or workshop), please [**follow me on Twitter**](https://twitter.com/youldash) and I will (definitely) get back to as soon as I can!
+For any questions, or perhaps if you require further clarification (and if you have any specific topic you would like me to explain as a separate tutorial or workshop), please [**follow me on Twitter**](https://twitter.com/youldash) and I will (definitely) get back to you as soon as I can!
 
 If you also like to sponsor future events, then I more than happy to comply :)
 
