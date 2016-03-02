@@ -22,7 +22,7 @@ Over the course of training, participants will be asked to signup (using this si
 
 > For more updates please follow [@UQU_CS](https://twitter.com/UQU_CS) on Twitter.
 
-## Our Mission
+## Mission
 
 > Our mission is to enhance the education and the training, to open up new horizons and new career pathways, for all of our highly-valued [UQU](http://www.uqu.edu.sa) students (both genders alike). Our longterm vision is extended to establish new scientific and technical breakthroughs, in addition to offering professional services to the Saudi community as a whole. It also includes preparing students to be leaders in their profession, creating and disseminating knowledge through means of scholarly and creative achievements, and through establishing partnerships with both local and global industry leaders, governments, and sound academic institutions worldwide.
 
@@ -98,6 +98,7 @@ Umm Al-Qura University accepts no responsibility or liability for the content av
 		<tr>
 			<td align="center"><img src="https://raw.github.com/youldash/NCCC/master/misc/UQU-LOGO-1024x731.png" width="50%" /></td>
 			<td align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/TAM.png" width="100%" /></td>
+			<td align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/MeddCoffee.jpg" width="100%" /></td>
 		</tr>
 	</table>
 </div>
@@ -105,6 +106,7 @@ Umm Al-Qura University accepts no responsibility or liability for the content av
 This repo was made possible, thanks to:
 - [Department of Computer Science](http://cis.uqu.edu.sa/) of Umm Al-Qura University, Mecca, Saudi Arabia.
 - [Tam Development, LLC](http://tam.sa/).
+- [Medd Coffee and Roastery](http://meddcoffee.com/).
 
 ## License
 
