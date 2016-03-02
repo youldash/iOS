@@ -98,7 +98,7 @@ Umm Al-Qura University accepts no responsibility or liability for the content av
 		<tr>
 			<td align="center"><img src="https://raw.github.com/youldash/NCCC/master/misc/UQU-LOGO-1024x731.png" width="50%" /></td>
 			<td align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/TAM.png" width="100%" /></td>
-			<td align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/MeddCoffee.jpg" width="100%" /></td>
+			<td align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/MeddCoffee.jpg" width="50%" /></td>
 		</tr>
 	</table>
 </div>
