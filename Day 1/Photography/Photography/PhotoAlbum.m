@@ -160,8 +160,8 @@
     photo2.photographer = @"Sultan";
     
     Photo *photo3 = [[Photo alloc] init];
-    photo2.caption = @"Side photo of our College";
-    photo2.photographer = @"Manal";
+    photo3.caption = @"Side photo of our College";
+    photo3.photographer = @"Manal";
     
     [album1 insertsPhoto:photo1];
     [album1 insertsPhoto:photo2];
