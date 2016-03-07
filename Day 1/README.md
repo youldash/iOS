@@ -487,7 +487,8 @@ int main(int argc, const char * argv[]) {
 2016-03-07 15:32:10.495 Photography[1488:40095] album1 = <PhotoAlbum: length=1, data=[<Photo: data=[#1: Some random snapshot, brought to you by Sultan]>]>
 2016-03-07 15:32:10.495 Photography[1488:40095] Purging album1...
 2016-03-07 15:32:10.495 Photography[1488:40095] album1 = <PhotoAlbum: length=0, data=[]>
-Program ended with exit code: 0```
+Program ended with exit code: 0
+```
 
 > **Note:** Xcode project files for this exercise will be pushed to this repo, later.
 
