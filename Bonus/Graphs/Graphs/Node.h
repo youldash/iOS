@@ -47,22 +47,22 @@ static inline MYPoint MYPointMake(float x, float y)
 /**
  *  An identifier.
  */
-@property NSString *name;
+@property (copy) NSString *name;
 
 /**
  *  A weight on this graphic.
  */
-@property NSNumber *weight;
+@property (retain) NSNumber *weight;
 
 /**
  *  The number of this node.
  */
-@property int number;
+@property (readwrite) int number;
 
 /**
  *  The (x, y) coordinates of this node.
  */
-@property MYPoint coordinates;
+@property (assign) MYPoint coordinates;
 
 /**
  *  Creates a new node instance.

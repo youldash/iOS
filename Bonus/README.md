@@ -12,3 +12,20 @@ By using this site, you agree to the **Terms of Use** that are defined in [LICEN
 In this part of the training course, we will introduce you to an extra project that will facilitate the idea of making both **class** and **instance** methods...
 
 > **See:** The accompanying [Graphs Xcode Command Line Tool](https://github.com/youldash/iOS/tree/master/Bonus/Graphs) for a complete example.
+
+### Compiling your Project
+
+* Compile and run the program by clicking on the Run button (located on the top-left corner of Xcode), or by pressing (⌘ + R). You should see an outcome similar to the following Debugger output:
+
+```
+2016-03-08 16:42:04.027 Graphs[1189:34418] Node name: A new node
+2016-03-08 16:42:04.029 Graphs[1189:34418] Node coordinates: (0.000000, 0.000000)
+2016-03-08 16:42:04.029 Graphs[1189:34418] Node coordinates: (0.000000, 0.000000)
+2016-03-08 16:42:04.029 Graphs[1189:34418] Node name: A new node
+2016-03-08 16:42:04.029 Graphs[1189:34418] Node weight: 10
+2016-03-08 16:42:04.029 Graphs[1189:34418] Using a normal for-loop...
+2016-03-08 16:42:04.029 Graphs[1189:34418] 0 Node name: A new node
+2016-03-08 16:42:04.030 Graphs[1189:34418] Using fast enumeration...
+2016-03-08 16:42:04.030 Graphs[1189:34418] 0 Node name: A new node
+Program ended with exit code: 0
+```
