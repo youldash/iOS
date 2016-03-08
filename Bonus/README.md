@@ -18,14 +18,14 @@ In this part of the training course, we will introduce you to an extra project t
 * Compile and run the program by clicking on the Run button (located on the top-left corner of Xcode), or by pressing (⌘ + R). You should see an outcome similar to the following Debugger output:
 
 ```
-2016-03-08 16:42:04.027 Graphs[1189:34418] Node name: A new node
-2016-03-08 16:42:04.029 Graphs[1189:34418] Node coordinates: (0.000000, 0.000000)
-2016-03-08 16:42:04.029 Graphs[1189:34418] Node coordinates: (0.000000, 0.000000)
-2016-03-08 16:42:04.029 Graphs[1189:34418] Node name: A new node
-2016-03-08 16:42:04.029 Graphs[1189:34418] Node weight: 10
-2016-03-08 16:42:04.029 Graphs[1189:34418] Using a normal for-loop...
-2016-03-08 16:42:04.029 Graphs[1189:34418] 0 Node name: A new node
-2016-03-08 16:42:04.030 Graphs[1189:34418] Using fast enumeration...
-2016-03-08 16:42:04.030 Graphs[1189:34418] 0 Node name: A new node
+2016-03-09 00:16:25.959 Graphs[862:13201] Node name: A new node
+2016-03-09 00:16:25.961 Graphs[862:13201] Node coordinates: (5.000000, -1.000000)
+2016-03-09 00:16:25.961 Graphs[862:13201] Node coordinates: (0.000000, 0.000000)
+2016-03-09 00:16:25.961 Graphs[862:13201] Node name: A new node
+2016-03-09 00:16:25.961 Graphs[862:13201] Node weight: 10
+2016-03-09 00:16:25.962 Graphs[862:13201] Using a normal for-loop...
+2016-03-09 00:16:25.962 Graphs[862:13201] 0 Node name: A new node
+2016-03-09 00:16:25.962 Graphs[862:13201] Using fast enumeration...
+2016-03-09 00:16:25.962 Graphs[862:13201] 0 Node name: A new node
 Program ended with exit code: 0
 ```

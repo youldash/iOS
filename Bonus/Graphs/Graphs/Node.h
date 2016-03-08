@@ -33,8 +33,8 @@ typedef struct {
 static inline MYPoint MYPointMake(float x, float y)
 {
     MYPoint point;
-    point.x = 0.0f;
-    point.y = 0.0f;
+    point.x = x;
+    point.y = y;
     
     return point;
 }
