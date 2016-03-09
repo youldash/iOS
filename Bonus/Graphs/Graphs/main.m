@@ -25,6 +25,9 @@ int main(int argc, const char * argv[]) {
         // insert code here...
         Node *node = [Node nodeWithName:@"A new node" weight:@10.0 number:0 coordinates:MYPointMake(5.0f, -1.0f)];
         
+        // Play with the color.
+        node.color = [NSColor redColor];
+        
         NSLog(@"Node name: %@", [node name]);
         
         NSLog(@"Node coordinates: (%f, %f)", node.coordinates.x, node.coordinates.y);

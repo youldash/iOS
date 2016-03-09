@@ -15,6 +15,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AppKit/AppKit.h>
 
 /**
  *  Represents a position structure.
@@ -42,7 +43,16 @@ static inline MYPoint MYPointMake(float x, float y)
 /**
  *  A node class.
  */
-@interface Node : NSObject
+@interface Node : NSObject {
+    
+@private
+    NSColor *color;
+}
+
+/**
+ *  A color (using the RGB coloring system).
+ */
+@property (retain) NSColor *color;
 
 /**
  *  An identifier.

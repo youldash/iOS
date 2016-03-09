@@ -19,6 +19,11 @@
 @implementation Node
 
 /**
+ *  A color (using the RGB coloring system).
+ */
+@synthesize color;
+
+/**
  *  An identifier.
  */
 @synthesize name = _name;
@@ -129,6 +134,7 @@
     
     if (self) {
         
+        self.color = [NSColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:1.0f];
         self.name = @"Foo";
         self.weight = [NSNumber numberWithDouble:0.0]; // Or use: @(0.0)
         self.number = 0;
@@ -159,6 +165,7 @@
     
     if (self) {
         
+        self.color = [NSColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:1.0f];
         self.name = name;
         self.weight = @(0.0);
         self.number = 0;
@@ -179,6 +186,7 @@
     
     if (self) {
         
+        self.color = [NSColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:1.0f];
         self.name = name;
         self.weight = weight;
         self.number = 0;
@@ -197,6 +205,7 @@
     
     if (self) {
         
+        self.color = [NSColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:1.0f];
         self.name = @"Foo";
         self.weight = weight;
         self.number = 0;
@@ -215,6 +224,7 @@
     
     if (self) {
         
+        self.color = [NSColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:1.0f];
         self.name = @"Foo";
         self.weight = @(0.0);
         self.number = number;
@@ -233,6 +243,7 @@
     
     if (self) {
         
+        self.color = [NSColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:1.0f];
         self.name = @"Foo";
         self.weight = @(0.0);
         self.number = 0;
@@ -258,6 +269,7 @@
     
     if (self) {
         
+        self.color = [NSColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:1.0f];
         self.name = name;
         self.weight = weight;
         self.number = number;
