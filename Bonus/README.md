@@ -12,6 +12,7 @@ By using this site, you agree to the **Terms of Use** that are defined in [LICEN
 In this part of the training course, we will introduce you to an extra project that will facilitate the idea of making both **class** and **instance** methods...
 
 > **See:** The accompanying [Graphs Xcode Command Line Tool](https://github.com/youldash/iOS/tree/master/Bonus/Graphs) for a complete example.
+
 > **See:** The accompanying [Xcode iOS project](https://github.com/youldash/iOS/tree/master/Bonus/App) for a simple example on alert views.
 
 ### Compiling your Project
