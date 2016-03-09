@@ -17,6 +17,8 @@ In this part of the training course, we will introduce you to an extra project t
 
 > **See:** The accompanying ["Rectangle" Xcode Command Line Tool](https://github.com/youldash/iOS/tree/master/Bonus/App) for a simple refresher example on coding basics (as requested by students) ([download the Zip archive](https://github.com/youldash/iOS/tree/master/Bonus/Rectangle.zip)).
 
+> **See:** The accompanying ["AlbumApp" iOS TableView project](https://github.com/youldash/iOS/tree/master/Bonus/App) for an iOS TableView example ([download the Zip archive](https://github.com/youldash/iOS/tree/master/Bonus/AlbumApp.zip)).
+
 ## Compiling the "Graphs" Project
 
 * Compile and run the program by clicking on the Run button (located on the top-left corner of Xcode), or by pressing (⌘ + R). You should see an outcome similar to the following Debugger output:
