@@ -99,10 +99,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
+    
     Photo *photo = self.album.photos[indexPath.row];
     
-    cell.textLabel.text = [photo description];
+    cell.textLabel.text = [photo caption];
+    cell.detailTextLabel.text = [photo photographer];
     
     return cell;
 }

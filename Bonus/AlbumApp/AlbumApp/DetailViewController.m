@@ -15,6 +15,7 @@
 //
 
 #import "DetailViewController.h"
+#import "Photo.h"
 
 @interface DetailViewController ()
 
@@ -38,7 +39,20 @@
     
     // Update the user interface for the detail item.
     if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+        
+        Photo *photo = (Photo *)self.detailItem;
+        
+        NSMutableString *descriptionLabel = [NSMutableString string];
+        [descriptionLabel appendFormat:@"Photo number: %d", photo.number];
+        [descriptionLabel appendString:@"\n"];
+        [descriptionLabel appendFormat:@"Caption: %@", photo.caption];
+        [descriptionLabel appendString:@"\n"];
+        [descriptionLabel appendFormat:@"Photographer: %@", photo.photographer];
+        [descriptionLabel appendString:@"\n"];
+        
+        self.detailDescriptionLabel.text = descriptionLabel;
+        self.detailDescriptionLabel.font = [UIFont boldSystemFontOfSize:24.0];
+        self.detailDescriptionLabel.numberOfLines = 3;
     }
 }
 
