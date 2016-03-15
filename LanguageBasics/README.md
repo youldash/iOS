@@ -8,6 +8,13 @@
 
 By using this site, you agree to the **Terms of Use** that are defined in [LICENSE.md](https://github.com/youldash/iOS/blob/master/LICENSE.md).
 
+## Useful References
+
+See:
+
+- [Cocoa Dev Central: C Language Tutorial for Cocoa](http://cocoadevcentral.com/articles/000081.php). This tutorial explains the parts of C you need to get started with this training material.
+- [Ry’s Objective-C Tutorial - RyPress](http://rypress.com/tutorials/objective-c/index). This tutorial is a good staring place to learn the Objective-C programming language, which is covered here in more depth.
+
 ## Outline
 
 In this part of the training course, we will take you through a series of steps for creating sample projects that will demonstrate the capabilities and enhancements of the Objective-C programming language...
