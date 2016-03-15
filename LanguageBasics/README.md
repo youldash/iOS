@@ -675,7 +675,140 @@ int main(int argc, const char * argv[]) {
 Program ended with exit code: 0
 ```
 
-## Compiling "FlowerShop 3.0"
+## FlowerShop 3.0
+
+The objective of this exercise is to refine [FlowerShop 2.0](https://github.com/youldash/iOS/tree/master/LanguageBasics#flowershop-20) so that it confirms to a much cleaner, **Objective-C 2.0** coding standard.
+
+### Editing Your Model Class
+
+* Edit `Flower.h` and replace what currently exists with the following code snippet:
+
+``` Objective-C
+#import <Foundation/Foundation.h>
+
+/**
+ *  A flower (base) class interface v3.0.
+ *  This class uses Automatic Reference Counting (ARC), which is enabled in Xcode by default.
+ */
+@interface Flower : NSObject
+
+#pragma mark -
+#pragma mark Accessing
+
+/**
+ *  A flower name.
+ */
+@property (copy) NSString *name;
+
+/**
+ *  A flower sequence number.
+ */
+@property (assign) NSInteger number;
+
+/**
+ *  A flower price.
+ */
+@property (strong) NSNumber *price;
+
+/**
+ *  An image (generic data) associated with this flower.
+ */
+@property (weak) id image;
+
+@end
+```
+
+* Awesome! Now, edit "Flower.m" and replace what currently exists with the following code snippet:
+
+``` Objective-C
+#import "Flower.h"
+
+/**
+ *	Static constants.
+ */
+static const NSInteger kFlowerNumberDefault = 0;
+
+/**
+ *  A flower (base) class interface v2.0.
+ *  This class uses Automatic Reference Counting (ARC), which is enabled in Xcode by default.
+ */
+@implementation Flower
+
+#pragma mark -
+#pragma mark Initializing
+
+/**
+ *  Designated initializer.
+ *  Initializes a newly allocated flower.
+ *
+ *  @return The new flower.
+ */
+- (instancetype)init
+{
+    self = [super init];
+    
+    if (self) {
+        
+        self.name = @"A flower";
+        self.number = kFlowerNumberDefault;
+        self.price = @(10.0);
+        self.image = nil;
+    }
+    
+    return self;
+}
+
+#pragma mark -
+#pragma mark Querying
+
+/**
+ *	Returns a string that describes this flower.
+ *
+ *	@return The string.
+ */
+- (NSString *)description
+{
+    NSMutableString *string = [[NSMutableString alloc] init];
+    [string appendFormat:@"<Flower: name=%@, number=%ld, price=%.2f, image=%@",
+     self.name,
+     self.number,
+     self.price.doubleValue,
+     self.image];
+    
+    [string appendString:@"]>"];
+    
+    return string;
+}
+
+#pragma mark -
+#pragma mark Accessing
+
+/**
+ *  A flower name.
+ */
+@synthesize name = _name;
+
+/**
+ *  A flower sequence number.
+ */
+@synthesize number = _number;
+
+/**
+ *  A flower price.
+ */
+@synthesize price = _price;
+
+/**
+ *  An image (generic data) associated with this flower.
+ */
+@synthesize image = _image;
+
+@end
+```
+
+### Testing your Code
+
+* Everything is ready now for us to use this new class. Note that `main.m` should be the same as before.
 
 * Compile and run the program by clicking on the Run button, or by pressing (⌘ + R). You should see an outcome similar to the following Debugger output:
 
@@ -698,6 +831,8 @@ Program ended with exit code: 0
 2016-03-15 10:59:15.977 FlowerShop[1716:22455] 0 Image: (null)
 Program ended with exit code: 0
 ```
+
+
 
 ## Compiling "FlowerShop 4.0"
 
