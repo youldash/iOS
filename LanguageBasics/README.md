@@ -402,7 +402,8 @@ Program ended with exit code: 0
 2016-03-15 10:58:09.316 FlowerShop[1607:21646] 0 Number: 0
 2016-03-15 10:58:09.316 FlowerShop[1607:21646] 0 Price: 10.00
 2016-03-15 10:58:09.316 FlowerShop[1607:21646] 0 Image: (null)
-Program ended with exit code: 0```
+Program ended with exit code: 0
+```
 
 ## Compiling "FlowerShop 3.0"
 
