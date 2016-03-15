@@ -381,7 +381,277 @@ int main(int argc, const char * argv[]) {
 Program ended with exit code: 0
 ```
 
-## Compiling "FlowerShop 2.0"
+## FlowerShop 2.0
+
+The objective of this exercise is to redesign [FlowerShop 1.0](https://github.com/youldash/iOS/tree/master/LanguageBasics#flowershop-10) so that it leverages ARC, while reducing the size of your original code base.
+
+### Re-enabling ARC
+
+* To re-enable ARC for this project, Hide both Utility and Debug areas and only show both Editor and Navigator areas.
+
+* Click on the "FlowerShop" project file (blue icon in the Navigator area).
+
+* Configure your view according to the following sequence of actions: Highlight the "FlowerShop" executable (under "TARGETS") → Click on "Build Phases" to expand its options → Unfold "Compile Sources" to view two implementation sources (both `main.m` and `Flower.m`).
+
+* Double-click on both implementation files and remove the compiler flag `-fno-objc-arc`, simultaneously.
+
+> ARC should be enabled now!
+
+### Editing Your Model Class
+
+* Edit `Flower.h` and replace what currently exists with the following code snippet:
+
+``` Objective-C
+#import <Foundation/Foundation.h>
+
+/**
+ *  A flower (base) class interface v2.0.
+ *  This class uses Automatic Reference Counting (ARC), which is enabled in Xcode by default.
+ */
+@interface Flower : NSObject {
+    
+    /* A flower name. */
+    NSString *_name;
+    
+    /* A flower sequence number. */
+    NSInteger _number;
+    
+    /* A flower price. */
+    NSNumber *_price;
+
+    /* An image (generic data) associated with this flower. */
+    id _image;
+}
+
+#pragma mark -
+#pragma mark Accessing
+
+/**
+ *  A flower name.
+ */
+@property (copy, getter=name, setter=setName:) NSString *name;
+
+/**
+ *  A sequence number.
+ */
+@property (assign, getter=number, setter=setNumber:) NSInteger number;
+
+/**
+ *  A price.
+ */
+@property (strong, getter=price, setter=setPrice:) NSNumber *price;
+
+/**
+ *  An image.
+ */
+@property (weak, getter=image, setter=setImage:) id image;
+
+@end
+```
+
+* Excellent! Now, edit "Flower.m" and replace what currently exists with the following code snippet:
+
+``` Objective-C
+#import "Flower.h"
+
+/**
+ *	Static constants.
+ */
+static const NSInteger kFlowerNumberDefault = 0;
+
+/**
+ *  A flower (base) class interface v2.0.
+ *  This class uses Automatic Reference Counting (ARC), which is enabled in Xcode by default.
+ */
+@implementation Flower
+
+#pragma mark -
+#pragma mark Initializing
+
+/**
+ *  Designated initializer.
+ *  Initializes a newly allocated flower.
+ *
+ *  @return The new flower.
+ */
+- (instancetype)init
+{
+    self = [super init];
+    
+    if (self) {
+        
+        self.name = @"A flower";
+        self.number = kFlowerNumberDefault;
+        self.price = @(10.0);
+        self.image = nil;
+    }
+    
+    return self;
+}
+
+#pragma mark -
+#pragma mark Querying
+
+/**
+ *	Returns a string that describes this flower.
+ *
+ *	@return The string.
+ */
+- (NSString *)description
+{
+    NSMutableString *string = [[NSMutableString alloc] init];
+    [string appendFormat:@"<Flower: name=%@, number=%ld, price=%.2f, image=%@",
+     self.name,
+     self.number,
+     self.price.doubleValue,
+     self.image];
+    
+    [string appendString:@"]>"];
+    
+    return string;
+}
+
+#pragma mark -
+#pragma mark Accessing
+
+/**
+ *  The name getter.
+ */
+- (NSString *)name
+{
+    return _name;
+}
+
+/**
+ *  The name setter.
+ */
+- (void)setName:(NSString *)name
+{
+    if ([_name isEqualToString:name]) {
+        
+        return;
+    }
+    
+    _name = [name copy];
+}
+
+/**
+ *  The sequence number getter.
+ */
+- (NSInteger)number
+{
+    return _number;
+}
+
+/**
+ *  The sequence number setter.
+ */
+- (void)setNumber:(NSInteger)number
+{
+    _number = number;
+}
+
+/**
+ *  The price getter.
+ */
+- (NSNumber *)price
+{
+    return _price;
+}
+
+/**
+ *  The price setter.
+ */
+- (void)setPrice:(NSNumber *)price
+{
+    if (_price == price) {
+        
+        return;
+    }
+    
+    _price = price;
+}
+
+/**
+ *  The image getter.
+ */
+- (id)image
+{
+    return _image;
+}
+
+/**
+ *  The image setter.
+ */
+- (void)setImage:(id)image
+{
+    if (_image == image) {
+        
+        return;
+    }
+    
+    _image = image;
+}
+
+@end
+```
+
+### Testing your Code
+
+* Everything is ready now for us to use this new class. Edit `main.m` (your project’s main implementation file) and make sure it confirms to the following code snippet:
+
+``` Objective-C
+#import <Foundation/Foundation.h>
+
+#import "Flower.h"
+
+int main(int argc, const char * argv[]) {
+    
+    @autoreleasepool {
+        
+        // insert code here...
+        Flower *flower = [Flower new];
+        
+        NSLog(@"Flower:");
+        NSLog(@"Name: %@", [flower name]);
+        NSLog(@"Number: %ld", [flower number]);
+        NSLog(@"Price: %.2f", [[flower price] doubleValue]);
+        NSLog(@"Image: %@", [flower image]);
+
+        NSMutableArray *arrayOfFlowers = [[NSMutableArray alloc] init];
+        [arrayOfFlowers addObject:flower];
+        
+        NSLog(@"%@", [[arrayOfFlowers objectAtIndex:0] description]);
+        
+        NSLog(@"Using a normal for-loop...");
+        for (NSUInteger i = 0; i < [arrayOfFlowers count]; i++) {
+            
+            Flower *_flower = [arrayOfFlowers objectAtIndex:i];
+            
+            NSLog(@"%lu Name: %@", i, [_flower name]);
+            NSLog(@"%lu Number: %ld", i, [_flower number]);
+            NSLog(@"%lu Price: %.2f", i, [[_flower price] doubleValue]);
+            NSLog(@"%lu Image: %@", i, [_flower image]);
+        }
+        
+        NSLog(@"Using fast enumeration...");
+        NSInteger i = 0;
+        for (Flower *_flower in arrayOfFlowers) {
+            
+            NSLog(@"%lu Name: %@", i, [_flower name]);
+            NSLog(@"%lu Number: %ld", i, [_flower number]);
+            NSLog(@"%lu Price: %.2f", i, [[_flower price] doubleValue]);
+            NSLog(@"%lu Image: %@", i, [_flower image]);
+            
+            i++;
+        }
+        
+        [arrayOfFlowers removeAllObjects];
+    }
+    
+    return 0;
+}
+```
 
 * Compile and run the program by clicking on the Run button, or by pressing (⌘ + R). You should see an outcome similar to the following Debugger output:
 
