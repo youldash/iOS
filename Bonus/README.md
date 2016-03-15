@@ -1,7 +1,8 @@
-# Day 3: Bonus
+# Bonus
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/youldash.svg?style=social?style=plastic)](https://twitter.com/youldash)
 [![Twitter Follow](https://img.shields.io/twitter/follow/UQU_CS.svg?style=social?style=plastic)](https://twitter.com/UQU_CS)
+[![Twitter Follow](https://img.shields.io/twitter/follow/UQUCS_F.svg?style=social?style=plastic)](https://twitter.com/UQUCS_F)
 
 ## Terms of Use
 
@@ -9,7 +10,7 @@ By using this site, you agree to the **Terms of Use** that are defined in [LICEN
 
 ## Outline
 
-In this part of the training course, we will introduce you to an extra project that will facilitate the idea of making both **class** and **instance** methods...
+In this part of the training course, we will introduce you to a few extra projects that will facilitate the idea of making both **class** and **instance** methods...
 
 > **See:** The accompanying ["Graphs" Xcode Command Line Tool](https://github.com/youldash/iOS/tree/master/Bonus/Graphs) for a complete example ([download the Zip archive](https://github.com/youldash/iOS/tree/master/Bonus/Graphs.zip)).
 
