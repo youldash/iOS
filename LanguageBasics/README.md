@@ -47,7 +47,7 @@ In this exercise, you will develop a simple Foundation tool using Xcode. During 
 
 ### Creating Your Model Class
 
-* Add a new class by highlighting on the "Arrays" yellow (group) folder and selecting "New File" from the File menu.
+* Add a new class by highlighting on the "FlowerShop" yellow (group) folder and selecting "New File" from the File menu.
 
 * Under the "OS X" section, select "Source", and choose "Cocoa Class" as follows:
 <div align="center"><img src="https://raw.github.com/youldash/iOS/master/Misc/Exercise3.0.3.png" width="100%" /></div>
@@ -832,9 +832,133 @@ static const NSInteger kFlowerNumberDefault = 0;
 Program ended with exit code: 0
 ```
 
+## FlowerShop 4.0
+
+The objective of this exercise is to further refine [FlowerShop 3.0](https://github.com/youldash/iOS/tree/master/LanguageBasics#flowershop-30), in addition to adding a few extra classes so that the FlowerShop concept is filly adopted, and implemented.
+
+### Subclassing GardenRose from Flower
+
+* Add a new class by highlighting on the "FlowerShop" yellow (group) folder and selecting "New File" from the File menu.
+
+* Under the "OS X" section, select "Source", and choose "Cocoa Class".
+
+* When prompted for options, type `GardenRose` as the class name. Make sure `Flower` is selected for subclassing from.
+
+* Confirm by clicking Next and make sure "Targets" is checked for the executable. This step will add both header file `GardenRose.h` and the implementation file `GardenRose.m` to your project.
+
+* Type the code snippet listed below into `GardenRose.h`. This class represents the building block for creating new GardenRose objects:
+
+``` Objective-C
+#import "Flower.h"
+
+/**
+ *  A flower subclass interface v1.0.
+ *  This class uses Automatic Reference Counting (ARC), which is enabled in Xcode by default.
+ */
+@interface GardenRose : Flower
+
+@end
+```
+
+* Your class interface is now ready for a proper implementation! Edit "GardenRose.m" and type the following implementation:
+
+``` Objective-C
+#import "GardenRose.h"
+
+/**
+ *  A flower subclass implementation v1.0.
+ *  This class uses Automatic Reference Counting (ARC), which is enabled in Xcode by default.
+ */
+@implementation GardenRose
+
+#pragma mark -
+#pragma mark Initializing
+
+/**
+ *  Designated initializer.
+ *  Initializes a newly allocated flower.
+ *
+ *  @return The new flower.
+ */
+- (instancetype)init
+{
+    self = [super init];
+    
+    if (self) {
+        
+        self.name = @"Garden Rose";
+        self.price = @(79.99);
+    }
+    
+    return self;
+}
+
+@end
+```
+
+### Subclassing Iris from Flower
+
+* Add a new class by highlighting on the "FlowerShop" yellow (group) folder and selecting "New File" from the File menu.
+
+* Under the "OS X" section, select "Source", and choose "Cocoa Class".
+
+* When prompted for options, type `Iris` as the class name. Make sure `Flower` is selected for subclassing from.
+
+* Confirm by clicking Next and make sure "Targets" is checked for the executable. This step will add both header Iris `Flower.h` and the implementation file `Iris.m` to your project.
+
+* Type the code snippet listed below into `Iris.h`. This class represents the building block for creating new GardenRose objects:
+
+``` Objective-C
+#import "Flower.h"
+
+/**
+ *  A flower subclass interface v1.0.
+ *  This class uses Automatic Reference Counting (ARC), which is enabled in Xcode by default.
+ */
+@interface Iris : Flower
+
+@end
+```
+
+* Your class interface is now ready for a proper implementation! Edit "Iris.m" and type the following implementation:
+
+``` Objective-C
+#import "Iris.h"
+
+/**
+ *  A flower subclass implementation v1.0.
+ *  This class uses Automatic Reference Counting (ARC), which is enabled in Xcode by default.
+ */
+@implementation Iris
+
+#pragma mark -
+#pragma mark Initializing
+
+/**
+ *  Designated initializer.
+ *  Initializes a newly allocated flower.
+ *
+ *  @return The new flower.
+ */
+- (instancetype)init
+{
+    self = [super init];
+    
+    if (self) {
+        
+        self.name = @"Iris";
+        self.price = @(139.99);
+    }
+    
+    return self;
+}
+
+@end
+```
 
 
-## Compiling "FlowerShop 4.0"
+
+
 
 * Compile and run the program by clicking on the Run button, or by pressing (⌘ + R). You should see an outcome similar to the following Debugger output:
 
