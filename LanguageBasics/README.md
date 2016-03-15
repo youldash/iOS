@@ -302,7 +302,7 @@ static const NSInteger kFlowerNumberDefault = 0;
 
 ### Testing your Code
 
-* Everything is ready now for us to use this new class. Edit `main.m` (your project’s main implementation file) and make sure it confirms to the following code snippet:
+* Everything is ready now for us to use this new class. Edit `main.m` (your project's main implementation file) and make sure it confirms to the following code snippet:
 
 ``` Objective-C
 #import <Foundation/Foundation.h>
@@ -598,7 +598,7 @@ static const NSInteger kFlowerNumberDefault = 0;
 
 ### Testing your Code
 
-* Everything is ready now for us to use this new class. Edit `main.m` (your project’s main implementation file) and make sure it confirms to the following code snippet:
+* Everything is ready now for us to use this new class. Edit `main.m` (your project's main implementation file) and make sure it confirms to the following code snippet:
 
 ``` Objective-C
 #import <Foundation/Foundation.h>
@@ -834,7 +834,7 @@ Program ended with exit code: 0
 
 ## FlowerShop 4.0
 
-The objective of this exercise is to further refine [FlowerShop 3.0](https://github.com/youldash/iOS/tree/master/LanguageBasics#flowershop-30), in addition to adding a few extra classes so that the FlowerShop concept is filly adopted, and implemented.
+The objective of this exercise is to further refine [FlowerShop 3.0](https://github.com/youldash/iOS/tree/master/LanguageBasics#flowershop-30), in addition to adding a few extra classes so that the FlowerShop concept is filly adopted, and implemented... **Well, kind of :)**
 
 ### Subclassing GardenRose from Flower
 
@@ -956,9 +956,430 @@ The objective of this exercise is to further refine [FlowerShop 3.0](https://git
 @end
 ```
 
+### Creating the FlowerShop Class
 
+* Add a new class by highlighting on the "FlowerShop" yellow (group) folder and selecting "New File" from the File menu.
 
+* Under the "OS X" section, select "Source", and choose "Cocoa Class".
 
+* When prompted for options, type `FlowerShop` as the class name. Make sure `NSObject` is selected for subclassing from.
+
+* Confirm by clicking Next and make sure "Targets" is checked for the executable. This step will add both header and implementation files to your project.
+
+* Type the code snippet listed below into `FlowerShop.h`. This class represents a facade for maintaining the inventory of various flowers, maintained for sale.
+
+``` Objective-C
+/**
+ *  A flower shop class interface v1.0.
+ *  This class uses Automatic Reference Counting (ARC), which is enabled in Xcode by default.
+ */
+@interface FlowerShop : NSObject {
+    
+    /* @protected by default. */
+
+    /**
+     *  An array of flowers.
+     */
+    NSMutableArray *_flowers;
+}
+
+#pragma mark -
+#pragma mark Accessing
+
+/**
+ *  A Grapher scene delegate.
+ */
+@property (weak) id<FlowerShopDelegate> delegate;
+
+/**
+ *  Returns the current number (count) of flowers in the local array;
+ */
+@property (readonly) NSUInteger count;
+
+#pragma mark -
+#pragma mark Querying
+
+/**
+ *  Returns the flower at a given index.
+ *
+ *  @param idx The index of the flower.
+ *
+ *  @return The flower.
+ */
+- (Flower *)flowerAtIndex:(NSUInteger)idx;
+
+#pragma mark -
+#pragma mark Modifying
+
+/**
+ *  Adds a flower to the local flowers array.
+ *
+ *  @param flower A flower to add.
+ */
+- (void)addFlower:(Flower *)flower;
+
+/**
+ *  Removes a flower to the local flowers array.
+ *
+ *  @param flower A photo to remove.
+ *
+ *  @return A boolean value that indicates whether this operation was successful.
+ */
+- (BOOL)removeFlower:(Flower *)flower;
+
+@end
+```
+
+> **Note:** As you finish declaring your `FlowerShop` class interface, you will need to define a `FlowerShopDelegate` with two required methods, and one optional property. The following steps will define `FlowerShopDelegate`, which will be placed on top of your existing `FlowerShop` class interface.
+
+* Jump to the top of the `FlowerShop.h` header (above the interface declaration) and define the properties and methods of the protocol, like so:
+
+``` Objective-C
+#import <Foundation/Foundation.h>
+
+@class Flower;
+@class FlowerShop;
+
+/**
+ *  Protocol implemented by all flower shops.
+ */
+@protocol FlowerShopDelegate <NSObject>
+
+@optional /* @required by default. */
+
+/**
+ *  Tells whether a flower was sold or not.
+ */
+@property BOOL sold;
+
+/**
+ *  Flower shop will add a new flower.
+ *
+ *  @param flowerShop   A flower.
+ *  @param flower       A flower.
+ */
+- (void)flowerShop:(FlowerShop *)flowerShop willAddFlower:(Flower *)flower;
+
+/**
+ *  Flower shop did add a new flower.
+ *
+ *  @param flowerShop   A flower.
+ *  @param flower       A flower.
+ */
+- (void)flowerShop:(FlowerShop *)flowerShop didAddFlower:(Flower *)flower;
+
+@end
+```
+
+* The `FlowerShop` interface is now ready for implementation. Add the following accessor stub in `FlowerShop.m`:
+
+``` Objective-C
+#import "FlowerShop.h"
+#import "Flower.h"
+
+@implementation FlowerShop
+
+#pragma mark -
+#pragma mark Accessing
+
+/**
+ *  A FlowerShop delegate.
+ */
+@synthesize delegate = _delegate;
+
+/**
+ *  Returns the current number (count) of flowers in the local array;
+ */
+- (NSUInteger)count
+{
+    if (_flowers) {
+        
+        return _flowers.count;
+    }
+    
+    return 0;
+}
+```
+
+* Next, add the following initializer stub:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Initializing
+
+/**
+ *  Designated initializer.
+ *  Initializes a newly allocated flower shop.
+ *
+ *  @return The new flower shop.
+ */
+- (instancetype)init
+{
+    self = [super init];
+    
+    if (self) {
+        
+        _flowers = [NSMutableArray array];
+    }
+    
+    return self;
+}
+```
+
+* Next, add the following query stub:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Querying
+
+/**
+ *  Returns the flower at a given index.
+ *
+ *  @param idx The index of the flower.
+ *
+ *  @return The flower, nil otherwise.
+ */
+- (Flower *)flowerAtIndex:(NSUInteger)idx
+{
+    // Return a flower at (idx), nil otherwise.
+    return [_flowers objectAtIndex:idx];
+}
+```
+
+* Finally, end your implementation with the following modifier stub. Note tat the `@end` is declared at the end of this part to indicated that no further code needs to be added to `FlowerShop.m`:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Modifying
+
+/**
+ *  Adds a flower to the local flowers array.
+ *
+ *  @param flower A flower to add.
+ */
+- (void)addFlower:(Flower *)flower
+{
+    // Inform our delegate that a new flower will be added.
+    if ([_delegate respondsToSelector:@selector(flowerShop:willAddFlower:)]) {
+        
+        [_delegate flowerShop:self willAddFlower:flower];
+    }
+
+    // Update its number with relation to the current total number of added flowers.
+    flower.number = (NSInteger)_flowers.count;
+    
+    // Insert it.
+    [_flowers addObject:flower];
+    
+    // Inform our delegate that a new flower was added.
+    if ([_delegate respondsToSelector:@selector(flowerShop:didAddFlower:)]) {
+        
+        [_delegate setSold:NO];
+        [_delegate flowerShop:self didAddFlower:flower];
+    }
+    
+    // Inform our delegate that a new flower is not sold yet.
+    if ([_delegate respondsToSelector:@selector(setSold:)]) {
+        
+        [_delegate setSold:YES];
+    }
+}
+
+/**
+ *  Removes a flower to the local flowers array.
+ *
+ *  @param flower A photo to remove.
+ *
+ *  @return A boolean value that indicates whether this operation was successful.
+ */
+- (BOOL)removeFlower:(Flower *)flower
+{
+    // Loop through each flower instance in the flowers array.
+    for (Flower *_flower in _flowers) {
+        
+        // A match is found if all parameter/property values appear to be identical.
+        if (_flower.number == flower.number &&
+            [_flower.name isEqualToString:flower.name]) {
+            
+            // Remove the flower.
+            [_flowers removeObjectAtIndex:_flower.number];
+            
+            // Flower was removed.
+            return YES;
+        }
+    }
+    
+    // Flower was not removed.
+    return NO;
+}
+
+@end
+```
+
+### Creating the FlowerShopTester Class
+
+* Add a new class by highlighting on the "FlowerShop" yellow (group) folder and selecting "New File" from the File menu.
+
+* Under the "OS X" section, select "Source", and choose "Cocoa Class".
+
+* When prompted for options, type `FlowerShopTester` as the class name. Make sure `NSObject` is selected for subclassing from.
+
+* Confirm by clicking Next and make sure "Targets" is checked for the executable. This step will add both header and implementation files to your project.
+
+* Type the code snippet listed below into `FlowerShopTester.h`. This class represents a facade for testing the `FlowerShop` class, which also confirms to the `FlowerShopDelegate` protocol, by implementing its methods, and by defining its properties.
+
+``` Objective-C
+#import <Foundation/Foundation.h>
+
+#import "FlowerShop.h"
+
+/**
+ *  FlowerShop unit test class.
+ */
+@interface FlowerShopTester : NSObject <FlowerShopDelegate>
+
+#pragma mark -
+#pragma mark Testing
+
+/**
+ *	GRArray unit test program.
+ *
+ *	@return	A boolean value that indicates whether all the tests were successful.
+ */
+- (BOOL)performTests;
+
+@end
+```
+
+* `FlowerShopTester.h` is now ready for implementation. Add the following delegation stub in `FlowerShopTester.m`:
+
+``` Objective-C
+#import "FlowerShopTester.h"
+#import "FlowerShop.h"
+#import "Flower.h"
+#import "GardenRose.h"
+#import "Iris.h"
+
+@implementation FlowerShopTester
+
+#pragma mark -
+#pragma mark FlowerShopDelegate
+
+/**
+ *  Tells whether a flower was sold or not.
+ */
+@synthesize sold = _sold;
+
+/**
+ *  Flower shop will add a new flower.
+ *
+ *  @param flowerShop   A flower.
+ *  @param flower       A flower.
+ */
+- (void)flowerShop:(FlowerShop *)flowerShop willAddFlower:(Flower *)flower
+{
+    NSLog(@"%s: %@", __FUNCTION__, flower);
+}
+
+/**
+ *  Flower shop did add a new flower.
+ *
+ *  @param flowerShop   A flower.
+ *  @param flower       A flower.
+ */
+- (void)flowerShop:(FlowerShop *)flowerShop didAddFlower:(Flower *)flower
+{
+    NSLog(@"%s: %@", __FUNCTION__, flower);
+}
+```
+
+* Then, end your implementation with the following tester stub. Note tat the `@end` is declared at the end of this part to indicated that no further code needs to be added to `FlowerShopTester.m`:
+
+``` Objective-C
+#pragma mark -
+#pragma mark Testing
+
+/**
+ *	FlowerShop unit test program.
+ *
+ *	@return	A boolean value that indicates whether all the tests were successful.
+ */
+- (BOOL)performTests
+{
+    NSLog(@"FlowerShop unit test program.");
+    NSLog(@"--------------------------------------------");
+    
+    FlowerShop *shop = [FlowerShop new];
+    shop.delegate = self;
+    
+    // Add one flower.
+    [shop addFlower:[Flower new]];
+    
+    // Sold or not?
+    NSLog(@"Sold? %@", (shop.delegate.sold ? @"YES" : @"NO"));
+
+    // Add another flower.
+    Flower *gardenRose = [[GardenRose alloc] init];
+    
+    [shop addFlower:gardenRose];
+    
+    // Add another flower.
+    [shop addFlower:[Iris new]];
+
+    NSLog(@"Using a normal for-loop...");
+    for (NSUInteger i = 0; i < [shop count]; i++) {
+        
+        Flower *flower = [shop flowerAtIndex:i];
+        
+        NSLog(@"%lu Name: %@", i, [flower name]);
+        NSLog(@"%lu Number: %ld", i, [flower number]);
+        NSLog(@"%lu Price: $%.2f", i, [[flower price] doubleValue]);
+        NSLog(@"%lu Image: %@", i, [flower image]);
+    }
+    
+    // Remove one flower.
+    if ([shop removeFlower:gardenRose]) {
+        
+        NSLog(@"Removed \"gardenRose\"...");
+        NSLog(@"Using a normal for-loop...");
+        for (NSUInteger i = 0; i < [shop count]; i++) {
+            
+            Flower *flower = [shop flowerAtIndex:i];
+            
+            NSLog(@"%lu Name: %@", i, [flower name]);
+            NSLog(@"%lu Number: %ld", i, [flower number]);
+            NSLog(@"%lu Price: $%.2f", i, [[flower price] doubleValue]);
+            NSLog(@"%lu Image: %@", i, [flower image]);
+        }
+    }
+    
+    // Successful.
+    return YES;
+}
+
+@end
+```
+
+### Testing your Code
+
+* Everything is ready now for us to use this new class. Edit `main.m` and make sure it confirms to the following code snippet:
+
+``` Objective-C
+#import <Foundation/Foundation.h>
+
+#import "FlowerShopTester.h"
+
+int main(int argc, const char * argv[]) {
+    
+    @autoreleasepool {
+        
+        // insert code here...
+        [[FlowerShopTester new] performTests];
+    }
+    
+    return 0;
+}
+```
 
 * Compile and run the program by clicking on the Run button, or by pressing (⌘ + R). You should see an outcome similar to the following Debugger output:
 

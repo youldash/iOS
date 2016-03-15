@@ -23,7 +23,7 @@
 #pragma mark Accessing
 
 /**
- *  A Grapher scene delegate.
+ *  A FlowerShop delegate.
  */
 @synthesize delegate = _delegate;
 

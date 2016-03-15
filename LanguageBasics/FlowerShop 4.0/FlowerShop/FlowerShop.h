@@ -69,7 +69,7 @@
 #pragma mark Accessing
 
 /**
- *  A Grapher scene delegate.
+ *  A FlowerShop delegate.
  */
 @property (weak) id<FlowerShopDelegate> delegate;
 
