@@ -21,7 +21,7 @@ Over the course of training, participants will be asked to signup (using this si
 
 > **Important:** **Certificates of Completion** will be granted to attendees, upon the successful completion of tasks that will be announced during the event. **Certificates for Attendance** on the other hand, will not be issued, to guarantee the full benefit of training, participation, and collaboration during the course of the workshop.
 
-> For more updates please follow [@UQU_CS](https://twitter.com/UQU_CS) and [@UQU_CS](https://twitter.com/UQUCS_F) on Twitter.
+> For more updates please follow [@UQU_CS](https://twitter.com/UQU_CS) and [@UQUCS_F](https://twitter.com/UQUCS_F) on Twitter.
 
 ## Mission
 
