@@ -19,6 +19,8 @@ See:
 
 In this part of the training course, we will take you through a series of steps for creating sample projects that will demonstrate the capabilities and enhancements of the Objective-C programming language...
 
+> **Note:** A Swift version of the final exercise is published [here](https://github.com/youldash/iOS/blob/master/LanguageBasics/Swift/).
+
 ## FlowerShop 1.0
 
 In this exercise, you will develop a simple Foundation tool using Xcode. During the implementation phase, you will be guided through a series of instructions to build your project using the old-fashioned **Objective-C 1.0** coding style.
