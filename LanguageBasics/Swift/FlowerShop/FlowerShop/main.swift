@@ -29,6 +29,7 @@ arrayOfFlowers.append(flower)
 NSLog("%@", arrayOfFlowers[0].description)
 NSLog("Using a normal for-loop...")
 for var i = 0; i < arrayOfFlowers.count; i++ {
+    
     var flower: Flower = arrayOfFlowers[i] 
     NSLog("%lu Name: %@", i, flower.name)
     NSLog("%lu Number: %ld", i, flower.number)
@@ -38,8 +39,12 @@ for var i = 0; i < arrayOfFlowers.count; i++ {
 NSLog("Using fast enumeration...")
 var i: Int = 0
 for flower: Flower in arrayOfFlowers {
+    
     NSLog("%lu Name: %@", i, flower.name)
     NSLog("%lu Number: %ld", i, flower.number)
     NSLog("%lu Price: %.2f", i, CDouble(flower.price.doubleValue))
     i++
 }
+
+// Invoke the FlowerShop unit test program.
+FlowerShopTester().performTests()

@@ -14,6 +14,8 @@ See:
 
 - [Cocoa Dev Central: C Language Tutorial for Cocoa](http://cocoadevcentral.com/articles/000081.php). This tutorial explains the parts of C you need to get started with this training material.
 - [Ry’s Objective-C Tutorial - RyPress](http://rypress.com/tutorials/objective-c/index). This tutorial is a good staring place to learn the Objective-C programming language, which is covered here in more depth.
+- [Swift Tutorial - Ray Wenderlich](https://www.raywenderlich.com/category/swift). A good reference that focuses primarily on tutorials for teaching the Swift programming language.
+- [The Swift Programming Language (Swift 2.2): About Swift](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html#//apple_ref/doc/uid/TP40014097-CH3-ID0). Apple's online reference for the Swift 2.2 specification.
 
 ## Outline
 

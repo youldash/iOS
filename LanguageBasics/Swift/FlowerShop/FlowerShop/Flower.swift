@@ -50,6 +50,8 @@ class Flower: NSObject {
     */
     override init() {
         
+        super.init()
+
         self.name = "Flower"
         self.number = kFlowerNumberDefault
         self.price = 10.0

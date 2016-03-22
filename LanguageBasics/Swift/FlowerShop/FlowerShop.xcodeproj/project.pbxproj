@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		84AAFDC31C9B178D00F4DFB0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAFDC21C9B178D00F4DFB0 /* main.swift */; };
 		84AAFDCA1C9B17A100F4DFB0 /* Flower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAFDC91C9B17A100F4DFB0 /* Flower.swift */; };
+		BC0376431CA045BA00783426 /* FlowerShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0376421CA045BA00783426 /* FlowerShop.swift */; };
+		BC0FB80D1CA122B200178147 /* FlowerShopTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0FB80C1CA122B200178147 /* FlowerShopTester.swift */; };
+		BC0FB80F1CA1292300178147 /* GardenRose.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0FB80E1CA1292300178147 /* GardenRose.swift */; };
+		BCC6EB711CA12A530064D61D /* Iris.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC6EB701CA12A530064D61D /* Iris.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +31,10 @@
 		84AAFDBF1C9B178D00F4DFB0 /* FlowerShop */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FlowerShop; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AAFDC21C9B178D00F4DFB0 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		84AAFDC91C9B17A100F4DFB0 /* Flower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flower.swift; sourceTree = "<group>"; };
+		BC0376421CA045BA00783426 /* FlowerShop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowerShop.swift; sourceTree = "<group>"; };
+		BC0FB80C1CA122B200178147 /* FlowerShopTester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowerShopTester.swift; sourceTree = "<group>"; };
+		BC0FB80E1CA1292300178147 /* GardenRose.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GardenRose.swift; sourceTree = "<group>"; };
+		BCC6EB701CA12A530064D61D /* Iris.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Iris.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +69,10 @@
 			children = (
 				84AAFDC21C9B178D00F4DFB0 /* main.swift */,
 				84AAFDC91C9B17A100F4DFB0 /* Flower.swift */,
+				BC0376421CA045BA00783426 /* FlowerShop.swift */,
+				BC0FB80C1CA122B200178147 /* FlowerShopTester.swift */,
+				BC0FB80E1CA1292300178147 /* GardenRose.swift */,
+				BCC6EB701CA12A530064D61D /* Iris.swift */,
 			);
 			path = FlowerShop;
 			sourceTree = "<group>";
@@ -123,7 +135,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				84AAFDCA1C9B17A100F4DFB0 /* Flower.swift in Sources */,
+				BC0FB80D1CA122B200178147 /* FlowerShopTester.swift in Sources */,
+				BC0FB80F1CA1292300178147 /* GardenRose.swift in Sources */,
 				84AAFDC31C9B178D00F4DFB0 /* main.swift in Sources */,
+				BCC6EB711CA12A530064D61D /* Iris.swift in Sources */,
+				BC0376431CA045BA00783426 /* FlowerShop.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +259,7 @@
 				84AAFDC81C9B178D00F4DFB0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
